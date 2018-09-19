@@ -107,8 +107,10 @@ int LEDBlue = 0;
 float desired[4]={0,0,0,0};  /// 0 => Pitch, 1 ==> yaw
 float Error[4]={0,0,0,0};
 float StateX[4]={0,0,0,0};
-float gainP[4]={98.2088,-103.0645,32.2643,-29.075};
-float gainY[4]={156.3469,66.1643,45.5122,17.1068};
+float gainP[4]={295.0597, -219.1940,   56.7671,  -44.7593};
+float gainY[4]={477.8207,  136.4576,   81.6297,   25.5225};
+float LgainP[4]={204.68,     0, 10438.0,      0};
+float LgainY[4]={     0, 200.0,       0, 9899.9};
 float Vmotors[2]={0,0};
 int milisecs=0;
 float seconds=0;
@@ -118,6 +120,14 @@ float Yaw_n_k1=0;
 float Yaw_dot_k1=0;
 float Pitch_deg=0;
 float Yaw_deg=0;
+
+// ================= Joe added ===================
+float xhat[4];
+float xhatOld[4];
+float uOld[2];
+float C[2][4] = {{1,0,0,0},{0,1,0,0}};
+float A[4][4] = {{0,0,1.0000,0},{0,0,0,1.0000},{-1.7117,0,-0.3249,  0},{0,0,0,-1.0004}};
+float B[4][2] = {{0,0},{0,0},{0.0503,0.0959},{-0.1228,0.1000}};
 //============================================================
 //Setup serial builder
 Display displayData;
@@ -279,9 +289,50 @@ void loop() {
     Yaw_dot_k1=Yaw_dot; 
     Error[0]=desired[0]-StateX[0];
     Error[1]=desired[1]-StateX[1];
+
+// ================ Joe added =================
+// Maybe use this for current estimator
+//    for (int i=0; i<4;i++){
+//      xbar[i] = 0;
+//      for (int j=0; j<4;j++){
+//         xbar[i] = xbar[i] + A[i][j]*xbarold[j];
+//      }
+//      for (int k=0; k<2;j++){
+//         xbar[i] = xbar[i] + B[i][k]*uOld[k];
+//      } 
+//    }
+
+
+// Prediction estimator
+    for (int i=0; i<4;i++){
+      xhat[i] = 0;
+      xhat[i] = xhat[i] + LgainP[i]*PitchRad;
+      xhat[i] = xhat[i] + LgainY[i]*YawRad;
+      for (int j=0; j<4;j++){
+         xhat[i] = xhat[i] + A[i][j]*xhatOld[j];
+         xhat[i] = xhat[i] + LgainP[i]*(- C[1][j]*xhatOld[j]);
+         xhat[i] = xhat[i] + LgainY[i]*(- C[2][j]*xhatOld[j]);
+      }
+      for (int k=0; k<2;k++){
+         xhat[i] = xhat[i] + B[i][k]*uOld[k];
+      }
+    }
+    
+    for (int i=0; i<4;i++){
+      Error[i]=desired[i]-xhat[i];
+    }
+        
     AeroGains();                                // Calculates Voltage for both motors
     motor0Voltage = Vmotors[0];
     motor1Voltage = Vmotors[1]; 
+    
+    uOld[0] = Vmotors[0];
+    uOld[1] = Vmotors[1];
+    for (int i=0; i<4;i++){
+      xhatOld[i] = xhat[i];
+    }
+
+// ============================================
  //*****************************************************end*************************************************************************************
  //
  // set the saturation limit to +/- 20V for Motor0  as it is in Simulink model. 
@@ -489,5 +540,3 @@ void resetQuanserAero() {
   motor0MSB = 0x80;  // enable amplifier0
   motor1MSB = 0x80;  // enable amplifier1
 }
-
-
