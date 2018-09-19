@@ -23,19 +23,24 @@ void SetpointGen()
   //
 
 // ================ Joe added =================
-     if (milisecs % (int)0.4/(PI)*1000 ){
-      desired[0] = PI/6.0;
+float pitchFreq = 0.4;
+float pitchAmp = PI/6.0;
+float yawFreq = 0.5;
+float yawAmp = PI/4.0;
+
+     if ((millis() % (int)((2*PI)/pitchFreq*1000)) <= (int)(PI/pitchFreq*1000)){
+      desired[0] = pitchAmp;
       LEDBlue = 999;
      } else {
-      desired[0] = -PI/6.0;
+      desired[0] = -pitchAmp;
       LEDBlue = 0;
      }
       
-     if (milisecs % (int)0.5/(PI)*1000 ){
-      desired[1] = PI/4.0;
+     if ((millis() % (int)((2*PI)/yawFreq*1000)) <= (int)(PI/yawFreq*1000)){
+      desired[1] = yawAmp;
       LEDRed = 999;
      } else {
-      desired[1] = -PI/4.0;
+      desired[1] = -yawAmp;
       LEDRed = 0;
      }
 

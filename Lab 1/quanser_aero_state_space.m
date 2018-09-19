@@ -50,9 +50,8 @@ Kd1 = lqr(Ad, Bd, Q, R);
 
 sysc = ss(A,B,C,D);
 
-sysd = c2d(sysc, T, 'tustin')
-
-Kd2 = lqr(sysd,Q,R) % gives the same result...
+sysd = c2d(sysc, T, 'zoh')
+K_d = dlqr(sysd.A,sysd.B,Q,R) % gives the same result...
 
 % This doesn't work...
 % po = [0.5 0 -0.5 0.25];

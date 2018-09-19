@@ -1,15 +1,15 @@
 /*
-Quanser Aero
+  Quanser Aero
 
-An example using the Arduino UNO board to communicate with the Quanser Aero through
-the microcontroller interface panel.  This code is meant to serve as a template you
-can use as a starting point for your own Aero code.
+  An example using the Arduino UNO board to communicate with the Quanser Aero through
+  the microcontroller interface panel.  This code is meant to serve as a template you
+  can use as a starting point for your own Aero code.
 
-Select 115200 baud on the Arduino Serial Monitor.
-Tested with Arduino IDE 1.6.8 (arduino.cc) and Arduino IDE 1.7.10 (arduino.org).
+  Select 115200 baud on the Arduino Serial Monitor.
+  Tested with Arduino IDE 1.6.8 (arduino.cc) and Arduino IDE 1.7.10 (arduino.org).
 
-Created 2016 by Quanser Inc.
-www.quanser.com
+  Created 2016 by Quanser Inc.
+  www.quanser.com
 */
 
 // include the Quanser Aero library
@@ -45,16 +45,16 @@ byte LEDGreenMSB = 0;               // green LED command MSB
 byte LEDGreenLSB = 0;               // green LED command LSB
 byte LEDBlueMSB = 0;                // blue LED command MSB
 byte LEDBlueLSB = 0;                // blue LED command LSB
-byte encoder2ByteSet[3] = {0,0,0};  // encoder2 is set to this value only when writes are enabled with baseWriteMask
-byte encoder3ByteSet[3] = {0,0,0};  // encoder3 is set to this value only when writes are enabled with baseWriteMask
+byte encoder2ByteSet[3] = {0, 0, 0}; // encoder2 is set to this value only when writes are enabled with baseWriteMask
+byte encoder3ByteSet[3] = {0, 0, 0}; // encoder3 is set to this value only when writes are enabled with baseWriteMask
 
 // initialize the SPI data to be read from the Base Node
 byte baseModuleIDMSB = 0;           // module ID MSB (module ID for the Base Node is 772 decimal)
 byte baseModuleIDLSB = 0;           // module ID LSB
-byte encoder2Byte[3] = {0,0,0};     // encoder2 counts (pitch)
-byte encoder3Byte[3] = {0,0,0};     // encoder3 counts (yaw)
-byte tach2Byte[3] = {0,0,0};        // tachometer2 (pitch)
-byte tach3Byte[3] = {0,0,0};        // tachometer3 (yaw)
+byte encoder2Byte[3] = {0, 0, 0};   // encoder2 counts (pitch)
+byte encoder3Byte[3] = {0, 0, 0};   // encoder3 counts (yaw)
+byte tach2Byte[3] = {0, 0, 0};      // tachometer2 (pitch)
+byte tach3Byte[3] = {0, 0, 0};      // tachometer3 (yaw)
 
 
 // initialize the SPI data to be written to the Core Node
@@ -64,21 +64,21 @@ byte motor0MSB = 0x80;              // motor0 command MSB must be B1xxxxxxx to e
 byte motor0LSB = 0;                 // motor0 command LSB
 byte motor1MSB = 0x80;              // motor1 command MSB must be B1xxxxxxx to enable amplifier1
 byte motor1LSB = 0;                 // motor1 command LSB
-byte encoder0ByteSet[3] = {0,0,0};  // encoder0 is set to this value only when writes are enabled with coreWriteMask
-byte encoder1ByteSet[3] = {0,0,0};  // encoder1 is set to this value only when writes are enabled with coreWriteMask
+byte encoder0ByteSet[3] = {0, 0, 0}; // encoder0 is set to this value only when writes are enabled with coreWriteMask
+byte encoder1ByteSet[3] = {0, 0, 0}; // encoder1 is set to this value only when writes are enabled with coreWriteMask
 
 // initialize the SPI data to be read from the Core Node
 byte coreModuleIDMSB = 0;           // module ID MSB (module ID for the Core Node is 775 decimal)
 byte coreModuleIDLSB = 0;           // module ID LSB
-byte currentSense0MSB = 0;          // motor0 current sense MSB 
+byte currentSense0MSB = 0;          // motor0 current sense MSB
 byte currentSense0LSB = 0;          // motor0 current sense LSB
-byte currentSense1MSB = 0;          // motor1 current sense MSB 
+byte currentSense1MSB = 0;          // motor1 current sense MSB
 byte currentSense1LSB = 0;          // motor1 current sense LSB
-byte tach0Byte[3] = {0,0,0};        // tachometer0
-byte tach1Byte[3] = {0,0,0};        // tachometer1
+byte tach0Byte[3] = {0, 0, 0};      // tachometer0
+byte tach1Byte[3] = {0, 0, 0};      // tachometer1
 byte moduleStatus = 0;              // module status (the Quanser Aero sends status = 0 when there are no errors)
-byte encoder0Byte[3] = {0,0,0};     // encoder0 counts
-byte encoder1Byte[3] = {0,0,0};     // encoder1 counts
+byte encoder0Byte[3] = {0, 0, 0};   // encoder0 counts
+byte encoder1Byte[3] = {0, 0, 0};   // encoder1 counts
 byte xAccelLSB = 0;                 // X-axis accelerometer LSB
 byte xAccelMSB = 0;                 // X-axis accelerometer MSB
 byte yAccelLSB = 0;                 // Y-axis accelerometer LSB
@@ -104,30 +104,33 @@ int LEDBlue = 0;
 // ============= Global variables LQR controller ==============
 // Control gain K used here was taken from simulink demo model and tested in a rev C Aero on Oct. 28. 2016
 //
-float desired[4]={0,0,0,0};  /// 0 => Pitch, 1 ==> yaw
-float Error[4]={0,0,0,0};
-float StateX[4]={0,0,0,0};
-float gainP[4]={295.0597, -219.1940,   56.7671,  -44.7593};
-float gainY[4]={477.8207,  136.4576,   81.6297,   25.5225};
-float LgainP[4]={204.68,     0, 10438.0,      0};
-float LgainY[4]={     0, 200.0,       0, 9899.9};
-float Vmotors[2]={0,0};
-int milisecs=0;
-float seconds=0;
-float Pitch_n_k1=0;
-float Pitch_dot_k1=0;
-float Yaw_n_k1=0;
-float Yaw_dot_k1=0;
-float Pitch_deg=0;
-float Yaw_deg=0;
+float desired[4] = {0, 0, 0, 0}; /// 0 => Pitch, 1 ==> yaw
+float Error[4] = {0, 0, 0, 0};
+float StateX[4] = {0, 0, 0, 0};
+float gainP[4] = {292.0515, -217.5028,   56.4913,  -44.5851};
+float gainY[4] = {472.4621,  135.2583,   81.1793,   25.4120};
+float LgainP[4] = {1.8993,         0,  439.5197,         0};
+float LgainY[4] = {0,    1.8980,         0,  448.5516};
+float Vmotors[2] = {0, 0};
+int milisecs = 0;
+float seconds = 0;
+float Pitch_n_k1 = 0;
+float Pitch_dot_k1 = 0;
+float Yaw_n_k1 = 0;
+float Yaw_dot_k1 = 0;
+float Pitch_deg = 0;
+float Yaw_deg = 0;
 
 // ================= Joe added ===================
-float xhat[4];
-float xhatOld[4];
-float uOld[2];
-float C[2][4] = {{1,0,0,0},{0,1,0,0}};
-float A[4][4] = {{0,0,1.0000,0},{0,0,0,1.0000},{-1.7117,0,-0.3249,  0},{0,0,0,-1.0004}};
-float B[4][2] = {{0,0},{0,0},{0.0503,0.0959},{-0.1228,0.1000}};
+float xhat[4] = {0,0,0,0};
+float xhatOld[4] = {0,0,0,0};
+float uOld[2] = {0,0};
+//float A[4][4] = {{0, 0, 1.0000, 0}, {0, 0, 0, 1.0000}, { -1.7117, 0, -0.3249,  0}, {0, 0, 0, -1.0004}};
+//float B[4][2] = {{0, 0}, {0, 0}, {0.0503, 0.0959}, { -0.1228, 0.1000}};
+//float C[2][4] = {{1, 0, 0, 0}, {0, 1, 0, 0}};
+float A[4][4] = {{1, 0, 0.001999, 0}, {0, 1, 0, 0.001998}, {-0.003422, 0, 0.9993,  0}, {0, 0, 0, 0.998}};
+float B[4][2] = {{0, 0}, {0, 0}, {0.0001005, 0.0001918}, { -0.0002451, 0.0001997}};
+float C[2][4] = {{1, 0, 0, 0}, {0, 1, 0, 0}};
 //============================================================
 //Setup serial builder
 Display displayData;
@@ -135,22 +138,22 @@ Display displayData;
 void setup() {
   // set the slaveSelectPin as an output
   pinMode (slaveSelectPin, OUTPUT);
-  
+
   // initialize SPI
   SPI.begin();
-  
+
   // initialize serial communication at 2500000 baud
   // (Note that 250000 baud must be selected from the drop-down list on the Arduino
   // Serial Monitor for the data to be displayed properly.)
   Serial.begin(250000);
-}
+  }
 
 void loop() {
-  
+
   // after the Arduino power is cycled or the reset pushbutton is pressed, call the resetQuanserAero function
   if (startup) {
 
-  //  resetQuanserAero();
+    //  resetQuanserAero();
     startup = false;
     LEDBlue = 999;
 
@@ -161,18 +164,18 @@ void loop() {
   // occurred is greater than the sample time, start a new SPI transaction
   unsigned long currentMicros = micros();
   if (currentMicros - previousMicros >= sampleTime) {
-    previousMicros = previousMicros + sampleTime;  
+    previousMicros = previousMicros + sampleTime;
 
     //==============Setpoint Clock ===============
-        milisecs++; 
-        SetpointGen();  // Creates different setpoits for Pitch and Yaw angles
+    milisecs++;
+    SetpointGen();  // Creates different setpoits for Pitch and Yaw angles
     //============================================
-    
+
     // initialize the SPI bus using the defined speed, data order and data mode
     SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE2));
     // take the slave select pin low to select the device
     digitalWrite(slaveSelectPin, LOW);
-    
+
     // send and receive the Base Node data via SPI
     baseModuleIDMSB = SPI.transfer(baseMode);            // read the module ID MSB, send the mode
     baseModuleIDLSB = SPI.transfer(0);                   // read the module ID LSB
@@ -189,7 +192,7 @@ void loop() {
     tach3Byte[1] = SPI.transfer(encoder3ByteSet[2]);     // read tachometer3 byte 1, send encoder3 byte 2
     tach3Byte[0] = SPI.transfer(encoder3ByteSet[1]);     // read tachometer3 byte 0, send encoder3 byte 1
     SPI.transfer(encoder3ByteSet[0]);                    // send encoder3 byte 0
-    
+
     // send and receive the Core Node data via SPI
     coreModuleIDMSB = SPI.transfer(coreMode);            // read the module ID MSB, send the mode
     coreModuleIDLSB = SPI.transfer(0);                   // read the module ID LSB
@@ -198,55 +201,55 @@ void loop() {
     currentSense1MSB = SPI.transfer(motor0LSB);          // read motor1 current sense MSB, send motor0 command LSB
     currentSense1LSB = SPI.transfer(motor1MSB);          // read motor1 current sense LSB, send motor1 command MSB
     tach0Byte[2] = SPI.transfer(motor1LSB);              // read tachometer0 byte 2, send motor1 command LSB
-//    tach0Byte[1] = SPI.transfer(encoder0ByteSet[2]);     // read tachometer0 byte 1, send encoder0 byte 2       ==> commented out for code reduction
-//    tach0Byte[0] = SPI.transfer(encoder0ByteSet[1]);     // read tachometer0 byte 0, send encoder0 byte 1
-//    tach1Byte[2] = SPI.transfer(encoder0ByteSet[0]);     // read tachometer1 byte 2, send encoder0 byte 0
-//    tach1Byte[1] = SPI.transfer(encoder1ByteSet[2]);     // read tachometer1 byte 1, send encoder1 byte 2
-//    tach1Byte[0] = SPI.transfer(encoder1ByteSet[1]);     // read tachometer1 byte 0, send encoder1 byte 1
-//    moduleStatus = SPI.transfer(encoder1ByteSet[0]);     // read the status, send encoder1 byte 0
-//    encoder0Byte[2] = SPI.transfer(0);                   // read encoder0 byte 2
-//    encoder0Byte[1] = SPI.transfer(0);                   // read encoder0 byte 1
-//    encoder0Byte[0] = SPI.transfer(0);                   // read encoder0 byte 0
-//    encoder1Byte[2] = SPI.transfer(0);                   // read encoder1 byte 2
-//    encoder1Byte[1] = SPI.transfer(0);                   // read encoder1 byte 1
-//    encoder1Byte[0] = SPI.transfer(0);                   // read encoder1 byte 0
-//    xAccelLSB = SPI.transfer(0);                         // read X-axis accelerometer LSB
-//    xAccelMSB = SPI.transfer(0);                         // read X-axis accelerometer MSB
-//    yAccelLSB = SPI.transfer(0);                         // read Y-axis accelerometer LSB
-//    yAccelMSB = SPI.transfer(0);                         // read Y-axis accelerometer MSB
-//    zAccelLSB = SPI.transfer(0);                         // read Z-axis accelerometer LSB
-//    zAccelMSB = SPI.transfer(0);                         // read Z-axis accelerometer MSB
-//    xGyroLSB = SPI.transfer(0);                          // read X-axis gyroscope LSB
-//    xGyroMSB = SPI.transfer(0);                          // read X-axis gyroscope MSB
-//    yGyroLSB = SPI.transfer(0);                          // read Y-axis gyroscope LSB
-//    yGyroMSB = SPI.transfer(0);                          // read Y-axis gyroscope MSB
-//    zGyroLSB = SPI.transfer(0);                          // read Z-axis gyroscope LSB
-//    zGyroMSB = SPI.transfer(0);                          // read Z-axis gyroscope MSB
-//    reserved0 = SPI.transfer(0);                         // reserved for future use
-//    reserved1 = SPI.transfer(0);                         // reserved for future use
-//    reserved2 = SPI.transfer(0);                         // reserved for future use
-//    reserved3 = SPI.transfer(0);                         // reserved for future use
-//    reserved4 = SPI.transfer(0);                         // reserved for future use
-    
+    //    tach0Byte[1] = SPI.transfer(encoder0ByteSet[2]);     // read tachometer0 byte 1, send encoder0 byte 2       ==> commented out for code reduction
+    //    tach0Byte[0] = SPI.transfer(encoder0ByteSet[1]);     // read tachometer0 byte 0, send encoder0 byte 1
+    //    tach1Byte[2] = SPI.transfer(encoder0ByteSet[0]);     // read tachometer1 byte 2, send encoder0 byte 0
+    //    tach1Byte[1] = SPI.transfer(encoder1ByteSet[2]);     // read tachometer1 byte 1, send encoder1 byte 2
+    //    tach1Byte[0] = SPI.transfer(encoder1ByteSet[1]);     // read tachometer1 byte 0, send encoder1 byte 1
+    //    moduleStatus = SPI.transfer(encoder1ByteSet[0]);     // read the status, send encoder1 byte 0
+    //    encoder0Byte[2] = SPI.transfer(0);                   // read encoder0 byte 2
+    //    encoder0Byte[1] = SPI.transfer(0);                   // read encoder0 byte 1
+    //    encoder0Byte[0] = SPI.transfer(0);                   // read encoder0 byte 0
+    //    encoder1Byte[2] = SPI.transfer(0);                   // read encoder1 byte 2
+    //    encoder1Byte[1] = SPI.transfer(0);                   // read encoder1 byte 1
+    //    encoder1Byte[0] = SPI.transfer(0);                   // read encoder1 byte 0
+    //    xAccelLSB = SPI.transfer(0);                         // read X-axis accelerometer LSB
+    //    xAccelMSB = SPI.transfer(0);                         // read X-axis accelerometer MSB
+    //    yAccelLSB = SPI.transfer(0);                         // read Y-axis accelerometer LSB
+    //    yAccelMSB = SPI.transfer(0);                         // read Y-axis accelerometer MSB
+    //    zAccelLSB = SPI.transfer(0);                         // read Z-axis accelerometer LSB
+    //    zAccelMSB = SPI.transfer(0);                         // read Z-axis accelerometer MSB
+    //    xGyroLSB = SPI.transfer(0);                          // read X-axis gyroscope LSB
+    //    xGyroMSB = SPI.transfer(0);                          // read X-axis gyroscope MSB
+    //    yGyroLSB = SPI.transfer(0);                          // read Y-axis gyroscope LSB
+    //    yGyroMSB = SPI.transfer(0);                          // read Y-axis gyroscope MSB
+    //    zGyroLSB = SPI.transfer(0);                          // read Z-axis gyroscope LSB
+    //    zGyroMSB = SPI.transfer(0);                          // read Z-axis gyroscope MSB
+    //    reserved0 = SPI.transfer(0);                         // reserved for future use
+    //    reserved1 = SPI.transfer(0);                         // reserved for future use
+    //    reserved2 = SPI.transfer(0);                         // reserved for future use
+    //    reserved3 = SPI.transfer(0);                         // reserved for future use
+    //    reserved4 = SPI.transfer(0);                         // reserved for future use
+
     // take the slave select pin high to de-select the device
     digitalWrite(slaveSelectPin, HIGH);
     SPI.endTransaction();
-    
+
     // combine the received bytes to assemble the sensor values
-    
+
     // Module IDs
     int baseModuleID = (baseModuleIDMSB << 8) | baseModuleIDLSB;
     int coreModuleID = (coreModuleIDMSB << 8) | coreModuleIDLSB;
-    
+
     //Encoder Counts
-//    long encoder0 = ((long)encoder0Byte[2] << 16) | ((long)encoder0Byte[1] << 8) | encoder0Byte[0];  // motor 0 angle
-//    if (encoder0 & 0x00800000) {
-//      encoder0 = encoder0 | 0xFF000000;
-//    }
-//    long encoder1 = ((long)encoder1Byte[2] << 16) | ((long)encoder1Byte[1] << 8) | encoder1Byte[0];  // motor 1 angle
-//    if (encoder1 & 0x00800000) {
-//      encoder1 = encoder1 | 0xFF000000;
-//    }
+    //    long encoder0 = ((long)encoder0Byte[2] << 16) | ((long)encoder0Byte[1] << 8) | encoder0Byte[0];  // motor 0 angle
+    //    if (encoder0 & 0x00800000) {
+    //      encoder0 = encoder0 | 0xFF000000;
+    //    }
+    //    long encoder1 = ((long)encoder1Byte[2] << 16) | ((long)encoder1Byte[1] << 8) | encoder1Byte[0];  // motor 1 angle
+    //    if (encoder1 & 0x00800000) {
+    //      encoder1 = encoder1 | 0xFF000000;
+    //    }
     long encoder2 = ((long)encoder2Byte[2] << 16) | ((long)encoder2Byte[1] << 8) | encoder2Byte[0];  // pitch
     if (encoder2 & 0x00800000) {
       encoder2 = encoder2 | 0xFF000000;
@@ -255,105 +258,123 @@ void loop() {
     if (encoder3 & 0x00800000) {
       encoder3 = encoder3 | 0xFF000000;
     }
-    
+
     // convert encoder counts to degrees
-  //  float encoder0Deg = (float)encoder0 * (360.0 / 2048.0);  // motor 0 angle
-  //  float encoder1Deg = (float)encoder1 * (360.0 / 2048.0);  // motor 1 angle
+    //  float encoder0Deg = (float)encoder0 * (360.0 / 2048.0);  // motor 0 angle
+    //  float encoder1Deg = (float)encoder1 * (360.0 / 2048.0);  // motor 1 angle
     float encoder2Deg = (float)encoder2 * (360.0 / 2048.0);  // pitch
     float encoder3Deg = (float)encoder3 * (360.0 / 4096.0);  // yaw (encoder3 is higher resolution than the other encoders)
-    Pitch_deg=encoder2Deg;
-    Yaw_deg=encoder3Deg;
+    Pitch_deg = encoder2Deg;
+    Yaw_deg = encoder3Deg;
     //Current Sense Values
     float currentSense0 = (currentSense0MSB << 8) | currentSense0LSB;
     float currentSense1 = (currentSense1MSB << 8) | currentSense1LSB;
-    
-    
+
+
     //***********************************Start of Custom Code  for LQR 2DOF controller **********************************************************
     //
     //
-    float PitchRad= 0.01743*encoder2Deg;
-    float YawRad=0.01743*encoder3Deg;
-    StateX[0]=PitchRad;
-    StateX[1]=YawRad;
-      //**** Z transfor  1st order derrivative filter   start *******************
-    float Pitch_n=PitchRad;
-   // float Pitch_dot=(47.62*Pitch_n)-(47.62*Pitch_n_k1)+(0.9048*Pitch_dot_k1);
-   float Pitch_dot=(46*Pitch_n)-(46*Pitch_n_k1)+(0.839*Pitch_dot_k1);
-    StateX[2]=Pitch_dot;
-    Pitch_n_k1=Pitch_n;
-    Pitch_dot_k1=Pitch_dot;
-    float Yaw_n=YawRad;
-    float Yaw_dot=(46*Yaw_n)-(46*Yaw_n_k1)+(0.839*Yaw_dot_k1);
-    StateX[3]=Yaw_dot;
-    Yaw_n_k1=Yaw_n;
-    Yaw_dot_k1=Yaw_dot; 
-    Error[0]=desired[0]-StateX[0];
-    Error[1]=desired[1]-StateX[1];
+    float PitchRad = 0.01743 * encoder2Deg;
+    float YawRad = 0.01743 * encoder3Deg;
+        StateX[0]=PitchRad;
+        StateX[1]=YawRad;
+          //**** Z transfer  1st order derivative filter   start *******************
+        float Pitch_n=PitchRad;
+       // float Pitch_dot=(47.62*Pitch_n)-(47.62*Pitch_n_k1)+(0.9048*Pitch_dot_k1);
+       float Pitch_dot=(46*Pitch_n)-(46*Pitch_n_k1)+(0.839*Pitch_dot_k1);
+        StateX[2]=Pitch_dot;
+        Pitch_n_k1=Pitch_n;
+        Pitch_dot_k1=Pitch_dot;
+        float Yaw_n=YawRad;
+        float Yaw_dot=(46*Yaw_n)-(46*Yaw_n_k1)+(0.839*Yaw_dot_k1);
+        StateX[3]=Yaw_dot;
+        Yaw_n_k1=Yaw_n;
+        Yaw_dot_k1=Yaw_dot;
+//        Error[0]=desired[0]-StateX[0];
+//        Error[1]=desired[1]-StateX[1];
 
-// ================ Joe added =================
-// Maybe use this for current estimator
-//    for (int i=0; i<4;i++){
-//      xbar[i] = 0;
-//      for (int j=0; j<4;j++){
-//         xbar[i] = xbar[i] + A[i][j]*xbarold[j];
+
+    // ================ Joe added =================
+    // Maybe use this for current estimator
+    //    for (int i=0; i<4;i++){
+    //      xbar[i] = 0;
+    //      for (int j=0; j<4;j++){
+    //         xbar[i] = xbar[i] + A[i][j]*xbarold[j];
+    //      }
+    //      for (int k=0; k<2;j++){
+    //         xbar[i] = xbar[i] + B[i][k]*uOld[k];
+    //      }
+    //    }
+
+
+//    // Prediction estimator
+//    for (int i = 0; i < 4; i++) {
+//      xhat[i] = 0;
+//      xhat[i] = xhat[i] + LgainP[i] * PitchRad;
+//      xhat[i] = xhat[i] + LgainY[i] * YawRad;
+//      for (int j = 0; j < 4; j++) {
+//        xhat[i] = xhat[i] + A[i][j] * xhatOld[j];
+//        xhat[i] = xhat[i] + LgainP[i] * (- C[1][j] * xhatOld[j]);
+//        xhat[i] = xhat[i] + LgainY[i] * (- C[2][j] * xhatOld[j]);
 //      }
-//      for (int k=0; k<2;j++){
-//         xbar[i] = xbar[i] + B[i][k]*uOld[k];
-//      } 
+//      for (int k = 0; k < 2; k++) {
+//        xhat[i] = xhat[i] + B[i][k] * uOld[k];
+//      }
+//    }
+//
+//    for (int i = 0; i < 4; i++) {
+//      Error[i] = desired[i] - xhat[i];
 //    }
 
+    for (int i = 0; i < 4; i++) {
+      Error[i] = desired[i] - StateX[i];
+    }
 
-// Prediction estimator
-    for (int i=0; i<4;i++){
-      xhat[i] = 0;
-      xhat[i] = xhat[i] + LgainP[i]*PitchRad;
-      xhat[i] = xhat[i] + LgainY[i]*YawRad;
-      for (int j=0; j<4;j++){
-         xhat[i] = xhat[i] + A[i][j]*xhatOld[j];
-         xhat[i] = xhat[i] + LgainP[i]*(- C[1][j]*xhatOld[j]);
-         xhat[i] = xhat[i] + LgainY[i]*(- C[2][j]*xhatOld[j]);
-      }
-      for (int k=0; k<2;k++){
-         xhat[i] = xhat[i] + B[i][k]*uOld[k];
-      }
-    }
-    
-    for (int i=0; i<4;i++){
-      Error[i]=desired[i]-xhat[i];
-    }
-        
     AeroGains();                                // Calculates Voltage for both motors
     motor0Voltage = Vmotors[0];
-    motor1Voltage = Vmotors[1]; 
-    
-    uOld[0] = Vmotors[0];
-    uOld[1] = Vmotors[1];
-    for (int i=0; i<4;i++){
-      xhatOld[i] = xhat[i];
+    motor1Voltage = Vmotors[1];
+//    motor0Voltage = 0;
+//    motor1Voltage = 0;
+//
+//    uOld[0] = Vmotors[0];
+//    uOld[1] = Vmotors[1];
+//    for (int i = 0; i < 4; i++) {
+//      xhatOld[i] = xhat[i];
+//    }
+
+        for (int i=0; i<4;i++){
+          Serial.print(desired[i]);
+          Serial.print("\t");
+          Serial.print(StateX[i]);
+          Serial.print("\t");
+        }
+//        Serial.print(PitchRad);
+//        Serial.print("\t");
+//        Serial.print(YawRad);
+        Serial.println("");
+
+    // ============================================
+    //*****************************************************end*************************************************************************************
+    //
+    // set the saturation limit to +/- 20V for Motor0  as it is in Simulink model.
+    //
+    if (motor0Voltage > 24.0) {
+      motor0Voltage = 24.0;
+    }
+    else if (motor0Voltage < -24.0) {
+      motor0Voltage = -24.0;
+    }
+    // set the saturation limit to +/- 15V for Motor1
+    if (motor1Voltage > 24.0) {
+      motor1Voltage = 24.0;
+    }
+    else if (motor1Voltage < -24.0) {
+      motor1Voltage = -24.0;
     }
 
-// ============================================
- //*****************************************************end*************************************************************************************
- //
- // set the saturation limit to +/- 20V for Motor0  as it is in Simulink model. 
- //
-      if (motor0Voltage > 24.0) {
-        motor0Voltage = 24.0;
-      }
-      else if (motor0Voltage < -24.0) {
-        motor0Voltage = -24.0;
-      }
-// set the saturation limit to +/- 15V for Motor1
-      if (motor1Voltage > 24.0) {
-        motor1Voltage = 24.0;
-      }
-      else if (motor1Voltage < -24.0) {
-        motor1Voltage = -24.0;
-      }
 
-    
     //**************************************End of Custom Code ****************************************************
-    
+
     // convert the LED intensities to MSB and LSB
     LEDRedMSB = (byte)(LEDRed >> 8);
     LEDRedLSB = (byte)(LEDRed & 0x00FF);
@@ -361,7 +382,7 @@ void loop() {
     LEDGreenLSB = (byte)(LEDGreen & 0x00FF);
     LEDBlueMSB = (byte)(LEDBlue >> 8);
     LEDBlueLSB = (byte)(LEDBlue & 0x00FF);
-    
+
     // convert the analog value to the PWM duty cycle that will produce the same average voltage
     float motor0PWM = motor0Voltage * (625.0 / 15.0);
     float motor1PWM = motor1Voltage * (625.0 / 15.0);
@@ -374,33 +395,33 @@ void loop() {
       motor1MSB = 0;
 
       LEDRed = 999;
-      LEDBlue = 0;                
-      
+      LEDBlue = 0;
+
       resetStall--; // reset clears when the value == 0.
-      
+
     } else {
       int motor0 = (int)motor0PWM;  // convert float to int (2 bytes)
       motor0 = motor0 | 0x8000;  // motor0 command MSB must be B1xxxxxxx to enable amplifier0
       motor0MSB = (byte)(motor0 >> 8);
       motor0LSB = (byte)(motor0 & 0x00FF);
-      
+
       int motor1 = (int)motor1PWM;  // convert float to int (2 bytes)
       motor1 = motor1 | 0x8000;  // motor1 command MSB must be B1xxxxxxx to enable amplifier1
-      motor1MSB = (byte)(motor1 >> 8);     
+      motor1MSB = (byte)(motor1 >> 8);
       motor1LSB = (byte)(motor1 & 0x00FF);
-     
+
     }
 
-    
+
     sampleTimeTickCount++;
 
     if (sampleTimeTickCount == serialOutputDecimation) {
 
-  displayData.buildString(Pitch_deg, Yaw_deg,currentSense0, currentSense1);//, encoder2, encoder3);//Pitch_deg, Yaw_deg);
+      displayData.buildString(Pitch_deg, Yaw_deg, currentSense0, currentSense1); //, encoder2, encoder3);//Pitch_deg, Yaw_deg);
       sampleTimeTickCount = 0;
-      
+
     }
-      
+
 
   }
   // print data to the Arduino Serial Monitor in between SPI transactions
@@ -411,26 +432,26 @@ void loop() {
     if ( (displayData.dDataReady) && (currentMicros - previousMicros <= (sampleTime - 100)) ) {
       // if there is room available in the serial buffer, print one character
       //
-      // **************************** Serial comm disabled ====   start 
-      if(Serial.availableForWrite() > 0) {
+      // **************************** Serial comm disabled ====   start
+      if (Serial.availableForWrite() > 0) {
         Serial.print(displayData.dData[displayData.dDataIndex]);
         displayData.dDataIndex = displayData.dDataIndex + 1;
         // if the entire string has been printed, clear the flag so a new string can be obtained
-        if(displayData.dDataIndex == displayData.dData.length()) {
+        if (displayData.dDataIndex == displayData.dData.length()) {
           displayData.dDataReady = false;
         }
       }
-      ///     
+      ///
       // if there is something to read, get the character
       if (Serial.available() > 0) {
         char currentChar = Serial.read();
-        
+
         if (currentChar == 'r') {
-          resetStall = 1;              
-        } 
+          resetStall = 1;
+        }
       }
-//////  ********************     ==========  serial comm disables ====
-      
+      //////  ********************     ==========  serial comm disables ====
+
     }
   }
 }
@@ -438,11 +459,11 @@ void loop() {
 // This function is used to clear the stall errors and reset the encoder values to 0.
 // The motors and LEDs are turned off when this function is called.
 void resetQuanserAero() {
-  
+
   // enable the motors and LEDs, and enable writes to the encoders
   baseWriteMask = B00011111;
   coreWriteMask = B00111111;
-  
+
   // turn off the LEDs
   LEDRedMSB = 0;
   LEDRedLSB = 0;
@@ -450,32 +471,32 @@ void resetQuanserAero() {
   LEDGreenLSB = 0;
   LEDBlueMSB = 0;
   LEDBlueLSB = 0;
-  
+
   // reset the encoder values to 0
-//  encoder0ByteSet[2] = 0;   ==> code reduction
-//  encoder0ByteSet[1] = 0;
-//  encoder0ByteSet[0] = 0;
-//  encoder1ByteSet[2] = 0;
-//  encoder1ByteSet[1] = 0;
-//  encoder1ByteSet[0] = 0;
+  //  encoder0ByteSet[2] = 0;   ==> code reduction
+  //  encoder0ByteSet[1] = 0;
+  //  encoder0ByteSet[0] = 0;
+  //  encoder1ByteSet[2] = 0;
+  //  encoder1ByteSet[1] = 0;
+  //  encoder1ByteSet[0] = 0;
   encoder2ByteSet[2] = 0;
   encoder2ByteSet[1] = 0;
   encoder2ByteSet[0] = 0;
   encoder3ByteSet[2] = 0;
   encoder3ByteSet[1] = 0;
   encoder3ByteSet[0] = 0;
-  
+
   // turn off the motors, and clear the stall errors by disabling the amplifiers
   motor0MSB = 0;  // motor0 command MSB is B0xxxxxxx to disable amplifier0
   motor0LSB = 0;
   motor1MSB = 0;  // motor1 command MSB is B0xxxxxxx to disable amplifier1
   motor1LSB = 0;
-  
+
   // initialize the SPI bus using the defined speed, data order and data mode
   SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE2));
   digitalWrite(slaveSelectPin, HIGH);  // take the slave select pin high to de-select the device
   digitalWrite(slaveSelectPin, LOW);   // take the slave select pin low to select the device
-  
+
   // send and receive the Base Node data via SPI
   baseModuleIDMSB = SPI.transfer(baseMode);            // read the module ID MSB, send the mode
   baseModuleIDLSB = SPI.transfer(0);                   // read the module ID LSB
@@ -492,7 +513,7 @@ void resetQuanserAero() {
   tach3Byte[1] = SPI.transfer(encoder3ByteSet[2]);     // read tachometer3 byte 1, send encoder3 byte 2
   tach3Byte[0] = SPI.transfer(encoder3ByteSet[1]);     // read tachometer3 byte 0, send encoder3 byte 1
   SPI.transfer(encoder3ByteSet[0]);                    // send encoder3 byte 0
-  
+
   // send and receive the Core Node data via SPI
   coreModuleIDMSB = SPI.transfer(coreMode);            // read the module ID MSB, send the mode
   coreModuleIDLSB = SPI.transfer(0);                   // read the module ID LSB
@@ -501,42 +522,42 @@ void resetQuanserAero() {
   currentSense1MSB = SPI.transfer(motor0LSB);          // read motor1 current sense MSB, send motor0 command LSB
   currentSense1LSB = SPI.transfer(motor1MSB);          // read motor1 current sense LSB, send motor1 command MSB
   tach0Byte[2] = SPI.transfer(motor1LSB);              // read tachometer0 byte 2, send motor1 command LSB
-//  tach0Byte[1] = SPI.transfer(encoder0ByteSet[2]);     // read tachometer0 byte 1, send encoder0 byte 2  ==>code reduction
-//  tach0Byte[0] = SPI.transfer(encoder0ByteSet[1]);     // read tachometer0 byte 0, send encoder0 byte 1
-//  tach1Byte[2] = SPI.transfer(encoder0ByteSet[0]);     // read tachometer1 byte 2, send encoder0 byte 0
-//  tach1Byte[1] = SPI.transfer(encoder1ByteSet[2]);     // read tachometer1 byte 1, send encoder1 byte 2
-//  tach1Byte[0] = SPI.transfer(encoder1ByteSet[1]);     // read tachometer1 byte 0, send encoder1 byte 1
-//  moduleStatus = SPI.transfer(encoder1ByteSet[0]);     // read the status, send encoder1 byte 0
-//  encoder0Byte[2] = SPI.transfer(0);                   // read encoder0 byte 2
-//  encoder0Byte[1] = SPI.transfer(0);                   // read encoder0 byte 1
-//  encoder0Byte[0] = SPI.transfer(0);                   // read encoder0 byte 0
-//  encoder1Byte[2] = SPI.transfer(0);                   // read encoder1 byte 2
-//  encoder1Byte[1] = SPI.transfer(0);                   // read encoder1 byte 1
-//  encoder1Byte[0] = SPI.transfer(0);                   // read encoder1 byte 0
-//  xAccelLSB = SPI.transfer(0);                         // read X-axis accelerometer LSB
-//  xAccelMSB = SPI.transfer(0);                         // read X-axis accelerometer MSB
-//  yAccelLSB = SPI.transfer(0);                         // read Y-axis accelerometer LSB
-//  yAccelMSB = SPI.transfer(0);                         // read Y-axis accelerometer MSB
-//  zAccelLSB = SPI.transfer(0);                         // read Z-axis accelerometer LSB
-//  zAccelMSB = SPI.transfer(0);                         // read Z-axis accelerometer MSB
-//  xGyroLSB = SPI.transfer(0);                          // read X-axis gyroscope LSB
-//  xGyroMSB = SPI.transfer(0);                          // read X-axis gyroscope MSB
-//  yGyroLSB = SPI.transfer(0);                          // read Y-axis gyroscope LSB
-//  yGyroMSB = SPI.transfer(0);                          // read Y-axis gyroscope MSB
-//  zGyroLSB = SPI.transfer(0);                          // read Z-axis gyroscope LSB
-//  zGyroMSB = SPI.transfer(0);                          // read Z-axis gyroscope MSB
-//  reserved0 = SPI.transfer(0);                         // reserved for future use
-//  reserved1 = SPI.transfer(0);                         // reserved for future use
-//  reserved2 = SPI.transfer(0);                         // reserved for future use
-//  reserved3 = SPI.transfer(0);                         // reserved for future use
-//  reserved4 = SPI.transfer(0);                         // checksum
-  
+  //  tach0Byte[1] = SPI.transfer(encoder0ByteSet[2]);     // read tachometer0 byte 1, send encoder0 byte 2  ==>code reduction
+  //  tach0Byte[0] = SPI.transfer(encoder0ByteSet[1]);     // read tachometer0 byte 0, send encoder0 byte 1
+  //  tach1Byte[2] = SPI.transfer(encoder0ByteSet[0]);     // read tachometer1 byte 2, send encoder0 byte 0
+  //  tach1Byte[1] = SPI.transfer(encoder1ByteSet[2]);     // read tachometer1 byte 1, send encoder1 byte 2
+  //  tach1Byte[0] = SPI.transfer(encoder1ByteSet[1]);     // read tachometer1 byte 0, send encoder1 byte 1
+  //  moduleStatus = SPI.transfer(encoder1ByteSet[0]);     // read the status, send encoder1 byte 0
+  //  encoder0Byte[2] = SPI.transfer(0);                   // read encoder0 byte 2
+  //  encoder0Byte[1] = SPI.transfer(0);                   // read encoder0 byte 1
+  //  encoder0Byte[0] = SPI.transfer(0);                   // read encoder0 byte 0
+  //  encoder1Byte[2] = SPI.transfer(0);                   // read encoder1 byte 2
+  //  encoder1Byte[1] = SPI.transfer(0);                   // read encoder1 byte 1
+  //  encoder1Byte[0] = SPI.transfer(0);                   // read encoder1 byte 0
+  //  xAccelLSB = SPI.transfer(0);                         // read X-axis accelerometer LSB
+  //  xAccelMSB = SPI.transfer(0);                         // read X-axis accelerometer MSB
+  //  yAccelLSB = SPI.transfer(0);                         // read Y-axis accelerometer LSB
+  //  yAccelMSB = SPI.transfer(0);                         // read Y-axis accelerometer MSB
+  //  zAccelLSB = SPI.transfer(0);                         // read Z-axis accelerometer LSB
+  //  zAccelMSB = SPI.transfer(0);                         // read Z-axis accelerometer MSB
+  //  xGyroLSB = SPI.transfer(0);                          // read X-axis gyroscope LSB
+  //  xGyroMSB = SPI.transfer(0);                          // read X-axis gyroscope MSB
+  //  yGyroLSB = SPI.transfer(0);                          // read Y-axis gyroscope LSB
+  //  yGyroMSB = SPI.transfer(0);                          // read Y-axis gyroscope MSB
+  //  zGyroLSB = SPI.transfer(0);                          // read Z-axis gyroscope LSB
+  //  zGyroMSB = SPI.transfer(0);                          // read Z-axis gyroscope MSB
+  //  reserved0 = SPI.transfer(0);                         // reserved for future use
+  //  reserved1 = SPI.transfer(0);                         // reserved for future use
+  //  reserved2 = SPI.transfer(0);                         // reserved for future use
+  //  reserved3 = SPI.transfer(0);                         // reserved for future use
+  //  reserved4 = SPI.transfer(0);                         // checksum
+
   digitalWrite(slaveSelectPin, HIGH);  // take the slave select pin high to de-select the device
   SPI.endTransaction();
-  
+
   baseWriteMask = B00000111;  // enable the LEDs, disable writes to the Base Node encoders
   coreWriteMask = B00001111;  // enable the motors, disable writes to the Core Node encoders
-  
+
   motor0MSB = 0x80;  // enable amplifier0
   motor1MSB = 0x80;  // enable amplifier1
 }

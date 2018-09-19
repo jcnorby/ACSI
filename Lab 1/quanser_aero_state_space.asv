@@ -1,4 +1,6 @@
 close all
+clear
+clc
 quanser_aero_parameters
 %% State-Space Representation
 A = [0 0 1 0;
@@ -34,16 +36,30 @@ L = place(A', C', po)';
 
 % clsys = ss(A-B*K, B, C, D);
 
-%% Emulation approach
+%% Emulation approach (Probably not doing this right)
 T = 0.002; % From line 25 in adc code
+I = eye(4);
 
-Ad = (I + A*T/2)/((I + A*T/2))
-Bd = (I - A*T/2)/B*sqrt(T)
-Cd = sqrt(T)*C/(I - A*T/2)
-
+Ad = (I + A*T/2)*inv((I + A*T/2)) % from tustin
+Bd = inv(I - A*T/2)*B*sqrt(T)
+Cd = sqrt(T)*C*inv(I - A*T/2)
+Dd = D + C*inv(I - A*T/2)*B*T/2;
 Q = diag([1000 200 0 0]);
 R = diag([.003 .003]);
-Kd = lqr(Ad, Bd, Q, R);
+% Kd1 = lqr(Ad, Bd, Q, R);
 
-po = [-100 -101 -102 -103];
-Ld = place(Ad', Cd', po)';
+sysc = ss(A,B,C,D);
+
+sysd1 = c2d(sysc, T, 'tustin')
+sysd2 = ss(Ad, Bd, Cd, Dd, T)
+
+figure(1)
+bode(sysd1)
+figure(2)
+bode(sysd2)
+
+Kd2 = dlqr(sysd.A,sysd.B,Q,R) % gives the same result...
+
+% This doesn't work...
+% po = [0.5 0 -0.5 0.25];
+% Ld = place(Ad', Cd', po)';
