@@ -109,8 +109,8 @@ float Error[4] = {0, 0, 0, 0};
 float StateX[4] = {0, 0, 0, 0};
 float gainP[4] = {292.0515, -217.5028,   56.4913,  -44.5851};
 float gainY[4] = {472.4621,  135.2583,   81.1793,   25.4120};
-float LgainP[4] = {1.8993,         0,  439.5197,         0};
-float LgainY[4] = {0,    1.8980,         0,  448.5516};
+float LgainP[4] = {1.9693,         0,  484.6115 ,         0};
+float LgainY[4] = {0,    2.0080,         0,  503.4966};
 float Vmotors[2] = {0, 0};
 int milisecs = 0;
 float seconds = 0;
@@ -128,9 +128,9 @@ float uOld[2] = {0,0};
 //float A[4][4] = {{0, 0, 1.0000, 0}, {0, 0, 0, 1.0000}, { -1.7117, 0, -0.3249,  0}, {0, 0, 0, -1.0004}};
 //float B[4][2] = {{0, 0}, {0, 0}, {0.0503, 0.0959}, { -0.1228, 0.1000}};
 //float C[2][4] = {{1, 0, 0, 0}, {0, 1, 0, 0}};
-float A[4][4] = {{1, 0, 0.001999, 0}, {0, 1, 0, 0.001998}, {-0.003422, 0, 0.9993,  0}, {0, 0, 0, 0.998}};
-float B[4][2] = {{0, 0}, {0, 0}, {0.0001005, 0.0001918}, { -0.0002451, 0.0001997}};
-float C[2][4] = {{1, 0, 0, 0}, {0, 1, 0, 0}};
+float Ad[4][4] = {{1, 0, 0.001999, 0}, {0, 1, 0, 0.001998}, {-0.003422, 0, 0.9993,  0}, {0, 0, 0, 0.998}};
+float Bd[4][2] = {{0, 0}, {0, 0}, {0.0001005, 0.0001918}, { -0.0002453, 0.0001999}};
+float Cd[2][4] = {{1, 0, 0, 0}, {0, 1, 0, 0}};
 //============================================================
 //Setup serial builder
 Display displayData;
@@ -276,22 +276,25 @@ void loop() {
     //
     float PitchRad = 0.01743 * encoder2Deg;
     float YawRad = 0.01743 * encoder3Deg;
-        StateX[0]=PitchRad;
-        StateX[1]=YawRad;
-          //**** Z transfer  1st order derivative filter   start *******************
-        float Pitch_n=PitchRad;
-       // float Pitch_dot=(47.62*Pitch_n)-(47.62*Pitch_n_k1)+(0.9048*Pitch_dot_k1);
-       float Pitch_dot=(46*Pitch_n)-(46*Pitch_n_k1)+(0.839*Pitch_dot_k1);
-        StateX[2]=Pitch_dot;
-        Pitch_n_k1=Pitch_n;
-        Pitch_dot_k1=Pitch_dot;
-        float Yaw_n=YawRad;
-        float Yaw_dot=(46*Yaw_n)-(46*Yaw_n_k1)+(0.839*Yaw_dot_k1);
-        StateX[3]=Yaw_dot;
-        Yaw_n_k1=Yaw_n;
-        Yaw_dot_k1=Yaw_dot;
-//        Error[0]=desired[0]-StateX[0];
-//        Error[1]=desired[1]-StateX[1];
+//        StateX[0]=PitchRad;
+//        StateX[1]=YawRad;
+//          //**** Z transfer  1st order derivative filter   start *******************
+//        float Pitch_n=PitchRad;
+//       // float Pitch_dot=(47.62*Pitch_n)-(47.62*Pitch_n_k1)+(0.9048*Pitch_dot_k1);
+//       float Pitch_dot=(46*Pitch_n)-(46*Pitch_n_k1)+(0.839*Pitch_dot_k1);
+//        StateX[2]=Pitch_dot;
+//        Pitch_n_k1=Pitch_n;
+//        Pitch_dot_k1=Pitch_dot;
+//        float Yaw_n=YawRad;
+//        float Yaw_dot=(46*Yaw_n)-(46*Yaw_n_k1)+(0.839*Yaw_dot_k1);
+//        StateX[3]=Yaw_dot;
+//        Yaw_n_k1=Yaw_n;
+//        Yaw_dot_k1=Yaw_dot;
+////        Error[0]=desired[0]-StateX[0];
+////        Error[1]=desired[1]-StateX[1];
+//        for (int i = 0; i < 4; i++) {
+//         Error[i] = desired[i] - StateX[i];
+//        }
 
 
     // ================ Joe added =================
@@ -307,40 +310,36 @@ void loop() {
     //    }
 
 
-//    // Prediction estimator
-//    for (int i = 0; i < 4; i++) {
-//      xhat[i] = 0;
-//      xhat[i] = xhat[i] + LgainP[i] * PitchRad;
-//      xhat[i] = xhat[i] + LgainY[i] * YawRad;
-//      for (int j = 0; j < 4; j++) {
-//        xhat[i] = xhat[i] + A[i][j] * xhatOld[j];
-//        xhat[i] = xhat[i] + LgainP[i] * (- C[1][j] * xhatOld[j]);
-//        xhat[i] = xhat[i] + LgainY[i] * (- C[2][j] * xhatOld[j]);
-//      }
-//      for (int k = 0; k < 2; k++) {
-//        xhat[i] = xhat[i] + B[i][k] * uOld[k];
-//      }
-//    }
-//
-//    for (int i = 0; i < 4; i++) {
-//      Error[i] = desired[i] - xhat[i];
-//    }
+    // Prediction estimator
+    for (int i = 0; i < 4; i++) {
+      xhat[i] = 0;
+      xhat[i] = xhat[i] + LgainP[i] * PitchRad;
+      xhat[i] = xhat[i] + LgainY[i] * YawRad;
+      for (int j = 0; j < 4; j++) {
+        xhat[i] = xhat[i] + Ad[i][j] * xhatOld[j];
+        xhat[i] = xhat[i] + LgainP[i] * (-Cd[1][j] * xhatOld[j]);
+        xhat[i] = xhat[i] + LgainY[i] * (-Cd[2][j] * xhatOld[j]);
+      }
+      for (int k = 0; k < 2; k++) {
+        xhat[i] = xhat[i] + Bd[i][k] * uOld[k];
+      }
+    }
 
     for (int i = 0; i < 4; i++) {
-      Error[i] = desired[i] - StateX[i];
+      Error[i] = desired[i] - xhat[i];
     }
 
     AeroGains();                                // Calculates Voltage for both motors
+    Vmotors[0] = 0;
+    Vmotors[1] = 0;
     motor0Voltage = Vmotors[0];
     motor1Voltage = Vmotors[1];
-//    motor0Voltage = 0;
-//    motor1Voltage = 0;
-//
-//    uOld[0] = Vmotors[0];
-//    uOld[1] = Vmotors[1];
-//    for (int i = 0; i < 4; i++) {
-//      xhatOld[i] = xhat[i];
-//    }
+
+    uOld[0] = Vmotors[0];
+    uOld[1] = Vmotors[1];
+    for (int i = 0; i < 4; i++) {
+      xhatOld[i] = xhat[i];
+    }
 
         for (int i=0; i<4;i++){
           Serial.print(desired[i]);
@@ -351,7 +350,7 @@ void loop() {
 //        Serial.print(PitchRad);
 //        Serial.print("\t");
 //        Serial.print(YawRad);
-        Serial.println("");
+        Serial.println();
 
     // ============================================
     //*****************************************************end*************************************************************************************
