@@ -1,6 +1,4 @@
-close all
-clear
-clc
+close all;clear;clc
 quanser_aero_parameters
 %% State-Space Representation
 A = [0 0 1 0;
@@ -36,29 +34,23 @@ L = place(A', C', po)';
 
 % clsys = ss(A-B*K, B, C, D);
 
-%% Emulation approach (Probably not doing this right)
-T = 0.002; % From line 25 in adc code
-I = eye(4);
+%% Convert to Discrete Time
+T = 0.002; % From line 25 in arduino code
 
-Ad = (I + A*T/2)*inv((I - A*T/2)); % from tustin
-Bd = inv(I - A*T/2)*B*sqrt(T);
-Cd = sqrt(T)*C*inv(I - A*T/2);
-Dd = D + C*inv(I - A*T/2)*B*T/2;
+Cs = ss(A+B*K-L*C, L, K, 0);
+Cd = c2d(Cs, T, 'foh');
+K_d2 = Cd.C
+L_d2 = Cd.B
 
-Q = diag([1000 200 0 0]);
-R = diag([.003 .003]);
-Kd1 = lqr(Ad, Bd, Q, R);
-
-sysc = ss(A,B,C,D);
-
-sysd = c2d(sysc, T, 'tustin')
-sysd2 = ss(Ad,Bd,Cd,Dd,T)
-figure(1)
-bode(sysd)
-figure(2)
-bode(sysd2)
-K_d = dlqr(sysd.A,sysd.B,Q,R) % gives the same result...
-Ld = place(sysd.A', sysd.C', [-0.01 0 0.01 0.02])'
-% This doesn't work...
-% po = [0.5 0 -0.5 0.25];
-% Ld = place(Ad', Cd', po)';
+% I = eye(4);
+% 
+% Ad = (I + A*T/2)*inv((I - A*T/2)); % from tustin
+% Bd = inv(I - A*T/2)*B*sqrt(T);
+% Cd = sqrt(T)*C*inv(I - A*T/2);
+% Dd = D + C*inv(I - A*T/2)*B*T/2;
+% 
+% sysc = ss(A,B,C,D);
+% sysd = c2d(sysc, T, 'foh');
+% 
+% K_d = dlqr(sysd.A,sysd.B,Q,R) % gives the same result...
+% L_d = place(sysd.A', sysd.C', [-0.01 0 0.01 0.02])'
