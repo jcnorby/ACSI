@@ -1,7 +1,7 @@
 clear;clc;close all;
 
-N = 10;
-T = 0.1;
+N = 100;
+T = 0.01;
 
 x0 = zeros(6,1);
 dx0 = [0;1;5;0;0;0];
@@ -26,14 +26,6 @@ tf = T*(N+1);
 h = animatedline;
 axis equal
 axis([min(q(:,1)) max(q(:,1)) min(q(:,2)) max(q(:,2)) min(q(:,3)) max(q(:,3))])
-
-% a = tic;
-% for ii = 1:N+1
-%     addpoints(h,q(ii,1),q(ii,2),q(ii,3));
-%     drawnow
-%     pause(T - toc(a));
-%     a = tic;
-% end
 
 quad_w = 0.1;
 quad_l = 0.1;
