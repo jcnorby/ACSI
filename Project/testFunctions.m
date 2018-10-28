@@ -1,7 +1,7 @@
 clear;clc;close all;
 
 % Initialize horizon
-N = 100;
+N = 200;
 dt = 0.01;
 
 q0 = zeros(6,1);
@@ -23,10 +23,10 @@ for ii = 1:N
     K(:,:,ii) = K_lqr;
 end
 
-[x,u] = forwardInt(x0, u_ff, K, N,dt);
+[x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
 
 tic
-[x,K,u_ff] = slqSolve(x,u,N,dt,x0);
+[x,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0);
 toc
 
 x = x';
@@ -49,7 +49,7 @@ quadrotor = [];
 for ii = 1:N+1
     a = tic;
     addpoints(h,x(ii,1),x(ii,2),x(ii,3));
-    drawnow
+    drawnow limitrate
     delete(quadrotor) % Comment out to save snapshots
     quadrotor = plotrotcube([quad_w quad_l quad_h],[x(ii,1) - quad_w/2,x(ii,2)- quad_l/2,x(ii,3)- quad_h/2],.8,[1 0 0], x(ii,4),x(ii,5),x(ii,6));
     pause(dt - toc(a));

@@ -10,7 +10,7 @@ s(N+1) = q(N+1);
 s_vec(:,N+1) = q_vec(:,N+1);
 S_mat(:,:,N+1) = Q_mat(:,:,N+1);
 
-for ii = 1:5
+for ii = 1:10
     for k = N:-1:1
         % Select current state and control vectors
         xn = x_bar(:,k);
