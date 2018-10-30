@@ -1,13 +1,8 @@
 clear;clc;close all;
 
 % Initialize horizon
-N = 101;
-T = 2;
-dt = T/(N-1);
-
-% Refresh symbolic functions
-testFunctionsSymbolic
-computeLinearizationSymbolic(dt)
+N = 100;
+dt = 0.01;
 
 q0 = zeros(6,1);
 dq0 = [0;0;0;0;0;0];
@@ -30,9 +25,9 @@ end
 
 [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
 
-tic
-[x_bar,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0);
-toc
+% tic
+% [x_bar,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0);
+% toc
 
 x = x_bar';
 
@@ -49,7 +44,6 @@ xlabel('x')
 ylabel('y')
 zlabel('z')
 quadrotor = [];
-grid on
 
 for ii = 1:N+1
     a = tic;
