@@ -59,4 +59,4 @@ rotate(a, [0 90], 0, origin)
 
 varargout{1} = a;
 
-view(3);
+% view(3);
