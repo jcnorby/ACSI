@@ -42,11 +42,11 @@ while (norm(u_ff)>=1e-6) && ii <=10
     
     [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
 
-%     J = terminalCost(x_bar(:,end),u_bar(:,end));
-%     for jj = 1:N
-%         J = J + intermediateCost(x_bar(:,jj),u_bar(:,jj));
-%     end
-%     J
+    J = terminalCost(x_bar(:,end),u_bar(:,end));
+    for jj = 1:N
+        J = J + intermediateCost(x_bar(:,jj),u_bar(:,jj));
+    end
+    J
     
     ii = ii+1;
 end

@@ -6,8 +6,8 @@ T = 2;
 dt = T/(N-1);
 
 % Refresh symbolic functions
-testFunctionsSymbolic
-computeLinearizationSymbolic(dt)
+% testFunctionsSymbolic
+% computeLinearizationSymbolic(dt)
 
 q0 = zeros(6,1);
 dq0 = [0;0;0;0;0;0];
@@ -44,7 +44,7 @@ h = animatedline;
 epsilon = 0.1;
 axis equal
 axis([min(x(:,1))-epsilon max(x(:,1))+epsilon min(x(:,2))-epsilon max(x(:,2))+epsilon min(x(:,3))-epsilon max(x(:,3))+epsilon]);
-axis([-2 2 -2 2 -2 2])
+axis([-1.5 1.5 -1.5 1.5 -1.5 1.5])
 xlabel('x')
 ylabel('y')
 zlabel('z')
