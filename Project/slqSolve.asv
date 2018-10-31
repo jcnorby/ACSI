@@ -1,16 +1,16 @@
-function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp)
+function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0)
 u_ff = ones(size(u_bar));
 
 ii = 1;
 while (norm(u_ff)>=1e-6) && ii <=10
-    t = (N-1)*dt;
+    t = N
     % Initialize S matrix (coefficients of quadratic functional)
-    s(N) = compute_qN(x_bar(:,N));
-    s_vec(:,N) = compute_qN_vec(x_bar(:,N));
-    S_mat(:,:,N) = compute_QN_mat(x_bar(:,N));
+    s(N+1) = compute_qN(x_bar(:,N+1));
+    s_vec(:,N+1) = compute_qN_vec(x_bar(:,N+1));
+    S_mat(:,:,N+1) = compute_QN_mat(x_bar(:,N+1));
     
-    for k = (N-1):-1:1
-        t = t-dt;
+    for k = N:-1:1
+        t = 
         % Select current state and control vectors
         xn = x_bar(:,k);
         un = u_bar(:,k);
@@ -20,12 +20,12 @@ while (norm(u_ff)>=1e-6) && ii <=10
         B = compute_B(xn,un);
         
         % Compute cost weighting terms
-        q = compute_q(t,xn,un,x_wp(:,k));
-        q_vec = compute_q_vec(t,xn,un,x_wp(:,k));
-        Q_mat = compute_Q_mat(t,xn,un,x_wp(:,k));
-        P = compute_P(t,xn,un,x_wp(:,k));
-        r = compute_r_vec(t,xn,un,x_wp(:,k));
-        R = compute_R_mat(t,xn,un,x_wp(:,k));
+        q = compute_q(xn,un);
+        q_vec = compute_q_vec(xn,un);
+        Q_mat = compute_Q_mat(xn,un);
+        P = compute_P(xn,un);
+        r = compute_r_vec(xn,un);
+        R = compute_R_mat(xn,un);
         
         % Compute grouping terms
         g = r + B'*s_vec(:,k+1);
@@ -45,12 +45,10 @@ while (norm(u_ff)>=1e-6) && ii <=10
     [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
 
     J = terminalCost(x_bar(:,end),u_bar(:,end));
-    t = 0;
-    for jj = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj), x_wp(:,k));
-        t = t+dt;
+    for jj = 1:N
+        J = J + intermediateCost(x_bar(:,jj),u_bar(:,jj));
     end
-    J;
+    J
     
     ii = ii+1;
 end
