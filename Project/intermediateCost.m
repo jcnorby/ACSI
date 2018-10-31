@@ -1,4 +1,4 @@
-function L = intermediateCost(t,x,u, x_wp)
+function L = intermediateCost(t,x,u, x_wp, t_wp)
 
 Q = 1*eye(12);
 R = 0.5*eye(6);
@@ -8,7 +8,7 @@ rho = 200;
 
 % x_wp = [0.5;0.5;1;0;0;0;
 %     1;1;0;0;0;0];
-t_wp = 1;
+% t_wp = 1.5;
 
 % x_bar = [1;1;1;0;0;0;
 %     0;0;0;0;0;0];

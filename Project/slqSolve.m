@@ -1,4 +1,4 @@
-function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp)
+function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp)
 u_ff = ones(size(u_bar));
 
 ii = 1;
@@ -20,12 +20,12 @@ while (norm(u_ff)>=1e-6) && ii <=10
         B = compute_B(xn,un);
         
         % Compute cost weighting terms
-        q = compute_q(t,xn,un,x_wp(:,k));
-        q_vec = compute_q_vec(t,xn,un,x_wp(:,k));
-        Q_mat = compute_Q_mat(t,xn,un,x_wp(:,k));
-        P = compute_P(t,xn,un,x_wp(:,k));
-        r = compute_r_vec(t,xn,un,x_wp(:,k));
-        R = compute_R_mat(t,xn,un,x_wp(:,k));
+        q = compute_q(t,xn,un,x_wp(:,k),t_wp);
+        q_vec = compute_q_vec(t,xn,un,x_wp(:,k),t_wp);
+        Q_mat = compute_Q_mat(t,xn,un,x_wp(:,k),t_wp);
+        P = compute_P(t,xn,un,x_wp(:,k),t_wp);
+        r = compute_r_vec(t,xn,un,x_wp(:,k),t_wp);
+        R = compute_R_mat(t,xn,un,x_wp(:,k),t_wp);
         
         % Compute grouping terms
         g = r + B'*s_vec(:,k+1);
@@ -47,7 +47,7 @@ while (norm(u_ff)>=1e-6) && ii <=10
     J = terminalCost(x_bar(:,end),u_bar(:,end));
     t = 0;
     for jj = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj), x_wp(:,k));
+        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj), x_wp(:,k),t_wp);
         t = t+dt;
     end
     J;
