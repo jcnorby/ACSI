@@ -10,8 +10,8 @@ T = 3;
 dt = T/(N-1);
 
 % Refresh symbolic functions
-% testFunctionsSymbolic;
-% computeLinearizationSymbolic(dt);
+testFunctionsSymbolic;
+computeLinearizationSymbolic(dt);
 clear x_wp
 
 % Define initial conditions

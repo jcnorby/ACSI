@@ -29,12 +29,12 @@ while (norm(u_ff)>=1e-6) && ii<6 % Stop if feedforward increment converges
         B = compute_B(xn,un);
         
         % Compute cost weighting terms
-        q = compute_q(t,xn,un,x_wp(:,k),t_wp);
-        q_vec = compute_q_vec(t,xn,un,x_wp(:,k),t_wp);
-        Q_mat = compute_Q_mat(t,xn,un,x_wp(:,k),t_wp);
-        P = compute_P(t,xn,un,x_wp(:,k),t_wp);
-        r = compute_r_vec(t,xn,un,x_wp(:,k),t_wp);
-        R = compute_R_mat(t,xn,un,x_wp(:,k),t_wp);
+        q = compute_q(t,xn,un,xn,un,x_wp(:,k),t_wp);
+        q_vec = compute_q_vec(t,xn,un,xn,un,x_wp(:,k),t_wp);
+        Q_mat = compute_Q_mat(t,xn,un,xn,un,x_wp(:,k),t_wp);
+        P = compute_P(t,xn,un,xn,un,x_wp(:,k),t_wp);
+        r = compute_r_vec(t,xn,un,xn,un,x_wp(:,k),t_wp);
+        R = compute_R_mat(t,xn,un,xn,un,x_wp(:,k),t_wp);
         
         % Compute grouping terms
         g = r + B'*s_vec(:,k+1);
