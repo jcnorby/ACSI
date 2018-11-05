@@ -5,14 +5,14 @@ function L = intermediateCost(t,x,u, x_wp, t_wp)
 % Wp = 1000*eye(12);
 % Wp(4:6,4:6) = zeros(3,3);
 % Wp(10:12,10:12) = zeros(3,3);
-Q = 1*eye(12);
+Q = 0.0*eye(12);
 R = 0.0*eye(4);
-Wp = 10000000*eye(12);
+Wp = 1*eye(12);
 Wp(4:6,4:6) = zeros(3,3);
 Wp(10:12,10:12) = zeros(3,3);
 
 rho = 200;
-% rho = 2;
+rho = 200;
 
 dx = x;
 du = u;

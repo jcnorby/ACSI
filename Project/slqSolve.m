@@ -1,15 +1,15 @@
-function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp)
+function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp, xf)
 
 % Initialize with arbitrary u_ff above convergence bound
 u_ff = ones(size(u_bar));
 
 ii = 1;
-while (norm(u_ff)>=1e-6) && ii<6 % Stop if feedforward increment converges
+while (norm(u_ff)>=1e-4) && ii<50 % Stop if feedforward increment converges
     
     % Initialize S matrix (coefficients of quadratic functional)
-    s(N) = compute_qN(x_bar(:,N));
-    s_vec(:,N) = compute_qN_vec(x_bar(:,N));
-    S_mat(:,:,N) = compute_QN_mat(x_bar(:,N));
+    s(N) = compute_qN(x_bar(:,N), xf);
+    s_vec(:,N) = compute_qN_vec(x_bar(:,N), xf);
+    S_mat(:,:,N) = compute_QN_mat(x_bar(:,N), xf);
     
     % Initialize time
     t = (N-1)*dt;
@@ -54,12 +54,13 @@ while (norm(u_ff)>=1e-6) && ii<6 % Stop if feedforward increment converges
     % Forward propagate to generate new trajectory
     [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
 
-%     J = terminalCost(x_bar(:,end),u_bar(:,end));
-%     t = 0;
-%     for jj = 1:N-1
-%         J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj), x_wp(:,k),t_wp);
-%         t = t+dt;
-%     end
+    J = terminalCost(x_bar(:,end), xf);
+    t = 0;
+    for jj = 1:N-1
+        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj), x_wp(:,k),t_wp);
+        t = t+dt;
+    end
+    J
     
     % Update algorithm iteration
     ii = ii+1;

@@ -1,10 +1,12 @@
-function L = terminalCost(x,u)
+function L = terminalCost(x,xf)
 
+H = zeros(12,12);
+H(1:3,1:3) = 100*eye(3);
+H(4:6,4:6) = 1e-3*eye(3);
+H(7:9,7:9) = 100*eye(3);
+H(10:12,10:12) = 1e-3*eye(3);
 H = 10000*eye(12);
 
-x_des = [1;1;1;0;0;0;
-    0;0;0;0;0;0];
-
-dx = x - x_des;
+dx = x - xf;
 
 L = dx'*H*dx;
