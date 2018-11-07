@@ -79,7 +79,7 @@ z = [r;eta;rdot;etadot];
 f = [rdot;
      etadot;
      -1/m .* A.* rdot + T/m * angM - [0;0;g];
-     J\(taub - C*etadot)];
+     J\(0.001*taub - C*etadot)];
 
 A13 = zeros(12,3);
 A2 = [eye(3);-(1/m).*A.*eye(3);zeros(6,3)];
