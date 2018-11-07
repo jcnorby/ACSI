@@ -10,8 +10,8 @@ T = 3;
 dt = T/(N-1);
 
 % Refresh symbolic functions
-testFunctionsSymbolic;
-computeLinearizationSymbolic(dt);
+% testFunctionsSymbolic;
+% computeLinearizationSymbolic(dt);
 clear x_wp
 
 % Define initial conditions
@@ -26,12 +26,12 @@ xf = [1;1;1;0;0;0;
 
 % Define waypoint trajectories
 t = 0;
-t_wp = 1;
+t_wp = 0.75;
 for i = 1:N
 %     x_wp(:,i) = [0.25;0.5;sin(2*pi*t/T);0;0;0;
 %         1;1;0;0;0;0];
     x_wp(:,i) = [0.25;cos(2*pi*t/T);sin(2*pi*t/T);0;0;0;
-        1;1;0;0;0;0];
+        1;0;0;0;0;0];
     t = t+dt;
 end
 
@@ -52,7 +52,7 @@ end
 
 % Execute SLQ solve to generate optimal trajectory and control
 a = tic;
-[x,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp);
+[x,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp,xf);
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
 % Initialize plotting
