@@ -54,12 +54,12 @@ while (norm(u_ff)>=1e-6) && ii<6 % Stop if feedforward increment converges
     % Forward propagate to generate new trajectory
     [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
 
-    J = terminalCost(x_bar(:,end),xf);
-    t = 0;
-    for jj = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj),x_bar(:,jj),u_bar(:,jj), x_wp(:,k),t_wp);
-        t = t+dt;
-    end
+%     J = terminalCost(x_bar(:,end),xf);
+%     t = 0;
+%     for jj = 1:N-1
+%         J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj),x_bar(:,jj),u_bar(:,jj), x_wp(:,k),t_wp);
+%         t = t+dt;
+%     end
     
     % Update algorithm iteration
     ii = ii+1;

@@ -1,0 +1,7 @@
+function [x,u] = forwardIntMPC(x0,N,dt,t_wp,xf,u_ff,K)
+x = x0;
+t = 0;
+for ii = 1:N-1
+    x(:,ii+1) = f_mpc(t,x0,N,dt,t_wp,xf,u_ff,K);
+    t = t+dt;
+end

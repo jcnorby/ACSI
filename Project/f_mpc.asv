@@ -1,0 +1,7 @@
+function xnew = f_mpc(t,x,N,dt,t_wp,xf,u_ff,K)
+T = (N-1)*dt;
+
+x(1:3) = x(1:3) + 0.1*rand(3,1);
+
+dx = mpcDynamics(t,x,N,dt,t_wp,xf,u_ff,K);
+xnew = x + dx*dt;
