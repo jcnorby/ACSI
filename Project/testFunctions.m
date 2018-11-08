@@ -31,7 +31,7 @@ xf = [1;1;1;0;0;0;
 
 % Define waypoint trajectories
 t = 0;
-t_wp = 2;
+t_wp = 1;
 for i = 1:N
     x_wp(:,i) = [0.2;0.5;0.5;0;0;0;
             1;1;1;0;0;0];
