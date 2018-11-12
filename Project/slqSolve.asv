@@ -49,47 +49,32 @@ while (norm(u_ff)>=1e-6) && ii<200 % Stop if feedforward increment converges
         S_mat(:,:,k) = Q_mat + A'*S_mat(:,:,k+1)*A + K(:,:,k)'*H*K(:,:,k) + K(:,:,k)'*G + G'*K(:,:,k);
         s_vec(:,k) = q_vec + A'*s_vec(:,k+1) + K(:,:,k)'*H*u_ff(:,k) + K(:,:,k)'*g + G'*u_ff(:,k);
         s(k) = q + s(k+1) + 0.5*u_ff(:,k)'*H*u_ff(:,k) + u_ff(:,k)'*g;
+    end
+    
+    alpha = 1;
+    Jmin = Inf;
+    % Forward propagate to generate new trajectory
+    for i = 1:5
+        [x_bar_temp,u_bar_temp] = forwardIntTraj(x0,x_bar,u_bar, alpha*u_ff, K, N,dt);
         
-%         S_mat(:,:,k)
-%         s_vec(:,k)
-%         s(k)
+        J = terminalCost(x_bar_temp(:,end), xf);
+        t = 0;
+        for k = 1:N-1
+            J = J + intermediateCost(t,x_bar_temp(:,k),u_bar_temp(:,k),x_bar_temp(:,k),u_bar_temp(:,k), x_wp(:,k),t_wp);
+            t = t+dt;
+        end
+        
+        if J < Jmin
+            Jmin = J;
+            x_bar = x_bar_temp;
+            u_bar = u_bar_temp;
+        end
+        
+        alpha = alpha/2;
+        
     end
     
-    
-    [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
-    
-    J = terminalCost(x_bar(:,end), xf);
-    t = 0;
-    for k = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,k),u_bar(:,k),x_bar(:,k),u_bar(:,k), x_wp(:,k),t_wp);
-        t = t+dt;
-    end
-    J
-    
-    %     alpha = 1;
-    %     Jmin = Inf;
-    %     % Forward propagate to generate new trajectory
-    %     for i = 1:5
-    %         [x_bar_temp,u_bar_temp] = forwardIntTraj(x0,x_bar,u_bar, alpha*u_ff, K, N,dt);
-    %
-    %         J = terminalCost(x_bar_temp(:,end), xf);
-    %         t = 0;
-    %         for k = 1:N-1
-    %             J = J + intermediateCost(t,x_bar_temp(:,k),u_bar_temp(:,k),x_bar_temp(:,k),u_bar_temp(:,k), x_wp(:,k),t_wp);
-    %             t = t+dt;
-    %         end
-    %
-    %         if J < Jmin
-    %             Jmin = J;
-    %             x_bar = x_bar_temp;
-    %             u_bar = u_bar_temp;
-    %         end
-    %
-    %         alpha = alpha/2;
-    %
-    %     end
-    %
-    %     Jmin
+    Jmin
     
     % Update algorithm iteration
     ii = ii+1;
