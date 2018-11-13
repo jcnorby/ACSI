@@ -5,8 +5,8 @@ set(0,'defaultaxesticklabelinterpreter', 'latex')
 set(0,'defaultaxesfontsize', 20)
 
 % Initialize horizon
-N = 401;
-T = 4;
+N = 301;
+T = 3;
 dt = T/(N-1);
 
 % Refresh symbolic functions
@@ -15,8 +15,8 @@ dt = T/(N-1);
 % testFunctionsSymbolic;
 clear all
 
-N = 401;
-T = 4;
+N = 301;
+T = 3;
 dt = T/(N-1);
 
 % Define initial conditions
@@ -29,16 +29,16 @@ x0 = [q0;dq0];
 xf = [1;1;1;0;0;0;
     0;0;0;0;0;0];
 
+x0 = xf;
+
 % Define waypoint trajectories
 t = 0;
 t_wp = 1.5;
 for i = 1:N
-%     x_wp(:,i) = [0.2;0.5;0.5;0;0;0;
-%         0.5;0.5;0.5;0;0;0];
-%         x_wp(:,i) = [0.25;0.5;sin(2*pi*t/T);0;0;0;
-%             1;1;0;0;0;0];
-        x_wp(:,i) = [0.25;cos(2*pi*t/T);sin(2*pi*t/T);0;0;0;
+        x_wp(:,i) = [0.25;0.5;sin(2*pi*t/T);0;0;0;
             1;1;0;0;0;0];
+%         x_wp(:,i) = [0.25;cos(2*pi*t/T);sin(2*pi*t/T);0;0;0;
+%             1;1;0;0;0;0];
     t = t+dt;
     
     if abs(t - t_wp)<1e-4
@@ -62,17 +62,18 @@ for ii = 1:N-1
     K(:,:,ii) = K_lqr;
 end
 
-% Forward simulate to get initial trajectory
-[x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, zeros(12,1));
-x = x_bar;
+
+% % Forward simulate to get initial trajectory
+% [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, zeros(12,1));
+% x = x_bar;
 
 % % Forward simulate to get initial trajectory
 % [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, [x_wp(1:3,i_wp);zeros(9,1)]);
 % x = x_bar;
 
-% % Forward simulate to get initial trajectory
-% [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
-% x = x_bar;
+% Forward simulate to get initial trajectory
+[x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
+x = x_bar;
 
 % Execute SLQ solve to generate optimal trajectory and control
 a = tic;
