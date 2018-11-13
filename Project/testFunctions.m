@@ -29,7 +29,7 @@ x0 = [q0;dq0];
 xf = [1;1;1;0;0;0;
     0;0;0;0;0;0];
 
-x0 = xf;
+% x0 = xf;
 
 % Define waypoint trajectories
 t = 0;
@@ -61,15 +61,6 @@ for ii = 1:N-1
     u_ff(:,ii) = u;
     K(:,:,ii) = K_lqr;
 end
-
-
-% % Forward simulate to get initial trajectory
-% [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, zeros(12,1));
-% x = x_bar;
-
-% % Forward simulate to get initial trajectory
-% [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, [x_wp(1:3,i_wp);zeros(9,1)]);
-% x = x_bar;
 
 % Forward simulate to get initial trajectory
 [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
