@@ -4,7 +4,7 @@ function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp, xf)
 u_ff = ones(size(u_bar));
 
 ii = 1;
-while (norm(u_ff)>=1e-6) && ii<200 % Stop if feedforward increment converges
+while (norm(u_ff)>=1e-6) && ii<2 % Stop if feedforward increment converges
     
     % Initialize S matrix (coefficients of quadratic functional)
     s(N) = compute_qN(x_bar(:,N), xf);
