@@ -12,7 +12,7 @@ dt = T/(N-1);
 % Refresh symbolic functions
 % derive_dynamical_system_E
 % computeLinearizationSymbolic(dt);
-testFunctionsSymbolic;
+% testFunctionsSymbolic;
 clear all
 
 N = 401;
@@ -31,14 +31,14 @@ xf = [1;1;1;0;0;0;
 
 % Define waypoint trajectories
 t = 0;
-t_wp = 2;
+t_wp = 1.5;
 for i = 1:N
-    x_wp(:,i) = [0.2;0.5;0.5;0;0;0;
-        0.5;0.5;0.5;0;0;0];
+%     x_wp(:,i) = [0.2;0.5;0.5;0;0;0;
+%         0.5;0.5;0.5;0;0;0];
 %         x_wp(:,i) = [0.25;0.5;sin(2*pi*t/T);0;0;0;
 %             1;1;0;0;0;0];
-    %     x_wp(:,i) = [0.25;cos(2*pi*t/T);sin(2*pi*t/T);0;0;0;
-    %         1;1;0;0;0;0];
+        x_wp(:,i) = [0.25;cos(2*pi*t/T);sin(2*pi*t/T);0;0;0;
+            1;1;0;0;0;0];
     t = t+dt;
     
     if abs(t - t_wp)<1e-4
