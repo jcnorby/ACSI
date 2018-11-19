@@ -5,21 +5,30 @@ dx(1:6) = x0(7:12);
 t0 = t;
 T = (N-1)*dt;
 
-x0(1:3) = x0(1:3) + 0*(0.1*rand(3,1) - 0.05);
-x0(7:9) = x0(7:9) + 0*(0.2*rand(3,1) - 0.1);
+x0(1:3) = x0(1:3) + (0.1*rand(3,1) - 0.05);
+% x0(7:9) = x0(7:9) + (0.2*rand(3,1) - 0.1);
 
 for i = 1:N
-        x_wp(:,i) = [0.25;0.5;sin(2*pi*t/T);0;0;0;
-            1;1;0;0;0;0];
-%     x_wp(:,i) = [0.25;cos(2*pi*t/T);sin(2*pi*t/T);0;0;0;
-%         1;0;0;0;0;0];
+%     x_wp(:,i) = [0.25;0.5;sin(2*pi*t/3);0;0;0;
+%         1;1;0;0;0;0];
+    x_wp(:,i) = [0.25;cos(2*pi*t/4);0.5*sin(2*pi*t/4);0;0;0;
+        0.5;0.5;0.5;0;0;0];
     t = t+dt;
+    
+    if abs(t - t_wp)<1e-4
+        i_wp = i;
+    end
 end
+
+t_wp = t_wp - t0;
+
+% if t_wp>0
+%     xf = x_wp(:,i_wp);
+% end
 
 % Forward simulate to get initial trajectory
 [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
 
-t_wp = t_wp - t0;
 [x_bar,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0,x_wp,t_wp,xf);
 
 
