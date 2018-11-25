@@ -63,7 +63,7 @@ while (norm(u_ff)>=1e-6) && ii<6 % Stop if feedforward increment converges
     J = terminalCost(x_bar(:,end),xf);
     t = 0;
     for jj = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj),x_bar(:,jj),u_bar(:,jj), x_wp(:,k),t_wp);
+        J = J + intermediateCost(t,x_bar(:,jj),u_bar(:,jj),x_bar(:,jj),u_bar(:,jj), x_wp(:,jj),t_wp);
         t = t+dt;
     end
     

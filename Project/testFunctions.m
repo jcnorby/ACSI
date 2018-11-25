@@ -52,7 +52,8 @@ end
 
 % Execute SLQ solve to generate optimal trajectory and control
 a = tic;
-[x,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp,xf);
+% [x,K,u_ff] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp,xf);
+[x,K,u_ff] = slqSolve_mex(x_bar,u_bar,N,dt,x0, x_wp,t_wp,xf);  % faster!
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
 % Initialize plotting
