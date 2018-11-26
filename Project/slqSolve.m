@@ -3,6 +3,12 @@ function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp, xf)
 % Initialize with arbitrary u_ff above convergence bound
 u_ff = ones(size(u_bar));
 
+s = zeros(N,1);
+s_vec = zeros(length(x0),N);
+S_mat = zeros(length(x0),length(x0),N);
+
+K = zeros(size(u_bar,1),length(x0),N);
+
 ii = 1;
 while (norm(u_ff)>=1e-6) && ii<2 % Stop if feedforward increment converges
     
@@ -58,13 +64,13 @@ while (norm(u_ff)>=1e-6) && ii<2 % Stop if feedforward increment converges
     
     [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
     
-    J = terminalCost(x_bar(:,end), xf);
-    t = 0;
-    for k = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,k),u_bar(:,k),x_bar(:,k),u_bar(:,k), x_wp(:,k),t_wp);
-        t = t+dt;
-    end
-    J
+%     J = terminalCost(x_bar(:,end), xf);
+%     t = 0;
+%     for k = 1:N-1
+%         J = J + intermediateCost(t,x_bar(:,k),u_bar(:,k),x_bar(:,k),u_bar(:,k), x_wp(:,k),t_wp);
+%         t = t+dt;
+%     end
+%     J
     
     %     alpha = 1;
     %     Jmin = Inf;
