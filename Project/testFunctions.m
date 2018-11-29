@@ -18,6 +18,7 @@ clear all
 N = 301;
 T = 3;
 dt = T/(N-1);
+tspan = 0:dt:T;
 
 % Define initial conditions
 q0 = zeros(6,1);
@@ -33,7 +34,7 @@ xf = [1;1;1;0;0;0;
 
 % Define waypoint trajectories
 t = 0;
-t_wp = 1;
+t_wp = 0.8;
 for i = 1:N
 %         x_wp(:,i) = [0.25;0.5;sin(2*pi*t/T);0;0;0;
 %             1;1;0;0;0;0];
@@ -57,3 +58,4 @@ disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
 animateTraj(x,xf,t_wp,x_wp,dt,N,T)
 
+% csvwrite('verticalTraj.csv', [tspan' x'])
