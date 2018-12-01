@@ -3,6 +3,12 @@ function [x_bar,K,u_bar] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp, xf)
 % Initialize with arbitrary u_ff above convergence bound
 u_ff = ones(size(u_bar));
 
+s = zeros(N,1);
+s_vec = zeros(length(x0),N);
+S_mat = zeros(length(x0),length(x0),N);
+
+K = zeros(size(u_bar,1),length(x0),N);
+
 ii = 1;
 while (norm(u_ff)>=1e-6) && ii<2 % Stop if feedforward increment converges
     
@@ -28,13 +34,18 @@ while (norm(u_ff)>=1e-6) && ii<2 % Stop if feedforward increment converges
         A = compute_A(xn,un);
         B = compute_B(xn,un);
         
+%         x_wp = [0;0;0;0;0;0
+%             sign(xf(1) - xn(1));0;0;0;0;0];
+%         
+%         x_wp(1:3) = x0+dx0*t+0.2*[0;0;-9.81]*t^2;
+        
         % Compute cost weighting terms
-        q = compute_q(t,xn,un,xn,un,x_wp(:,k),t_wp);
-        q_vec = compute_q_vec(t,xn,un,xn,un,x_wp(:,k),t_wp);
-        Q_mat = compute_Q_mat(t,xn,un,xn,un,x_wp(:,k),t_wp);
-        P = compute_P(t,xn,un,xn,un,x_wp(:,k),t_wp);
-        r = compute_r_vec(t,xn,un,xn,un,x_wp(:,k),t_wp);
-        R = compute_R_mat(t,xn,un,xn,un,x_wp(:,k),t_wp);
+        q = compute_q(t,xn,un,xf,un,x_wp(:,k),t_wp);
+        q_vec = compute_q_vec(t,xn,un,xf,un,x_wp(:,k),t_wp);
+        Q_mat = compute_Q_mat(t,xn,un,xf,un,x_wp(:,k),t_wp);
+        P = compute_P(t,xn,un,xf,un,x_wp(:,k),t_wp);
+        r = compute_r_vec(t,xn,un,xf,un,x_wp(:,k),t_wp);
+        R = compute_R_mat(t,xn,un,xf,un,x_wp(:,k),t_wp);
         
         % Compute grouping terms
         g = r + B'*s_vec(:,k+1);
@@ -58,13 +69,13 @@ while (norm(u_ff)>=1e-6) && ii<2 % Stop if feedforward increment converges
     
     [x_bar,u_bar] = forwardIntTraj(x0,x_bar,u_bar, u_ff, K, N,dt);
     
-    J = terminalCost(x_bar(:,end), xf);
-    t = 0;
-    for k = 1:N-1
-        J = J + intermediateCost(t,x_bar(:,k),u_bar(:,k),x_bar(:,k),u_bar(:,k), x_wp(:,k),t_wp);
-        t = t+dt;
-    end
-    J
+%     J = terminalCost(x_bar(:,end), xf);
+%     t = 0;
+%     for k = 1:N-1
+%         J = J + intermediateCost(t,x_bar(:,k),u_bar(:,k),x_bar(:,k),u_bar(:,k), x_wp(:,k),t_wp);
+%         t = t+dt;
+%     end
+%     J
     
     %     alpha = 1;
     %     Jmin = Inf;

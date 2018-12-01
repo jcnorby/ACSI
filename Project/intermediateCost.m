@@ -3,8 +3,8 @@ function L = intermediateCost(t,x,u,xbar,ubar,x_wp, t_wp)
 Q = 10*eye(12);
 % Q(7:9,7:9) = 0*eye(3);
 % Q(10:12,10:12) = 0*eye(3);
-xbar = [1;1;1;0;0;0
-    0;0;0;0;0;0];
+% xbar = [1;1;1;0;0;0
+%     0;0;0;0;0;0];
 
 R = 1000*eye(4);
 % ubar = [0;0;0;0];
@@ -14,7 +14,7 @@ Wp(4:6,4:6) = 100*eye(3);
 Wp(7:9,7:9) = 100*eye(3);
 Wp(10:12,10:12) = zeros(3,3);
 
-rho = 100;
+rho = 200;
 
 dx = x - xbar;
 du = u - ubar;
