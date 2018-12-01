@@ -50,47 +50,47 @@ static emlrtRSInfo s_emlrtRSI = { 35,  /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo t_emlrtRSI = { 38,  /* lineNo */
+static emlrtRSInfo t_emlrtRSI = { 43,  /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo u_emlrtRSI = { 39,  /* lineNo */
+static emlrtRSInfo u_emlrtRSI = { 44,  /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo v_emlrtRSI = { 40,  /* lineNo */
+static emlrtRSInfo v_emlrtRSI = { 45,  /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo w_emlrtRSI = { 47,  /* lineNo */
+static emlrtRSInfo w_emlrtRSI = { 52,  /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo x_emlrtRSI = { 48,  /* lineNo */
+static emlrtRSInfo x_emlrtRSI = { 53,  /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo y_emlrtRSI = { 51,  /* lineNo */
+static emlrtRSInfo y_emlrtRSI = { 56,  /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo ab_emlrtRSI = { 52, /* lineNo */
+static emlrtRSInfo ab_emlrtRSI = { 57, /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo bb_emlrtRSI = { 55, /* lineNo */
+static emlrtRSInfo bb_emlrtRSI = { 60, /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo cb_emlrtRSI = { 65, /* lineNo */
+static emlrtRSInfo cb_emlrtRSI = { 70, /* lineNo */
   "slqSolve",                          /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
@@ -148,13 +148,13 @@ static emlrtRTEInfo o_emlrtRTEI = { 3, /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m"/* pName */
 };
 
-static emlrtRTEInfo p_emlrtRTEI = { 65,/* lineNo */
+static emlrtRTEInfo p_emlrtRTEI = { 70,/* lineNo */
   6,                                   /* colNo */
   "slqSolve",                          /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pName */
 };
 
-static emlrtRTEInfo q_emlrtRTEI = { 65,/* lineNo */
+static emlrtRTEInfo q_emlrtRTEI = { 70,/* lineNo */
   12,                                  /* colNo */
   "slqSolve",                          /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pName */
@@ -262,7 +262,7 @@ static emlrtBCInfo v_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo w_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  57,                                  /* lineNo */
+  62,                                  /* lineNo */
   65,                                  /* colNo */
   "u_ff",                              /* aName */
   "slqSolve",                          /* fName */
@@ -272,7 +272,7 @@ static emlrtBCInfo w_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo x_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  57,                                  /* lineNo */
+  62,                                  /* lineNo */
   53,                                  /* colNo */
   "u_ff",                              /* aName */
   "slqSolve",                          /* fName */
@@ -282,7 +282,7 @@ static emlrtBCInfo x_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo y_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  57,                                  /* lineNo */
+  62,                                  /* lineNo */
   40,                                  /* colNo */
   "u_ff",                              /* aName */
   "slqSolve",                          /* fName */
@@ -292,7 +292,7 @@ static emlrtBCInfo y_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo ab_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  56,                                  /* lineNo */
+  61,                                  /* lineNo */
   17,                                  /* colNo */
   "s_vec",                             /* aName */
   "slqSolve",                          /* fName */
@@ -302,7 +302,7 @@ static emlrtBCInfo ab_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo bb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  56,                                  /* lineNo */
+  61,                                  /* lineNo */
   96,                                  /* colNo */
   "u_ff",                              /* aName */
   "slqSolve",                          /* fName */
@@ -312,7 +312,7 @@ static emlrtBCInfo bb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo cb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  56,                                  /* lineNo */
+  61,                                  /* lineNo */
   78,                                  /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -322,7 +322,7 @@ static emlrtBCInfo cb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo db_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  56,                                  /* lineNo */
+  61,                                  /* lineNo */
   67,                                  /* colNo */
   "u_ff",                              /* aName */
   "slqSolve",                          /* fName */
@@ -332,7 +332,7 @@ static emlrtBCInfo db_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo eb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  56,                                  /* lineNo */
+  61,                                  /* lineNo */
   54,                                  /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -342,7 +342,7 @@ static emlrtBCInfo eb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo fb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  56,                                  /* lineNo */
+  61,                                  /* lineNo */
   41,                                  /* colNo */
   "s_vec",                             /* aName */
   "slqSolve",                          /* fName */
@@ -352,7 +352,7 @@ static emlrtBCInfo fb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo gb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  55,                                  /* lineNo */
+  60,                                  /* lineNo */
   19,                                  /* colNo */
   "S_mat",                             /* aName */
   "slqSolve",                          /* fName */
@@ -362,7 +362,7 @@ static emlrtBCInfo gb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo hb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  55,                                  /* lineNo */
+  60,                                  /* lineNo */
   100,                                 /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -372,7 +372,7 @@ static emlrtBCInfo hb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo ib_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  55,                                  /* lineNo */
+  60,                                  /* lineNo */
   83,                                  /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -382,7 +382,7 @@ static emlrtBCInfo ib_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo jb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  55,                                  /* lineNo */
+  60,                                  /* lineNo */
   72,                                  /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -392,7 +392,7 @@ static emlrtBCInfo jb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo kb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  55,                                  /* lineNo */
+  60,                                  /* lineNo */
   60,                                  /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -402,7 +402,7 @@ static emlrtBCInfo kb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo lb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  51,                                  /* lineNo */
+  56,                                  /* lineNo */
   15,                                  /* colNo */
   "K",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -412,7 +412,7 @@ static emlrtBCInfo lb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo mb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  55,                                  /* lineNo */
+  60,                                  /* lineNo */
   45,                                  /* colNo */
   "S_mat",                             /* aName */
   "slqSolve",                          /* fName */
@@ -422,7 +422,7 @@ static emlrtBCInfo mb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo nb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  52,                                  /* lineNo */
+  57,                                  /* lineNo */
   16,                                  /* colNo */
   "u_ff",                              /* aName */
   "slqSolve",                          /* fName */
@@ -432,7 +432,7 @@ static emlrtBCInfo nb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo ob_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  48,                                  /* lineNo */
+  53,                                  /* lineNo */
   30,                                  /* colNo */
   "S_mat",                             /* aName */
   "slqSolve",                          /* fName */
@@ -442,7 +442,7 @@ static emlrtBCInfo ob_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo pb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  47,                                  /* lineNo */
+  52,                                  /* lineNo */
   30,                                  /* colNo */
   "S_mat",                             /* aName */
   "slqSolve",                          /* fName */
@@ -462,7 +462,7 @@ static emlrtBCInfo qb_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo rb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  46,                                  /* lineNo */
+  51,                                  /* lineNo */
   28,                                  /* colNo */
   "s_vec",                             /* aName */
   "slqSolve",                          /* fName */
@@ -596,8 +596,8 @@ static emlrtBCInfo yb_emlrtBCI = { -1, /* iFirst */
 };
 
 static emlrtBCInfo ac_emlrtBCI = { 1,  /* iFirst */
-  301,                                 /* iLast */
-  38,                                  /* lineNo */
+  151,                                 /* iLast */
+  43,                                  /* lineNo */
   37,                                  /* colNo */
   "x_wp",                              /* aName */
   "slqSolve",                          /* fName */
@@ -607,7 +607,7 @@ static emlrtBCInfo ac_emlrtBCI = { 1,  /* iFirst */
 
 static emlrtBCInfo bc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  57,                                  /* lineNo */
+  62,                                  /* lineNo */
   20,                                  /* colNo */
   "s",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -617,7 +617,7 @@ static emlrtBCInfo bc_emlrtBCI = { -1, /* iFirst */
 
 static emlrtBCInfo cc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  57,                                  /* lineNo */
+  62,                                  /* lineNo */
   9,                                   /* colNo */
   "s",                                 /* aName */
   "slqSolve",                          /* fName */
@@ -628,7 +628,7 @@ static emlrtBCInfo cc_emlrtBCI = { -1, /* iFirst */
 /* Function Definitions */
 void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
               *u_bar, real_T N, real_T dt, const real_T x0[12], const real_T
-              x_wp[3612], real_T t_wp, const real_T xf[12], emxArray_real_T *K)
+              x_wp[1812], real_T t_wp, const real_T xf[12], emxArray_real_T *K)
 {
   int32_T i4;
   emxArray_real_T *u_ff;
@@ -664,10 +664,10 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
   real_T a[48];
   real_T b[144];
   char_T TRANSA;
+  real_T c_x_bar[12];
   char_T TRANSB;
   real_T beta1;
   ptrdiff_t m_t;
-  real_T c_x_bar[12];
   ptrdiff_t n_t;
   ptrdiff_t k_t;
   ptrdiff_t lda_t;
@@ -870,19 +870,23 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         st.site = &s_emlrtRSI;
         compute_B(*(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)], B);
 
+        /*          x_wp = [0;0;0;0;0;0 */
+        /*              sign(xf(1) - xn(1));0;0;0;0;0]; */
+        /*           */
+        /*          x_wp(1:3) = x0+dx0*t+0.2*[0;0;-9.81]*t^2; */
         /*  Compute cost weighting terms */
-        if (!((k >= 1) && (k <= 301))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, 301, &ac_emlrtBCI, sp);
+        if (!((k >= 1) && (k <= 151))) {
+          emlrtDynamicBoundsCheckR2012b(k, 1, 151, &ac_emlrtBCI, sp);
         }
 
         st.site = &t_emlrtRSI;
         q = compute_q(t, *(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)],
-                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)],
+                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)], xf,
                       *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)],
                       *(real_T (*)[12])&x_wp[12 * (k - 1)], t_wp);
         st.site = &u_emlrtRSI;
         compute_q_vec(t, *(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)],
-                      *(real_T (*)[12])&x_wp[12 * (k - 1)], t_wp, dq);
+                      xf, *(real_T (*)[12])&x_wp[12 * (k - 1)], t_wp, dq);
         st.site = &v_emlrtRSI;
         compute_Q_mat(t, t_wp, Q_mat);
 

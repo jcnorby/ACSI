@@ -19,12 +19,12 @@
 #include "computeSLQTraj_data.h"
 
 /* Variable Definitions */
-static emlrtRSInfo emlrtRSI = { 24,    /* lineNo */
+static emlrtRSInfo emlrtRSI = { 32,    /* lineNo */
   "computeSLQTraj",                    /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m"/* pathName */
 };
 
-static emlrtRSInfo b_emlrtRSI = { 27,  /* lineNo */
+static emlrtRSInfo b_emlrtRSI = { 37,  /* lineNo */
   "computeSLQTraj",                    /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m"/* pathName */
 };
@@ -34,13 +34,13 @@ static emlrtRSInfo c_emlrtRSI = { 11,  /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m"/* pathName */
 };
 
-static emlrtRTEInfo emlrtRTEI = { 8,   /* lineNo */
+static emlrtRTEInfo emlrtRTEI = { 16,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m"/* pName */
 };
 
-static emlrtRTEInfo b_emlrtRTEI = { 10,/* lineNo */
+static emlrtRTEInfo b_emlrtRTEI = { 18,/* lineNo */
   1,                                   /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m"/* pName */
@@ -64,21 +64,21 @@ static emlrtRTEInfo e_emlrtRTEI = { 4, /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m"/* pName */
 };
 
-static emlrtDCInfo emlrtDCI = { 6,     /* lineNo */
+static emlrtDCInfo emlrtDCI = { 14,    /* lineNo */
   15,                                  /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
   4                                    /* checkKind */
 };
 
-static emlrtDCInfo b_emlrtDCI = { 6,   /* lineNo */
+static emlrtDCInfo b_emlrtDCI = { 14,  /* lineNo */
   15,                                  /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtRTEInfo r_emlrtRTEI = { 18,/* lineNo */
+static emlrtRTEInfo r_emlrtRTEI = { 26,/* lineNo */
   10,                                  /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m"/* pName */
@@ -86,7 +86,7 @@ static emlrtRTEInfo r_emlrtRTEI = { 18,/* lineNo */
 
 static emlrtBCInfo emlrtBCI = { -1,    /* iFirst */
   -1,                                  /* iLast */
-  19,                                  /* lineNo */
+  27,                                  /* lineNo */
   12,                                  /* colNo */
   "u_ff",                              /* aName */
   "computeSLQTraj",                    /* fName */
@@ -96,7 +96,7 @@ static emlrtBCInfo emlrtBCI = { -1,    /* iFirst */
 
 static emlrtBCInfo b_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  20,                                  /* lineNo */
+  28,                                  /* lineNo */
   11,                                  /* colNo */
   "K",                                 /* aName */
   "computeSLQTraj",                    /* fName */
@@ -210,21 +210,21 @@ static emlrtBCInfo l_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtDCInfo c_emlrtDCI = { 8,   /* lineNo */
+static emlrtDCInfo c_emlrtDCI = { 16,  /* lineNo */
   16,                                  /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo d_emlrtDCI = { 10,  /* lineNo */
+static emlrtDCInfo d_emlrtDCI = { 18,  /* lineNo */
   16,                                  /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo e_emlrtDCI = { 10,  /* lineNo */
+static emlrtDCInfo e_emlrtDCI = { 18,  /* lineNo */
   16,                                  /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
@@ -252,21 +252,21 @@ static emlrtDCInfo h_emlrtDCI = { 3,   /* lineNo */
   4                                    /* checkKind */
 };
 
-static emlrtDCInfo i_emlrtDCI = { 8,   /* lineNo */
+static emlrtDCInfo i_emlrtDCI = { 16,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo j_emlrtDCI = { 10,  /* lineNo */
+static emlrtDCInfo j_emlrtDCI = { 18,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo k_emlrtDCI = { 10,  /* lineNo */
+static emlrtDCInfo k_emlrtDCI = { 18,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTraj.m",/* pName */
@@ -297,7 +297,7 @@ static emlrtDCInfo n_emlrtDCI = { 3,   /* lineNo */
 /* Function Definitions */
 void computeSLQTraj(const emlrtStack *sp, real_T N, real_T dt, const real_T x0
                     [12], const real_T xf[12], real_T t_wp, const real_T x_wp
-                    [3612], emxArray_real_T *x, emxArray_real_T *K,
+                    [1812], emxArray_real_T *x, emxArray_real_T *K,
                     emxArray_real_T *u)
 {
   emxArray_int8_T *u_ff;
@@ -326,6 +326,13 @@ void computeSLQTraj(const emlrtStack *sp, real_T N, real_T dt, const real_T x0
   emlrtHeapReferenceStackEnterFcnR2012b(sp);
   emxInit_int8_T(sp, &u_ff, 2, &emlrtRTEI, true);
 
+  /*  % Initialize controller with LQR solution */
+  /*  Q = 1e3*eye(length(x0)); */
+  /*  R = eye(length(u)); */
+  /*  A = compute_A(x0,u0); */
+  /*  B = compute_B(x0,u0); */
+  /*  [K_lqr,S] = dlqr(A,B,Q,R); */
+  /*  save('loadK;', 'K_lqr'); */
   /*  temp = load('loadK'); */
   /*  K_lqr = temp.K_lqr; */
   if (!(N >= 0.0)) {
@@ -580,6 +587,8 @@ void computeSLQTraj(const emlrtStack *sp, real_T N, real_T dt, const real_T x0
   emxFree_real_T(&st, &u_fb);
   emxFree_int8_T(&st, &u_ff);
 
+  /*  x = x_bar; */
+  /*  u = u_ff; */
   /*  Execute SLQ solve to generate optimal trajectory and control */
   st.site = &b_emlrtRSI;
   slqSolve(&st, x, u, N, dt, x0, x_wp, t_wp, xf, K);

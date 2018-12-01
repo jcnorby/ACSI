@@ -24,8 +24,8 @@
 #include "computeSLQTraj_types.h"
 
 /* Function Declarations */
-extern void compute_q_vec(real_T t, const real_T in2[12], const real_T in6[12],
-  real_T t_wp, real_T q_vec[12]);
+extern void compute_q_vec(real_T t, const real_T in2[12], const real_T in4[12],
+  const real_T in6[12], real_T t_wp, real_T q_vec[12]);
 
 #endif
 

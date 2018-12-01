@@ -25,7 +25,7 @@
 
 /* Function Declarations */
 extern void computeSLQTraj(const emlrtStack *sp, real_T N, real_T dt, const
-  real_T x0[12], const real_T xf[12], real_T t_wp, const real_T x_wp[3612],
+  real_T x0[12], const real_T xf[12], real_T t_wp, const real_T x_wp[1812],
   emxArray_real_T *x, emxArray_real_T *K, emxArray_real_T *u);
 
 #endif

@@ -36,15 +36,15 @@ static const mxArray *emlrt_marshallOut(const emxArray_real_T *u);
 static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   emlrtMsgIdentifier *parentId))[12];
 static real_T (*g_emlrt_marshallIn(const emlrtStack *sp, const mxArray *x_wp,
-  const char_T *identifier))[3612];
+  const char_T *identifier))[1812];
 static real_T (*h_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
-  emlrtMsgIdentifier *parentId))[3612];
+  emlrtMsgIdentifier *parentId))[1812];
 static real_T j_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId);
 static real_T (*k_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   const emlrtMsgIdentifier *msgId))[12];
 static real_T (*l_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-  const emlrtMsgIdentifier *msgId))[3612];
+  const emlrtMsgIdentifier *msgId))[1812];
 
 /* Function Definitions */
 static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u)
@@ -132,9 +132,9 @@ static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   return y;
 }
   static real_T (*g_emlrt_marshallIn(const emlrtStack *sp, const mxArray *x_wp,
-  const char_T *identifier))[3612]
+  const char_T *identifier))[1812]
 {
-  real_T (*y)[3612];
+  real_T (*y)[1812];
   emlrtMsgIdentifier thisId;
   thisId.fIdentifier = const_cast<const char *>(identifier);
   thisId.fParent = NULL;
@@ -145,9 +145,9 @@ static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
 }
 
 static real_T (*h_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
-  emlrtMsgIdentifier *parentId))[3612]
+  emlrtMsgIdentifier *parentId))[1812]
 {
-  real_T (*y)[3612];
+  real_T (*y)[1812];
   y = l_emlrt_marshallIn(sp, emlrtAlias(u), parentId);
   emlrtDestroyArray(&u);
   return y;
@@ -177,14 +177,14 @@ static real_T (*k_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   return ret;
 }
   static real_T (*l_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-  const emlrtMsgIdentifier *msgId))[3612]
+  const emlrtMsgIdentifier *msgId))[1812]
 {
-  real_T (*ret)[3612];
-  static const int32_T dims[2] = { 12, 301 };
+  real_T (*ret)[1812];
+  static const int32_T dims[2] = { 12, 151 };
 
   emlrtCheckBuiltInR2012b(sp, (const emlrtMsgIdentifier *)msgId, src, "double",
     false, 2U, *(int32_T (*)[2])&dims[0]);
-  ret = (real_T (*)[3612])emlrtMxGetData(src);
+  ret = (real_T (*)[1812])emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
 }
@@ -200,7 +200,7 @@ void computeSLQTraj_api(const mxArray * const prhs[6], int32_T nlhs, const
   real_T (*x0)[12];
   real_T (*xf)[12];
   real_T t_wp;
-  real_T (*x_wp)[3612];
+  real_T (*x_wp)[1812];
   emlrtStack st = { NULL,              /* site */
     NULL,                              /* tls */
     NULL                               /* prev */

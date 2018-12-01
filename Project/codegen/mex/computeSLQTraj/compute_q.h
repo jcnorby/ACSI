@@ -25,7 +25,7 @@
 
 /* Function Declarations */
 extern real_T compute_q(real_T t, const real_T in2[12], const real_T in3[4],
-  const real_T in5[4], const real_T in6[12], real_T t_wp);
+  const real_T in4[12], const real_T in5[4], const real_T in6[12], real_T t_wp);
 
 #endif
 

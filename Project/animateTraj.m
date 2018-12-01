@@ -8,7 +8,7 @@ plot3(xf(1), xf(2), xf(3), 'ob', 'MarkerSize', 20, 'LineWidth', 3); hold on;
 h = animatedline;
 epsilon = 0.3;
 axis equal
-axis([min(x(1,:))-epsilon max(x(1,:))+epsilon min(x(2,:))-epsilon max(x(2,:))+epsilon min(x(3,:))-epsilon max(x(3,:))+epsilon]);
+axis([min(x(1,:))-epsilon max(x(1,:))+epsilon min(x(2,:))-epsilon max(x(2,:))+epsilon min(x(3,:))-epsilon max(x_wp(3,:))+epsilon]);
 xlabel('x')
 ylabel('y')
 zlabel('z')
@@ -19,6 +19,7 @@ grid on
 while(1)
     t = 0;
     for ii = 1:N
+        a = tic;
         addpoints(h,x(1,ii),x(2,ii),x(3,ii));
         delete(quadrotor) % Comment out to save snapshots
         delete(h_wp) %
@@ -32,7 +33,7 @@ while(1)
         title(sprintf('Time elapsed = %4.2f s.', t))
         drawnow limitrate
         t = t+dt;
-        %         pause(0.05);
+%         pause(dt - toc(a));
     end
     clearpoints(h);
 end

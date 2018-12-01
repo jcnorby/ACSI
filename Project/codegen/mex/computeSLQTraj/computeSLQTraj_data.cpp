@@ -203,12 +203,12 @@ emlrtRSInfo rc_emlrtRSI = { 27,        /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\compute_B.m"/* pathName */
 };
 
-emlrtRSInfo sc_emlrtRSI = { 38,        /* lineNo */
+emlrtRSInfo sc_emlrtRSI = { 50,        /* lineNo */
   "compute_q",                         /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\compute_q.m"/* pathName */
 };
 
-emlrtRSInfo tc_emlrtRSI = { 30,        /* lineNo */
+emlrtRSInfo tc_emlrtRSI = { 42,        /* lineNo */
   "compute_q_vec",                     /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\compute_q_vec.m"/* pathName */
 };

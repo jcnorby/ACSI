@@ -30,6 +30,8 @@ end
 
 % Forward simulate to get initial trajectory
 [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
+% x = x_bar;
+% u = u_ff;
 
 % Execute SLQ solve to generate optimal trajectory and control
 [x,K,u] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp, xf);
