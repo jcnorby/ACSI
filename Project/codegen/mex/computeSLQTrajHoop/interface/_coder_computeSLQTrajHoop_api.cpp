@@ -27,8 +27,8 @@ static emlrtRTEInfo i_emlrtRTEI = { 1, /* lineNo */
 
 /* Function Declarations */
 static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u);
-static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *N, const
-  char_T *identifier);
+static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *t_current,
+  const char_T *identifier);
 static const mxArray *c_emlrt_marshallOut(const emxArray_real_T *u);
 static real_T d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   emlrtMsgIdentifier *parentId);
@@ -69,16 +69,16 @@ static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u)
   return y;
 }
 
-static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *N, const
-  char_T *identifier)
+static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *t_current,
+  const char_T *identifier)
 {
   real_T y;
   emlrtMsgIdentifier thisId;
   thisId.fIdentifier = const_cast<const char *>(identifier);
   thisId.fParent = NULL;
   thisId.bParentIsCell = false;
-  y = d_emlrt_marshallIn(sp, emlrtAlias(N), &thisId);
-  emlrtDestroyArray(&N);
+  y = d_emlrt_marshallIn(sp, emlrtAlias(t_current), &thisId);
+  emlrtDestroyArray(&t_current);
   return y;
 }
 
@@ -232,13 +232,14 @@ static boolean_T o_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   return ret;
 }
 
-void computeSLQTrajHoop_api(const mxArray * const prhs[8], int32_T nlhs, const
+void computeSLQTrajHoop_api(const mxArray * const prhs[9], int32_T nlhs, const
   mxArray *plhs[5])
 {
   emxArray_real_T *x;
   emxArray_real_T *K;
   emxArray_real_T *u;
   emxArray_real_T *x_wp;
+  real_T t_current;
   real_T N;
   real_T dt;
   real_T (*x0)[12];
@@ -261,18 +262,19 @@ void computeSLQTrajHoop_api(const mxArray * const prhs[8], int32_T nlhs, const
   emxInit_real_T(&st, &x_wp, 2, &i_emlrtRTEI, true);
 
   /* Marshall function inputs */
-  N = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N");
-  dt = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[1]), "dt");
-  x0 = e_emlrt_marshallIn(&st, emlrtAlias(prhs[2]), "x0");
-  xf = e_emlrt_marshallIn(&st, emlrtAlias(prhs[3]), "xf");
-  x0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[4]), "x0_wp");
-  dx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[5]), "dx0_wp");
-  ddx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[6]), "ddx0_wp");
-  flag_wp = i_emlrt_marshallIn(&st, emlrtAliasP(prhs[7]), "flag_wp");
+  t_current = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "t_current");
+  N = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[1]), "N");
+  dt = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[2]), "dt");
+  x0 = e_emlrt_marshallIn(&st, emlrtAlias(prhs[3]), "x0");
+  xf = e_emlrt_marshallIn(&st, emlrtAlias(prhs[4]), "xf");
+  x0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[5]), "x0_wp");
+  dx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[6]), "dx0_wp");
+  ddx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[7]), "ddx0_wp");
+  flag_wp = i_emlrt_marshallIn(&st, emlrtAliasP(prhs[8]), "flag_wp");
 
   /* Invoke the target function */
-  computeSLQTrajHoop(&st, N, dt, *x0, *xf, *x0_wp, *dx0_wp, *ddx0_wp, flag_wp, x,
-                     K, u, &t_wp, x_wp);
+  computeSLQTrajHoop(&st, t_current, N, dt, *x0, *xf, *x0_wp, *dx0_wp, *ddx0_wp,
+                     flag_wp, x, K, u, &t_wp, x_wp);
 
   /* Marshall function outputs */
   plhs[0] = b_emlrt_marshallOut(x);

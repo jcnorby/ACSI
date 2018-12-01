@@ -68,10 +68,11 @@ dx0_wp = [0;0;0];
 ddx0_wp = [0;0;0];
 
 flag = true;
+t_current = 0;
 a = tic;
 % [x,K,u] = computeSLQTraj_mex(N,dt,x0,xf,t_wp,x_wp);
-% [x,K,u, t_wp, x_wp] = computeSLQTrajHoop(N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
-[x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
+% [x,K,u, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
+[x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
 animateTraj(x,xf,t_wp,x_wp,dt,N,T)

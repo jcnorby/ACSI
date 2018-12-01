@@ -19,11 +19,11 @@
 
 /* Function Declarations */
 static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
-  int32_T nrhs, const mxArray *prhs[8]);
+  int32_T nrhs, const mxArray *prhs[9]);
 
 /* Function Definitions */
 static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
-  int32_T nrhs, const mxArray *prhs[8])
+  int32_T nrhs, const mxArray *prhs[9])
 {
   const mxArray *outputs[5];
   int32_T b_nlhs;
@@ -35,8 +35,8 @@ static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
   st.tls = emlrtRootTLSGlobal;
 
   /* Check for proper number of arguments. */
-  if (nrhs != 8) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 8, 4,
+  if (nrhs != 9) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 9, 4,
                         18, "computeSLQTrajHoop");
   }
 

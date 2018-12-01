@@ -1,4 +1,4 @@
-function [x,K,u, t_wp, x_wp] = computeSLQTrajHoop(N,dt,x0,xf, x0_wp, dx0_wp, ddx0_wp, flag_wp)
+function [x,K,u, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf, x0_wp, dx0_wp, ddx0_wp, flag_wp)
 x_wp = zeros(length(x0), N);
 % Define waypoint trajectories
 t = 0;
@@ -14,7 +14,7 @@ for i = 2:N
     x_wp(1:3,i) = x0_wp+dx0_wp*t+0.5*ddx0_wp*t^2;
     x_wp(7:9,i) = [0;2*sign(xf(2) - x0(2));0];
     
-    if ((x_wp(3,i) <= 0.9) || t>=N/2*dt) && (t_wp < 0) && flag_wp
+    if ((x_wp(3,i) <= 0.9) || t<=(N/2*dt - t_current)) && flag_wp
         t_wp = t;
     end
     

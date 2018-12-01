@@ -24,7 +24,7 @@
 #include "computeSLQTrajHoop_types.h"
 
 /* Function Declarations */
-extern void computeSLQTrajHoop_api(const mxArray * const prhs[8], int32_T nlhs,
+extern void computeSLQTrajHoop_api(const mxArray * const prhs[9], int32_T nlhs,
   const mxArray *plhs[5]);
 
 #endif
