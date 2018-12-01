@@ -120,15 +120,15 @@ static const mxArray *b_sprintf(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location);
 static void emlrt_marshallIn(const emlrtStack *sp, const mxArray *c_sprintf,
   const char_T *identifier, char_T y[14]);
-static void i_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
-  emlrtMsgIdentifier *msgId, char_T ret[14]);
 static void invNxN(const emlrtStack *sp, const real_T x[16], real_T y[16]);
+static void k_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
+  emlrtMsgIdentifier *msgId, char_T ret[14]);
 
 /* Function Definitions */
 static void b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   emlrtMsgIdentifier *parentId, char_T y[14])
 {
-  i_emlrt_marshallIn(sp, emlrtAlias(u), parentId, y);
+  k_emlrt_marshallIn(sp, emlrtAlias(u), parentId, y);
   emlrtDestroyArray(&u);
 }
 
@@ -151,17 +151,6 @@ static void emlrt_marshallIn(const emlrtStack *sp, const mxArray *c_sprintf,
   thisId.bParentIsCell = false;
   b_emlrt_marshallIn(sp, emlrtAlias(c_sprintf), &thisId, y);
   emlrtDestroyArray(&c_sprintf);
-}
-
-static void i_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
-  emlrtMsgIdentifier *msgId, char_T ret[14])
-{
-  static const int32_T dims[2] = { 1, 14 };
-
-  emlrtCheckBuiltInR2012b(sp, (const emlrtMsgIdentifier *)msgId, src, "char",
-    false, 2U, *(int32_T (*)[2])&dims[0]);
-  emlrtImportCharArrayR2015b(sp, src, &ret[0], 14);
-  emlrtDestroyArray(&src);
 }
 
 static void invNxN(const emlrtStack *sp, const real_T x[16], real_T y[16])
@@ -314,6 +303,17 @@ static void invNxN(const emlrtStack *sp, const real_T x[16], real_T y[16])
       }
     }
   }
+}
+
+static void k_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
+  emlrtMsgIdentifier *msgId, char_T ret[14])
+{
+  static const int32_T dims[2] = { 1, 14 };
+
+  emlrtCheckBuiltInR2012b(sp, (const emlrtMsgIdentifier *)msgId, src, "char",
+    false, 2U, *(int32_T (*)[2])&dims[0]);
+  emlrtImportCharArrayR2015b(sp, src, &ret[0], 14);
+  emlrtDestroyArray(&src);
 }
 
 void inv(const emlrtStack *sp, const real_T x[16], real_T y[16])

@@ -8,7 +8,7 @@ plot3(xf(1), xf(2), xf(3), 'ob', 'MarkerSize', 20, 'LineWidth', 3); hold on;
 h = animatedline;
 epsilon = 0.3;
 axis equal
-axis([min(x(1,:))-epsilon max(x(1,:))+epsilon min(x(2,:))-epsilon max(x(2,:))+epsilon min(x(3,:))-epsilon max(x_wp(3,:))+epsilon]);
+axis([min(x(1,:))-epsilon max(x(1,:))+epsilon min(x(2,:))-epsilon max(x(2,:))+epsilon min(x(3,:))-epsilon max(max(x_wp(3,:)), max(x(3,:)))+epsilon]);
 xlabel('x')
 ylabel('y')
 zlabel('z')

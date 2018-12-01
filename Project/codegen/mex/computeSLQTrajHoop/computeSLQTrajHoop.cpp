@@ -375,8 +375,8 @@ static emlrtBCInfo p_emlrtBCI = { -1,  /* iFirst */
 /* Function Definitions */
 void computeSLQTrajHoop(const emlrtStack *sp, real_T N, real_T dt, const real_T
   x0[12], const real_T xf[12], const real_T x0_wp[3], const real_T dx0_wp[3],
-  const real_T ddx0_wp[3], emxArray_real_T *x, emxArray_real_T *K,
-  emxArray_real_T *u, real_T *t_wp, emxArray_real_T *x_wp)
+  const real_T ddx0_wp[3], boolean_T flag_wp, emxArray_real_T *x,
+  emxArray_real_T *K, emxArray_real_T *u, real_T *t_wp, emxArray_real_T *x_wp)
 {
   int32_T i0;
   int32_T loop_ub;
@@ -443,8 +443,8 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T N, real_T dt, const real_T
   x_wp->data[3] = 0.0;
   x_wp->data[4] = 0.0;
   x_wp->data[5] = 0.0;
-  x_wp->data[6] = 2.0 * muDoubleScalarSign(xf[0] - x0[0]);
-  x_wp->data[7] = 0.0;
+  x_wp->data[6] = 0.0;
+  x_wp->data[7] = 2.0 * muDoubleScalarSign(xf[0] - x0[0]);
   x_wp->data[8] = 0.0;
   x_wp->data[9] = 0.0;
   x_wp->data[10] = 0.0;
@@ -477,9 +477,9 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T N, real_T dt, const real_T
       emlrtDynamicBoundsCheckR2012b(i0, 1, loop_ub, &m_emlrtBCI, sp);
     }
 
-    x_wp->data[6 + x_wp->size[0] * ((i + 2) - 1)] = 2.0 * muDoubleScalarSign(xf
-      [0] - x0[0]);
-    x_wp->data[7 + x_wp->size[0] * ((i + 2) - 1)] = 0.0;
+    x_wp->data[6 + x_wp->size[0] * ((i + 2) - 1)] = 0.0;
+    x_wp->data[7 + x_wp->size[0] * ((i + 2) - 1)] = 2.0 * muDoubleScalarSign(xf
+      [1] - x0[1]);
     x_wp->data[8 + x_wp->size[0] * ((i + 2) - 1)] = 0.0;
     i0 = x_wp->size[1];
     loop_ub = (int32_T)(2.0 + (real_T)i);
@@ -488,7 +488,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T N, real_T dt, const real_T
     }
 
     if (((x_wp->data[2 + x_wp->size[0] * (loop_ub - 1)] <= 0.9) || (t >= N / 2.0
-          * dt)) && (*t_wp < 0.0)) {
+          * dt)) && (*t_wp < 0.0) && flag_wp) {
       *t_wp = t;
     }
 

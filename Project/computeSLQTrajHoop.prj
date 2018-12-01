@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2016a">
-  <configuration build-checksum="2409875466" file="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.prj" location="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project" name="computeSLQTrajHoop" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="1997444196" file="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.prj" location="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project" name="computeSLQTrajHoop" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -130,8 +130,8 @@
       <param.SpecifiedBuildFolder />
       <param.SearchPaths />
       <param.SaturateOnIntegerOverflow>true</param.SaturateOnIntegerOverflow>
-      <param.PurelyIntegerCode>false</param.PurelyIntegerCode>
-      <param.SupportNonFinite>true</param.SupportNonFinite>
+      <param.PurelyIntegerCode />
+      <param.SupportNonFinite />
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Threshold</param.DynamicMemoryAllocation>
       <param.DynamicMemoryAllocationThreshold>65536</param.DynamicMemoryAllocationThreshold>
@@ -139,19 +139,19 @@
       <param.HighlightPotentialRowMajorIssues>true</param.HighlightPotentialRowMajorIssues>
       <param.PreserveArrayDimensions>false</param.PreserveArrayDimensions>
       <param.StackUsageMax>200000</param.StackUsageMax>
-      <param.MultiInstanceCode>false</param.MultiInstanceCode>
+      <param.MultiInstanceCode />
       <param.FilePartitionMethod>option.FilePartitionMethod.MapMFileToCFile</param.FilePartitionMethod>
       <param.GenerateComments>true</param.GenerateComments>
-      <param.CommentStyle>option.CommentStyle.Auto</param.CommentStyle>
+      <param.CommentStyle />
       <param.MATLABSourceComments>false</param.MATLABSourceComments>
-      <param.MATLABFcnDesc>true</param.MATLABFcnDesc>
-      <param.DataTypeReplacement>option.DataTypeReplacement.CBuiltIn</param.DataTypeReplacement>
-      <param.ConvertIfToSwitch>false</param.ConvertIfToSwitch>
-      <param.PreserveExternInFcnDecls>true</param.PreserveExternInFcnDecls>
-      <param.EnableSignedLeftShifts>true</param.EnableSignedLeftShifts>
-      <param.EnableSignedRightShifts>true</param.EnableSignedRightShifts>
-      <param.ParenthesesLevel>option.ParenthesesLevel.Nominal</param.ParenthesesLevel>
-      <param.MaxIdLength>31</param.MaxIdLength>
+      <param.MATLABFcnDesc />
+      <param.DataTypeReplacement />
+      <param.ConvertIfToSwitch />
+      <param.PreserveExternInFcnDecls />
+      <param.EnableSignedLeftShifts />
+      <param.EnableSignedRightShifts />
+      <param.ParenthesesLevel />
+      <param.MaxIdLength />
       <param.CustomSymbolStrGlobalVar>$M$N</param.CustomSymbolStrGlobalVar>
       <param.CustomSymbolStrType>$M$N</param.CustomSymbolStrType>
       <param.CustomSymbolStrField>$M$N</param.CustomSymbolStrField>
@@ -159,25 +159,25 @@
       <param.CustomSymbolStrTmpVar>$M$N</param.CustomSymbolStrTmpVar>
       <param.CustomSymbolStrMacro>$M$N</param.CustomSymbolStrMacro>
       <param.CustomSymbolStrEMXArray>emxArray_$M$N</param.CustomSymbolStrEMXArray>
-      <param.CustomSymbolStrEMXArrayFcn>emx$M$N</param.CustomSymbolStrEMXArrayFcn>
+      <param.CustomSymbolStrEMXArrayFcn />
       <param.ReservedNameArray />
       <param.RuntimeChecks>false</param.RuntimeChecks>
-      <param.Verbose>false</param.Verbose>
+      <param.Verbose />
       <param.GenerateReport>true</param.GenerateReport>
-      <param.GenerateCodeMetricsReport>true</param.GenerateCodeMetricsReport>
-      <param.GenerateCodeReplacementReport>false</param.GenerateCodeReplacementReport>
-      <param.HighlightPotentialDataTypeIssues>false</param.HighlightPotentialDataTypeIssues>
+      <param.GenerateCodeMetricsReport />
+      <param.GenerateCodeReplacementReport />
+      <param.HighlightPotentialDataTypeIssues />
       <param.LaunchReport>false</param.LaunchReport>
       <param.ReportPotentialDifferences>false</param.ReportPotentialDifferences>
-      <param.SILDebugging>false</param.SILDebugging>
-      <param.SILPILCheckConstantInputs>true</param.SILPILCheckConstantInputs>
-      <param.SILPILSyncGlobalData>true</param.SILPILSyncGlobalData>
-      <param.CodeExecutionProfiling>false</param.CodeExecutionProfiling>
+      <param.SILDebugging />
+      <param.SILPILCheckConstantInputs />
+      <param.SILPILSyncGlobalData />
+      <param.CodeExecutionProfiling />
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.RanPilSilVerification>false</param.RanPilSilVerification>
       <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
-      <param.VerificationStatus>option.VerificationStatus.Inactive</param.VerificationStatus>
+      <param.VerificationStatus />
       <param.CustomSourceCode />
       <param.CustomHeaderCode />
       <param.CustomInitializer />
@@ -186,12 +186,12 @@
       <param.CustomSource />
       <param.CustomLibrary />
       <param.PostCodeGenCommand />
-      <param.TargetLangStandard>C++03 (ISO)</param.TargetLangStandard>
-      <param.CodeReplacementLibrary>None</param.CodeReplacementLibrary>
+      <param.TargetLangStandard />
+      <param.CodeReplacementLibrary />
       <param.DeprecatedCRLFlag />
       <param.SameHardware>true</param.SameHardware>
       <param.Toolchain>Automatically locate an installed toolchain</param.Toolchain>
-      <param.BuildConfiguration>Faster Builds</param.BuildConfiguration>
+      <param.BuildConfiguration />
       <param.CustomToolchainOptions />
       <var.ToolchainSettingsVisible />
       <param.target.Data />
@@ -239,19 +239,19 @@
       <param.HardwareAtomicIntegerSize.Target>option.HardwareAtomicIntegerSize.Char</param.HardwareAtomicIntegerSize.Target>
       <param.HardwareAtomicFloatSize.Target>option.HardwareAtomicFloatSize.None</param.HardwareAtomicFloatSize.Target>
       <param.HardwareDivisionRounding.Target>option.HardwareDivisionRounding.Zero</param.HardwareDivisionRounding.Target>
-      <param.CastingMode>option.CastingMode.Nominal</param.CastingMode>
-      <param.IndentStyle>option.IndentStyle.K&amp;R</param.IndentStyle>
-      <param.IndentSize>2</param.IndentSize>
+      <param.CastingMode />
+      <param.IndentStyle />
+      <param.IndentSize />
       <param.ConstantFoldingTimeout>40000</param.ConstantFoldingTimeout>
       <param.CompileTimeRecursionLimit>50</param.CompileTimeRecursionLimit>
       <param.EnableRuntimeRecursion>true</param.EnableRuntimeRecursion>
-      <param.IncludeTerminateFcn>true</param.IncludeTerminateFcn>
+      <param.IncludeTerminateFcn />
       <param.GenerateExampleMain>option.GenerateExampleMain.GenerateCodeOnly</param.GenerateExampleMain>
       <param.PreserveVariableNames>option.PreserveVariableNames.None</param.PreserveVariableNames>
       <param.TargetLang>option.TargetLang.C</param.TargetLang>
       <param.CCompilerOptimization />
       <param.CCompilerCustomOptimizations />
-      <param.GenerateMakefile>true</param.GenerateMakefile>
+      <param.GenerateMakefile />
       <param.BuildToolEnable>false</param.BuildToolEnable>
       <param.MakeCommand />
       <param.TemplateMakefile />
@@ -259,17 +259,17 @@
       <param.InlineThreshold>10</param.InlineThreshold>
       <param.InlineThresholdMax>200</param.InlineThresholdMax>
       <param.InlineStackLimit>4000</param.InlineStackLimit>
-      <param.EnableStrengthReduction>false</param.EnableStrengthReduction>
+      <param.EnableStrengthReduction />
       <param.EnableMemcpy>true</param.EnableMemcpy>
       <param.MemcpyThreshold>64</param.MemcpyThreshold>
       <param.EnableOpenMP>true</param.EnableOpenMP>
       <param.InitFltsAndDblsToZero>true</param.InitFltsAndDblsToZero>
-      <param.PassStructByReference>true</param.PassStructByReference>
+      <param.PassStructByReference />
       <param.CustomLAPACKCallback />
       <param.CustomFFTCallback />
-      <param.GenerateDefaultInSwitch>false</param.GenerateDefaultInSwitch>
-      <param.EnableTraceability>true</param.EnableTraceability>
-      <param.UseECoderFeatures>true</param.UseECoderFeatures>
+      <param.GenerateDefaultInSwitch />
+      <param.EnableTraceability />
+      <param.UseECoderFeatures />
       <param.psCustomPrjState>false</param.psCustomPrjState>
       <param.psCustomProjectFile />
       <param.psCheckConfValue>option.psCheckConfValue.onWarnCheckConfDlg</param.psCheckConfValue>
@@ -767,7 +767,7 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>workflowSummary</param.WorkflowStep>
+    <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
       <item>testFunctions</item>
     </param.TestSnippets>
@@ -788,7 +788,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>1246733089</param.AnnotationChecksum>
+    <param.AnnotationChecksum>774770740</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -797,12 +797,12 @@
     <param.unifiedParamStorage />
     <var.gc.lastOutputRoot>codegen\mex\computeSLQTrajHoop</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>2409875466</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>1997444196</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen\mex\computeSLQTrajHoop</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>1214587719</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>1646300823</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>testFunctions</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_A.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_B.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_P.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_Q_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_QN_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_R_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_r_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\f.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardInt.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardIntTraj.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\getDynSys.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\slqSolve.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;2062518619&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_A.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_B.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_P.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_Q_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_QN_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_R_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_r_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\f.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardInt.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardIntTraj.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\getDynSys.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\slqSolve.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;639558895&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
     <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_A.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_B.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_P.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_Q_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_QN_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_R_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_r_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\f.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardInt.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardIntTraj.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\getDynSys.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\slqSolve.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.configImportActive>false</param.configImportActive>
@@ -969,7 +969,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\computeSLQTrajHoop.m">
-        <Marker>1543694018244</Marker>
+        <Marker>1543694812141</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
@@ -985,6 +985,7 @@
           <Input Name="x0_wp" typeId="2" />
           <Input Name="dx0_wp" typeId="2" />
           <Input Name="ddx0_wp" typeId="2" />
+          <Input Name="flag_wp" typeId="3" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
@@ -1011,6 +1012,14 @@
               <InitialValue />
               <UserDefined>true</UserDefined>
               <Complex>false</Complex>
+              <Sparse>false</Sparse>
+            </type>
+            <type typeId="3">
+              <Class>logical</Class>
+              <Size>1 x 1</Size>
+              <Value />
+              <InitialValue />
+              <UserDefined>true</UserDefined>
               <Sparse>false</Sparse>
             </type>
           </idpTable>

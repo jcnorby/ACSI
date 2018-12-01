@@ -26,8 +26,8 @@
 /* Function Declarations */
 extern void computeSLQTrajHoop(const emlrtStack *sp, real_T N, real_T dt, const
   real_T x0[12], const real_T xf[12], const real_T x0_wp[3], const real_T
-  dx0_wp[3], const real_T ddx0_wp[3], emxArray_real_T *x, emxArray_real_T *K,
-  emxArray_real_T *u, real_T *t_wp, emxArray_real_T *x_wp);
+  dx0_wp[3], const real_T ddx0_wp[3], boolean_T flag_wp, emxArray_real_T *x,
+  emxArray_real_T *K, emxArray_real_T *u, real_T *t_wp, emxArray_real_T *x_wp);
 
 #endif
 

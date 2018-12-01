@@ -28,17 +28,17 @@ mxArray *emlrtMexFcnProperties()
 
   xEntryPoints = emlrtCreateStructMatrix(1, 1, 6, *(const char * (*)[6])&
     fldNames[0]);
-  xInputs = emlrtCreateLogicalMatrix(1, 7);
+  xInputs = emlrtCreateLogicalMatrix(1, 8);
   emlrtSetField(xEntryPoints, 0, "Name", emlrtMxCreateString(
     "computeSLQTrajHoop"));
-  emlrtSetField(xEntryPoints, 0, "NumberOfInputs", emlrtMxCreateDoubleScalar(7.0));
+  emlrtSetField(xEntryPoints, 0, "NumberOfInputs", emlrtMxCreateDoubleScalar(8.0));
   emlrtSetField(xEntryPoints, 0, "NumberOfOutputs", emlrtMxCreateDoubleScalar
                 (5.0));
   emlrtSetField(xEntryPoints, 0, "ConstantInputs", xInputs);
   emlrtSetField(xEntryPoints, 0, "FullPath", emlrtMxCreateString(
     "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"));
   emlrtSetField(xEntryPoints, 0, "TimeStamp", emlrtMxCreateDoubleScalar
-                (737395.619849537));
+                (737395.63744212966));
   xResult = emlrtCreateStructMatrix(1, 1, 4, *(const char * (*)[4])&b_fldNames[0]);
   emlrtSetField(xResult, 0, "Version", emlrtMxCreateString(
     "9.4.0.813654 (R2018a)"));
