@@ -27,33 +27,35 @@ x_start = [-0.5;0;1;0;0;0
 x_end = [-0.5;2;1;0;0;0
     0;0;0;0;0;0];
 xf = x_start;
+x = x_start;
 hoop_sub = rossubscriber('/hoop_traj_calc','geometry_msgs/PoseStamped');
 cf_sub = rossubscriber('/crazyflie/optitrack/rigid_bodies','optitrack/RigidBodyArray');
 launch_sub = rossubscriber('/manual_launch','std_msgs/Bool');
 pause(1);
 
 cf_cmd_hist = [];
-cf_actual_hist = [];
-flag = false;
+cf_actual_hist = []; 
+launch_flag = false;
+compute_traj_flag = true;
 
 while(1)
-    msg_hoop = receive(hoop_sub,180);
+    msg_hoop = receive(hoop_sub,180); % TODO: obtain state directly from rigid bodies topic
     msg_launch = receive(launch_sub,180);    
 
     msg_cf = receive(cf_sub, 180);
     cf_actual_hist = [cf_actual_hist; msg_cf.Header.Stamp.Sec + msg_cf.Header.Stamp.Nsec / 1e9, ... 
         msg_cf.Bodies(1).Pose.Position.X, msg_cf.Bodies(1).Pose.Position.Y, msg_cf.Bodies(1).Pose.Position.Z]; 
     
-    curTime = rostime('now');
     if ~msg_launch.Data
         launchTime = rostime('now');  
-    elseif msg_launch.Data && ~flag
+    elseif msg_launch.Data && ~launch_flag
         launchTime = rostime('now');  
-        flag = true;
+        launch_flag = true;
         xf = x_end;
     end
     secs = launchTime.Sec; % this is for when msg_launch is active
     nsecs = launchTime.Nsec;    
+    curTime = rostime('now');
     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
 
     %     secs = msg_hoop.Header.Stamp.Sec; % this is when msg_hoop is active
@@ -82,22 +84,23 @@ while(1)
                                 msg_cf.Bodies(1).Pose.Orientation.X; 
                                 msg_cf.Bodies(1).Pose.Orientation.Y; 
                                 msg_cf.Bodies(1).Pose.Orientation.Z]';
-    quad_orientation = quat2eul(quad_orientation_quat)';
+    quad_orientation = flipud(quat2eul(quad_orientation_quat)');
     
     quad_velorientation = 31.61*quad_orientation - 31.61*quad_orientation_old + 0.3679*quad_velorientation_old;
 
 %     [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t, N,dt,quad_pos,xf,hoop_pos, hoop_vel, [0;0;0], flag);
     
     x0 = [quad_pos;quad_orientation;quad_vel;quad_velorientation];
-    [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,hoop_pos, hoop_vel, [0;0;0], flag);
-    
-    index = 1; %floor(t/dt)+1;
-    
-%     if index > N
-%         index = N;
-%     elseif index<1
-%         index = 1;
-%     end
+    if compute_traj_flag && launch_flag
+        [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,hoop_pos, hoop_vel, [0;0;0], launch_flag);
+        compute_traj_flag = false;
+    end
+    index = floor(t/dt) + 1;
+    if index > N
+        index = N;
+    elseif index<1
+        index = 1;
+    end
         
     traj_msg.Pose.Position.X = x(1,index);
     traj_msg.Pose.Position.Y = x(2,index);
@@ -105,7 +108,7 @@ while(1)
     
     cf_cmd_hist = [cf_cmd_hist; t, x(1,index), x(2,index), x(3,index)];
     
-    quat = eul2quat([x(4,index) x(5,index) x(6,index)]);
+    quat = eul2quat([x(6,index) x(5,index) x(4,index)]);
     
     traj_msg.Pose.Orientation.W = quat(1);
     traj_msg.Pose.Orientation.X = quat(2);
