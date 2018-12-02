@@ -24,12 +24,12 @@ static emlrtRSInfo emlrtRSI = { 14,    /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pathName */
 };
 
-static emlrtRSInfo b_emlrtRSI = { 44,  /* lineNo */
+static emlrtRSInfo b_emlrtRSI = { 42,  /* lineNo */
   "computeSLQTrajHoop",                /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pathName */
 };
 
-static emlrtRSInfo c_emlrtRSI = { 49,  /* lineNo */
+static emlrtRSInfo c_emlrtRSI = { 47,  /* lineNo */
   "computeSLQTrajHoop",                /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pathName */
 };
@@ -45,13 +45,13 @@ static emlrtRTEInfo emlrtRTEI = { 2,   /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pName */
 };
 
-static emlrtRTEInfo b_emlrtRTEI = { 28,/* lineNo */
+static emlrtRTEInfo b_emlrtRTEI = { 26,/* lineNo */
   1,                                   /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pName */
 };
 
-static emlrtRTEInfo c_emlrtRTEI = { 30,/* lineNo */
+static emlrtRTEInfo c_emlrtRTEI = { 28,/* lineNo */
   1,                                   /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pName */
@@ -183,7 +183,7 @@ static emlrtRTEInfo s_emlrtRTEI = { 8, /* lineNo */
 
 static emlrtBCInfo k_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  40,                                  /* lineNo */
+  38,                                  /* lineNo */
   11,                                  /* colNo */
   "K",                                 /* aName */
   "computeSLQTrajHoop",                /* fName */
@@ -193,7 +193,7 @@ static emlrtBCInfo k_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo l_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  39,                                  /* lineNo */
+  37,                                  /* lineNo */
   12,                                  /* colNo */
   "u_ff",                              /* aName */
   "computeSLQTrajHoop",                /* fName */
@@ -201,13 +201,13 @@ static emlrtBCInfo l_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtRTEInfo t_emlrtRTEI = { 38,/* lineNo */
+static emlrtRTEInfo t_emlrtRTEI = { 36,/* lineNo */
   10,                                  /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pName */
 };
 
-static emlrtDCInfo emlrtDCI = { 26,    /* lineNo */
+static emlrtDCInfo emlrtDCI = { 24,    /* lineNo */
   15,                                  /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
@@ -264,21 +264,21 @@ static emlrtDCInfo c_emlrtDCI = { 2,   /* lineNo */
   4                                    /* checkKind */
 };
 
-static emlrtDCInfo d_emlrtDCI = { 28,  /* lineNo */
+static emlrtDCInfo d_emlrtDCI = { 26,  /* lineNo */
   16,                                  /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo e_emlrtDCI = { 30,  /* lineNo */
+static emlrtDCInfo e_emlrtDCI = { 28,  /* lineNo */
   16,                                  /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo f_emlrtDCI = { 30,  /* lineNo */
+static emlrtDCInfo f_emlrtDCI = { 28,  /* lineNo */
   16,                                  /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
@@ -320,21 +320,21 @@ static emlrtDCInfo k_emlrtDCI = { 2,   /* lineNo */
   4                                    /* checkKind */
 };
 
-static emlrtDCInfo l_emlrtDCI = { 28,  /* lineNo */
+static emlrtDCInfo l_emlrtDCI = { 26,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo m_emlrtDCI = { 30,  /* lineNo */
+static emlrtDCInfo m_emlrtDCI = { 28,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
   1                                    /* checkKind */
 };
 
-static emlrtDCInfo n_emlrtDCI = { 30,  /* lineNo */
+static emlrtDCInfo n_emlrtDCI = { 28,  /* lineNo */
   1,                                   /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
@@ -365,7 +365,7 @@ static emlrtDCInfo q_emlrtDCI = { 3,   /* lineNo */
 static emlrtBCInfo p_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
   17,                                  /* lineNo */
-  10,                                  /* colNo */
+  31,                                  /* colNo */
   "x_wp",                              /* aName */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m",/* pName */
@@ -384,6 +384,8 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
   int32_T i;
   emxArray_int8_T *u_ff;
   real_T c;
+  boolean_T dynamic_hoop_condition;
+  boolean_T static_hoop_condition;
   int32_T ii;
   static const real_T K_lqr[48] = { -0.0, 0.0, 1.6111, 0.0, 0.0, -1.6111, 0.0,
     -0.0, 2.6672, 0.0, 0.0, 0.0, 0.0, 9.2114, 0.0, 0.0, -0.0, 0.0, 9.2114, 0.0,
@@ -487,14 +489,23 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
       emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &p_emlrtBCI, sp);
     }
 
-    if (((x_wp->data[2 + x_wp->size[0] * (loop_ub - 1)] <= 0.9) || (t <= N / 2.0
-          * dt - t_current)) && flag_wp) {
+    if ((x_wp->data[2 + x_wp->size[0] * (loop_ub - 1)] >= 1.0) && (ddx0_wp[2] <
+         0.0)) {
+      dynamic_hoop_condition = true;
+    } else {
+      dynamic_hoop_condition = false;
+    }
+
+    if ((t <= N / 2.0 * dt - t_current) && (ddx0_wp[2] == 0.0)) {
+      static_hoop_condition = true;
+    } else {
+      static_hoop_condition = false;
+    }
+
+    if ((dynamic_hoop_condition || static_hoop_condition) && flag_wp) {
       *t_wp = t;
     }
 
-    /*      if abs(t - t_wp)<1e-4 */
-    /*          i_wp = i; */
-    /*      end */
     i++;
     if (*emlrtBreakCheckR2012bFlagVar != 0) {
       emlrtBreakCheckR2012b(sp);

@@ -14,13 +14,11 @@ for i = 2:N
     x_wp(1:3,i) = x0_wp+dx0_wp*t+0.5*ddx0_wp*t^2;
     x_wp(7:9,i) = [0;2*sign(xf(2) - x0(2));0];
     
-    if ((x_wp(3,i) <= 0.9) || t<=(N/2*dt - t_current)) && flag_wp
+    dynamic_hoop_condition = (x_wp(3,i) >= 1 && ddx0_wp(3) < 0);
+    static_hoop_condition = t<=(N/2*dt - t_current) && ddx0_wp(3) == 0;
+    if (dynamic_hoop_condition || static_hoop_condition) && flag_wp
         t_wp = t;
     end
-    
-%     if abs(t - t_wp)<1e-4
-%         i_wp = i;
-%     end
 end
 
 x = zeros(12, N);
