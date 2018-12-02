@@ -27,7 +27,12 @@ u_ff = zeros(4,N);
 u_bar = u_ff;
 K = zeros(4,12,N-1);
 
-
+% Initialize controller with LQR solution
+Q = 1e3*eye(length(x0));
+R = eye(4);
+A = compute_A(x0,[-;0;0;0]);
+B = compute_B(x0,u0);
+[K_lqr,S] = dlqr(A,B,Q,R);
 
 % From loadK:
 K_lqr = [-0.0000         0    2.6672         0   -0.0000         0   -0.0000         0    2.7075         0   -0.0000         0

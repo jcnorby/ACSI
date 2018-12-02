@@ -21,13 +21,13 @@ dt = T/(N-1);
 tspan = 0:dt:T;
 
 % Define initial conditions
-q0 = [0;0;1;0;0;0];
+q0 = [0.5;0;1;0;0;0];
 dq0 = [0;0;0;0;0;0];
 u = [0;0;0;0];
 x0 = [q0;dq0];
 
 % Define final goal position
-xf = [-1;1;1;0;0;0;
+xf = [-1;2;1;0;0;0;
     0;0;0;0;0;0];
 
 % x0 = xf;
@@ -74,7 +74,7 @@ a = tic;
 [x,K,u, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
 % [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
-x
-animateTraj(x,xf,t_wp,x_wp,dt,N,T)
+
+% animateTraj(x,xf,t_wp,x_wp,dt,N,T)
 
 % csvwrite('angledTraj2.csv', [tspan' x'])
