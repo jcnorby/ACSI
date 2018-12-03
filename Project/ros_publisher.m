@@ -22,9 +22,10 @@ quad_vel = [0;0;0];
 quad_orientation = [0;0;0];
 quad_velorientation = [0;0;0];
 
-x_start = [-0.5;0;1;0;0;0
+x_start = [1.0;0;1;0;0;0
     0;0;0;0;0;0];
-x_end = [-0.5;2;1;0;0;0
+% x_start = repmat(x_start, 1,11);
+x_end = [-0.175;2;2;0;0;0
     0;0;0;0;0;0];
 xf = x_start;
 x = x_start;
@@ -92,16 +93,24 @@ while(1)
     
     x0 = [quad_pos;quad_orientation;quad_vel;quad_velorientation];
     if compute_traj_flag && launch_flag
-        [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,hoop_pos, hoop_vel, [0;0;0], launch_flag);
+%         [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,hoop_pos, hoop_vel, [0;0;0], launch_flag);
+        [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,hoop_pos, [0;0;0], [0;0;0], launch_flag);
         compute_traj_flag = false;
     end
-    index = floor(t/dt) + 1;
+    
+    if launch_flag
+        index = floor(t/dt)+11;
+    else
+        index = floor(t/dt)+1;
+    end
+    
     if index > N
         index = N;
     elseif index<1
         index = 1;
     end
-        
+    
+    index
     traj_msg.Pose.Position.X = x(1,index);
     traj_msg.Pose.Position.Y = x(2,index);
     traj_msg.Pose.Position.Z = x(3,index);
