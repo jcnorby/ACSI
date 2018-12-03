@@ -95,7 +95,7 @@ static emlrtRSInfo eb_emlrtRSI = { 70, /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pathName */
 };
 
-static emlrtRSInfo rd_emlrtRSI = { 9,  /* lineNo */
+static emlrtRSInfo rd_emlrtRSI = { 12, /* lineNo */
   "forwardIntTraj",                    /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m"/* pathName */
 };
@@ -160,31 +160,11 @@ static emlrtRTEInfo r_emlrtRTEI = { 70,/* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pName */
 };
 
-static emlrtBCInfo q_emlrtBCI = { -1,  /* iFirst */
-  -1,                                  /* iLast */
-  9,                                   /* lineNo */
-  9,                                   /* colNo */
-  "x",                                 /* aName */
-  "forwardIntTraj",                    /* fName */
-  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
-  0                                    /* checkKind */
-};
-
-static emlrtBCInfo r_emlrtBCI = { -1,  /* iFirst */
-  -1,                                  /* iLast */
-  9,                                   /* lineNo */
-  31,                                  /* colNo */
-  "u",                                 /* aName */
-  "forwardIntTraj",                    /* fName */
-  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
-  0                                    /* checkKind */
-};
-
 static emlrtBCInfo s_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  7,                                   /* lineNo */
+  12,                                  /* lineNo */
   9,                                   /* colNo */
-  "u",                                 /* aName */
+  "x",                                 /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -192,9 +172,9 @@ static emlrtBCInfo s_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo t_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  9,                                   /* lineNo */
-  23,                                  /* colNo */
-  "x",                                 /* aName */
+  12,                                  /* lineNo */
+  31,                                  /* colNo */
+  "u",                                 /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -202,9 +182,9 @@ static emlrtBCInfo t_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo u_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  7,                                   /* lineNo */
-  71,                                  /* colNo */
-  "x_bar",                             /* aName */
+  12,                                  /* lineNo */
+  23,                                  /* colNo */
+  "x",                                 /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -212,9 +192,9 @@ static emlrtBCInfo u_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo v_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  7,                                   /* lineNo */
-  57,                                  /* colNo */
-  "x",                                 /* aName */
+  11,                                  /* lineNo */
+  9,                                   /* colNo */
+  "u",                                 /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -222,9 +202,9 @@ static emlrtBCInfo v_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo w_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  5,                                   /* lineNo */
-  5,                                   /* colNo */
-  "x",                                 /* aName */
+  11,                                  /* lineNo */
+  39,                                  /* colNo */
+  "u",                                 /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -232,9 +212,9 @@ static emlrtBCInfo w_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo x_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  7,                                   /* lineNo */
-  48,                                  /* colNo */
-  "K",                                 /* aName */
+  10,                                  /* lineNo */
+  9,                                   /* colNo */
+  "u",                                 /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -242,9 +222,9 @@ static emlrtBCInfo x_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo y_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  7,                                   /* lineNo */
-  36,                                  /* colNo */
-  "u_ff",                              /* aName */
+  10,                                  /* lineNo */
+  71,                                  /* colNo */
+  "x_bar",                             /* aName */
   "forwardIntTraj",                    /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
   0                                    /* checkKind */
@@ -252,7 +232,47 @@ static emlrtBCInfo y_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo ab_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
-  7,                                   /* lineNo */
+  10,                                  /* lineNo */
+  57,                                  /* colNo */
+  "x",                                 /* aName */
+  "forwardIntTraj",                    /* fName */
+  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
+  0                                    /* checkKind */
+};
+
+static emlrtBCInfo bb_emlrtBCI = { -1, /* iFirst */
+  -1,                                  /* iLast */
+  8,                                   /* lineNo */
+  5,                                   /* colNo */
+  "x",                                 /* aName */
+  "forwardIntTraj",                    /* fName */
+  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
+  0                                    /* checkKind */
+};
+
+static emlrtBCInfo cb_emlrtBCI = { -1, /* iFirst */
+  -1,                                  /* iLast */
+  10,                                  /* lineNo */
+  48,                                  /* colNo */
+  "K",                                 /* aName */
+  "forwardIntTraj",                    /* fName */
+  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
+  0                                    /* checkKind */
+};
+
+static emlrtBCInfo db_emlrtBCI = { -1, /* iFirst */
+  -1,                                  /* iLast */
+  10,                                  /* lineNo */
+  36,                                  /* colNo */
+  "u_ff",                              /* aName */
+  "forwardIntTraj",                    /* fName */
+  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardIntTraj.m",/* pName */
+  0                                    /* checkKind */
+};
+
+static emlrtBCInfo eb_emlrtBCI = { -1, /* iFirst */
+  -1,                                  /* iLast */
+  10,                                  /* lineNo */
   23,                                  /* colNo */
   "u_bar",                             /* aName */
   "forwardIntTraj",                    /* fName */
@@ -260,7 +280,7 @@ static emlrtBCInfo ab_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo bb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo fb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   62,                                  /* lineNo */
   65,                                  /* colNo */
@@ -270,7 +290,7 @@ static emlrtBCInfo bb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo cb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo gb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   62,                                  /* lineNo */
   53,                                  /* colNo */
@@ -280,7 +300,7 @@ static emlrtBCInfo cb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo db_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo hb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   62,                                  /* lineNo */
   40,                                  /* colNo */
@@ -290,7 +310,7 @@ static emlrtBCInfo db_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo eb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo ib_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   61,                                  /* lineNo */
   17,                                  /* colNo */
@@ -300,7 +320,7 @@ static emlrtBCInfo eb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo fb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo jb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   61,                                  /* lineNo */
   96,                                  /* colNo */
@@ -310,7 +330,7 @@ static emlrtBCInfo fb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo gb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo kb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   61,                                  /* lineNo */
   78,                                  /* colNo */
@@ -320,7 +340,7 @@ static emlrtBCInfo gb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo hb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo lb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   61,                                  /* lineNo */
   67,                                  /* colNo */
@@ -330,7 +350,7 @@ static emlrtBCInfo hb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo ib_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo mb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   61,                                  /* lineNo */
   54,                                  /* colNo */
@@ -340,7 +360,7 @@ static emlrtBCInfo ib_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo jb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo nb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   61,                                  /* lineNo */
   41,                                  /* colNo */
@@ -350,7 +370,7 @@ static emlrtBCInfo jb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo kb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo ob_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   60,                                  /* lineNo */
   19,                                  /* colNo */
@@ -360,7 +380,7 @@ static emlrtBCInfo kb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo lb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo pb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   60,                                  /* lineNo */
   100,                                 /* colNo */
@@ -370,7 +390,7 @@ static emlrtBCInfo lb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo mb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo qb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   60,                                  /* lineNo */
   83,                                  /* colNo */
@@ -380,7 +400,7 @@ static emlrtBCInfo mb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo nb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo rb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   60,                                  /* lineNo */
   72,                                  /* colNo */
@@ -390,7 +410,7 @@ static emlrtBCInfo nb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo ob_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo sb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   60,                                  /* lineNo */
   60,                                  /* colNo */
@@ -400,7 +420,7 @@ static emlrtBCInfo ob_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo pb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo tb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   56,                                  /* lineNo */
   15,                                  /* colNo */
@@ -410,7 +430,7 @@ static emlrtBCInfo pb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo qb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo ub_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   60,                                  /* lineNo */
   45,                                  /* colNo */
@@ -420,7 +440,7 @@ static emlrtBCInfo qb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo rb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo vb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   57,                                  /* lineNo */
   16,                                  /* colNo */
@@ -430,7 +450,7 @@ static emlrtBCInfo rb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo sb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo wb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   53,                                  /* lineNo */
   30,                                  /* colNo */
@@ -440,7 +460,7 @@ static emlrtBCInfo sb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo tb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo xb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   52,                                  /* lineNo */
   30,                                  /* colNo */
@@ -450,7 +470,7 @@ static emlrtBCInfo tb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo ub_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo yb_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   18,                                  /* lineNo */
   15,                                  /* colNo */
@@ -460,7 +480,7 @@ static emlrtBCInfo ub_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo vb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo ac_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   51,                                  /* lineNo */
   28,                                  /* colNo */
@@ -470,7 +490,7 @@ static emlrtBCInfo vb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo wb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo bc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   48,                                  /* lineNo */
   48,                                  /* colNo */
@@ -480,7 +500,7 @@ static emlrtBCInfo wb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo xb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo cc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   47,                                  /* lineNo */
   48,                                  /* colNo */
@@ -490,7 +510,7 @@ static emlrtBCInfo xb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo yb_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo dc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   46,                                  /* lineNo */
   44,                                  /* colNo */
@@ -500,7 +520,7 @@ static emlrtBCInfo yb_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo ac_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo ec_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   45,                                  /* lineNo */
   52,                                  /* colNo */
@@ -510,7 +530,7 @@ static emlrtBCInfo ac_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo bc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo fc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   31,                                  /* lineNo */
   22,                                  /* colNo */
@@ -520,7 +540,7 @@ static emlrtBCInfo bc_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo cc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo gc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   30,                                  /* lineNo */
   22,                                  /* colNo */
@@ -536,7 +556,7 @@ static emlrtRTEInfo x_emlrtRTEI = { 24,/* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\slqSolve.m"/* pName */
 };
 
-static emlrtBCInfo dc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo hc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   18,                                  /* lineNo */
   43,                                  /* colNo */
@@ -595,7 +615,7 @@ static emlrtDCInfo x_emlrtDCI = { 10,  /* lineNo */
   1                                    /* checkKind */
 };
 
-static emlrtBCInfo ec_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo ic_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   16,                                  /* lineNo */
   23,                                  /* colNo */
@@ -605,7 +625,7 @@ static emlrtBCInfo ec_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo fc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo jc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   16,                                  /* lineNo */
   5,                                   /* colNo */
@@ -615,7 +635,7 @@ static emlrtBCInfo fc_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo gc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo kc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   17,                                  /* lineNo */
   33,                                  /* colNo */
@@ -625,7 +645,7 @@ static emlrtBCInfo gc_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo hc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo lc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   17,                                  /* lineNo */
   5,                                   /* colNo */
@@ -635,7 +655,7 @@ static emlrtBCInfo hc_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo ic_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo mc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   43,                                  /* lineNo */
   37,                                  /* colNo */
@@ -645,7 +665,7 @@ static emlrtBCInfo ic_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo jc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo nc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   44,                                  /* lineNo */
   45,                                  /* colNo */
@@ -655,7 +675,7 @@ static emlrtBCInfo jc_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo kc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo oc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   62,                                  /* lineNo */
   20,                                  /* colNo */
@@ -665,7 +685,7 @@ static emlrtBCInfo kc_emlrtBCI = { -1, /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo lc_emlrtBCI = { -1, /* iFirst */
+static emlrtBCInfo pc_emlrtBCI = { -1, /* iFirst */
   -1,                                  /* iLast */
   62,                                  /* lineNo */
   9,                                   /* colNo */
@@ -709,10 +729,10 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
   real_T q;
   real_T dq[12];
   real_T Q_mat[144];
-  real_T g[4];
-  real_T y[4];
-  real_T c_x_bar[12];
+  real_T z1[4];
   real_T alpha1;
+  real_T c_x_bar[12];
+  real_T g[4];
   real_T a[48];
   real_T b[144];
   char_T TRANSA;
@@ -728,14 +748,15 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
   real_T G[48];
   real_T H[16];
   real_T c_a[16];
-  static const int16_T R[16] = { 2000, 0, 0, 0, 0, 2000, 0, 0, 0, 0, 2000, 0, 0,
-    0, 0, 2000 };
+  static const int16_T R[16] = { 20000, 0, 0, 0, 0, 20000, 0, 0, 0, 0, 20000, 0,
+    0, 0, 0, 20000 };
 
   real_T d_a[144];
   real_T e_a[144];
-  real_T b_y[144];
+  real_T y[144];
   real_T b_K[12];
   real_T b_G[12];
+  real_T dv2[4];
   emlrtStack st;
   emlrtStack b_st;
   int32_T exitg1;
@@ -844,13 +865,13 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
       i4 = x_bar->size[1];
       i5 = (int32_T)N;
       if (!((i5 >= 1) && (i5 <= i4))) {
-        emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &ec_emlrtBCI, sp);
+        emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &ic_emlrtBCI, sp);
       }
 
       i4 = s->size[0];
       i6 = (int32_T)N;
       if (!((i6 >= 1) && (i6 <= i4))) {
-        emlrtDynamicBoundsCheckR2012b(i6, 1, i4, &fc_emlrtBCI, sp);
+        emlrtDynamicBoundsCheckR2012b(i6, 1, i4, &jc_emlrtBCI, sp);
       }
 
       st.site = &s_emlrtRSI;
@@ -860,12 +881,12 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
       i4 = x_bar->size[1];
       i5 = (int32_T)N;
       if (!((i5 >= 1) && (i5 <= i4))) {
-        emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &gc_emlrtBCI, sp);
+        emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &kc_emlrtBCI, sp);
       }
 
       i4 = (int32_T)N;
       if (!((i4 >= 1) && (i4 <= loop_ub))) {
-        emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &hc_emlrtBCI, sp);
+        emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &lc_emlrtBCI, sp);
       }
 
       compute_qN_vec(*(real_T (*)[12])&x_bar->data[x_bar->size[0] * (i5 - 1)],
@@ -873,13 +894,13 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
       i4 = x_bar->size[1];
       i5 = (int32_T)N;
       if (!((i5 >= 1) && (i5 <= i4))) {
-        emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &dc_emlrtBCI, sp);
+        emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &hc_emlrtBCI, sp);
       }
 
       loop_ub = S_mat->size[2];
       i4 = (int32_T)N;
       if (!((i4 >= 1) && (i4 <= loop_ub))) {
-        emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &ub_emlrtBCI, sp);
+        emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &yb_emlrtBCI, sp);
       }
 
       for (i4 = 0; i4 < 12; i4++) {
@@ -896,30 +917,30 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
       i4 = (int32_T)((1.0 + (-1.0 - (N - 1.0))) / -1.0);
       emlrtForLoopVectorCheckR2012b(N - 1.0, -1.0, 1.0, mxDOUBLE_CLASS, i4,
         &x_emlrtRTEI, sp);
-      ii = 0;
-      while (ii <= i4 - 1) {
-        k = ((int32_T)N - ii) - 1;
+      k = 0;
+      while (k <= i4 - 1) {
+        ii = ((int32_T)N - k) - 1;
 
         /*  Update time */
         t -= dt;
 
         /*  Select current state and control vectors */
         i5 = x_bar->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &cc_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &gc_emlrtBCI, sp);
         }
 
         i5 = u_bar->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &bc_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &fc_emlrtBCI, sp);
         }
 
         /*  Compute linearized dynamics */
         st.site = &t_emlrtRSI;
-        compute_A(*(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)],
-                  *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)], A);
+        compute_A(*(real_T (*)[12])&x_bar->data[x_bar->size[0] * (ii - 1)],
+                  *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (ii - 1)], A);
         st.site = &u_emlrtRSI;
-        compute_B(*(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)], B);
+        compute_B(*(real_T (*)[12])&x_bar->data[x_bar->size[0] * (ii - 1)], B);
 
         /*          x_wp = [0;0;0;0;0;0 */
         /*              sign(xf(1) - xn(1));0;0;0;0;0]; */
@@ -927,67 +948,64 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         /*          x_wp(1:3) = x0+dx0*t+0.2*[0;0;-9.81]*t^2; */
         /*  Compute cost weighting terms */
         i5 = x_wp->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &ic_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &mc_emlrtBCI, sp);
         }
 
         st.site = &v_emlrtRSI;
-        q = compute_q(t, *(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)],
-                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)], xf,
-                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)],
-                      *(real_T (*)[12])&x_wp->data[x_wp->size[0] * (k - 1)],
+        q = compute_q(t, *(real_T (*)[12])&x_bar->data[x_bar->size[0] * (ii - 1)],
+                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (ii - 1)],
+                      xf, *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (ii - 1)],
+                      *(real_T (*)[12])&x_wp->data[x_wp->size[0] * (ii - 1)],
                       t_wp);
         i5 = x_wp->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &jc_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &nc_emlrtBCI, sp);
         }
 
         st.site = &w_emlrtRSI;
-        compute_q_vec(t, *(real_T (*)[12])&x_bar->data[x_bar->size[0] * (k - 1)],
-                      xf, *(real_T (*)[12])&x_wp->data[x_wp->size[0] * (k - 1)],
+        compute_q_vec(t, *(real_T (*)[12])&x_bar->data[x_bar->size[0] * (ii - 1)],
+                      xf, *(real_T (*)[12])&x_wp->data[x_wp->size[0] * (ii - 1)],
                       t_wp, dq);
         i5 = x_wp->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &ac_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &ec_emlrtBCI, sp);
         }
 
         st.site = &x_emlrtRSI;
         compute_Q_mat(t, t_wp, Q_mat);
         i5 = x_wp->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &yb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &dc_emlrtBCI, sp);
         }
 
         i5 = x_wp->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &xb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &cc_emlrtBCI, sp);
         }
 
         i5 = x_wp->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &wb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &bc_emlrtBCI, sp);
         }
 
         /*  Compute grouping terms */
         i5 = s_vec->size[1];
-        i6 = k + 1;
+        i6 = ii + 1;
         if (!((i6 >= 1) && (i6 <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(i6, 1, i5, &vb_emlrtBCI, sp);
+          emlrtDynamicBoundsCheckR2012b(i6, 1, i5, &ac_emlrtBCI, sp);
         }
 
-        compute_r_vec(*(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)],
-                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (k - 1)], g);
-        for (i5 = 0; i5 < 4; i5++) {
-          y[i5] = g[i5];
-        }
-
+        compute_r_vec(*(real_T (*)[4])&u_bar->data[u_bar->size[0] * (ii - 1)],
+                      *(real_T (*)[4])&u_bar->data[u_bar->size[0] * (ii - 1)],
+                      z1);
         for (i5 = 0; i5 < 4; i5++) {
           alpha1 = 0.0;
           for (i6 = 0; i6 < 12; i6++) {
-            alpha1 += B[i6 + 12 * i5] * s_vec->data[i6 + s_vec->size[0] * k];
+            alpha1 += B[i6 + 12 * i5] * s_vec->data[i6 + s_vec->size[0] * ii];
           }
 
-          g[i5] = y[i5] + alpha1;
+          g[i5] = z1[i5] + alpha1;
         }
 
         st.site = &y_emlrtRSI;
@@ -998,11 +1016,11 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         i5 = S_mat->size[2];
-        if (!((k + 1 >= 1) && (k + 1 <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k + 1, 1, i5, &tb_emlrtBCI, &st);
+        if (!((ii + 1 >= 1) && (ii + 1 <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i5, &xb_emlrtBCI, &st);
         }
 
-        loop_ub = k + 1;
+        loop_ub = ii + 1;
         for (i5 = 0; i5 < 12; i5++) {
           for (i6 = 0; i6 < 12; i6++) {
             b[i6 + 12 * i5] = S_mat->data[(i6 + S_mat->size[0] * i5) +
@@ -1043,11 +1061,11 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         i5 = S_mat->size[2];
-        if (!((k + 1 >= 1) && (k + 1 <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k + 1, 1, i5, &sb_emlrtBCI, &st);
+        if (!((ii + 1 >= 1) && (ii + 1 <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i5, &wb_emlrtBCI, &st);
         }
 
-        loop_ub = k + 1;
+        loop_ub = ii + 1;
         for (i5 = 0; i5 < 12; i5++) {
           for (i6 = 0; i6 < 12; i6++) {
             b[i6 + 12 * i5] = S_mat->data[(i6 + S_mat->size[0] * i5) +
@@ -1086,16 +1104,16 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         loop_ub = K->size[2];
-        if (!((k >= 1) && (k <= loop_ub))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, loop_ub, &pb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= loop_ub))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &tb_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 4; i5++) {
           for (i6 = 0; i6 < 12; i6++) {
-            K->data[(i5 + K->size[0] * i6) + K->size[0] * K->size[1] * (k - 1)] =
-              0.0;
+            K->data[(i5 + K->size[0] * i6) + K->size[0] * K->size[1] * (ii - 1)]
+              = 0.0;
             for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-              K->data[(i5 + K->size[0] * i6) + K->size[0] * K->size[1] * (k - 1)]
+              K->data[(i5 + K->size[0] * i6) + K->size[0] * K->size[1] * (ii - 1)]
                 += c_a[i5 + (loop_ub << 2)] * G[loop_ub + (i6 << 2)];
             }
           }
@@ -1108,14 +1126,14 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         loop_ub = u_ff->size[1];
-        if (!((k >= 1) && (k <= loop_ub))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, loop_ub, &rb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= loop_ub))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &vb_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 4; i5++) {
-          u_ff->data[i5 + u_ff->size[0] * (k - 1)] = 0.0;
+          u_ff->data[i5 + u_ff->size[0] * (ii - 1)] = 0.0;
           for (i6 = 0; i6 < 4; i6++) {
-            u_ff->data[i5 + u_ff->size[0] * (k - 1)] += c_a[i5 + (i6 << 2)] *
+            u_ff->data[i5 + u_ff->size[0] * (ii - 1)] += c_a[i5 + (i6 << 2)] *
               g[i6];
           }
         }
@@ -1129,11 +1147,11 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         i5 = S_mat->size[2];
-        if (!((k + 1 >= 1) && (k + 1 <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k + 1, 1, i5, &qb_emlrtBCI, &st);
+        if (!((ii + 1 >= 1) && (ii + 1 <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i5, &ub_emlrtBCI, &st);
         }
 
-        loop_ub = k + 1;
+        loop_ub = ii + 1;
         for (i5 = 0; i5 < 12; i5++) {
           for (i6 = 0; i6 < 12; i6++) {
             b[i6 + 12 * i5] = S_mat->data[(i6 + S_mat->size[0] * i5) +
@@ -1154,8 +1172,8 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         dgemm(&TRANSA, &TRANSB, &m_t, &n_t, &k_t, &alpha1, &d_a[0], &lda_t, &b[0],
               &ldb_t, &beta1, &e_a[0], &ldc_t);
         i5 = K->size[2];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &ob_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &sb_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 12; i5++) {
@@ -1163,7 +1181,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
             B[i5 + 12 * i6] = 0.0;
             for (loop_ub = 0; loop_ub < 4; loop_ub++) {
               B[i5 + 12 * i6] += K->data[(loop_ub + K->size[0] * i5) + K->size[0]
-                * K->size[1] * (k - 1)] * H[loop_ub + (i6 << 2)];
+                * K->size[1] * (ii - 1)] * H[loop_ub + (i6 << 2)];
             }
           }
         }
@@ -1175,14 +1193,14 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         i5 = K->size[2];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &nb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &rb_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 12; i5++) {
           for (i6 = 0; i6 < 4; i6++) {
             b_a[i6 + (i5 << 2)] = K->data[(i6 + K->size[0] * i5) + K->size[0] *
-              K->size[1] * (k - 1)];
+              K->size[1] * (ii - 1)];
           }
         }
 
@@ -1198,7 +1216,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         ldb_t = (ptrdiff_t)12;
         ldc_t = (ptrdiff_t)12;
         dgemm(&TRANSA, &TRANSB, &m_t, &n_t, &k_t, &alpha1, &e_a[0], &lda_t, &A[0],
-              &ldb_t, &beta1, &b_y[0], &ldc_t);
+              &ldb_t, &beta1, &y[0], &ldc_t);
         st.site = &db_emlrtRSI;
         TRANSA = 'N';
         TRANSB = 'N';
@@ -1214,14 +1232,14 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
               &ldb_t, &beta1, &b[0], &ldc_t);
         st.site = &db_emlrtRSI;
         i5 = K->size[2];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &mb_emlrtBCI, &st);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &qb_emlrtBCI, &st);
         }
 
         for (i5 = 0; i5 < 4; i5++) {
           for (i6 = 0; i6 < 12; i6++) {
             B[i6 + 12 * i5] = K->data[(i5 + K->size[0] * i6) + K->size[0] *
-              K->size[1] * (k - 1)];
+              K->size[1] * (ii - 1)];
           }
         }
 
@@ -1257,14 +1275,14 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         }
 
         i5 = K->size[2];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &lb_emlrtBCI, &st);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &pb_emlrtBCI, &st);
         }
 
         for (i5 = 0; i5 < 12; i5++) {
           for (i6 = 0; i6 < 4; i6++) {
             b_a[i6 + (i5 << 2)] = K->data[(i6 + K->size[0] * i5) + K->size[0] *
-              K->size[1] * (k - 1)];
+              K->size[1] * (ii - 1)];
           }
         }
 
@@ -1281,42 +1299,42 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         dgemm(&TRANSA, &TRANSB, &m_t, &n_t, &k_t, &alpha1, &a[0], &lda_t, &b_a[0],
               &ldb_t, &beta1, &e_a[0], &ldc_t);
         loop_ub = S_mat->size[2];
-        if (!((k >= 1) && (k <= loop_ub))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, loop_ub, &kb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= loop_ub))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &ob_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 12; i5++) {
           for (i6 = 0; i6 < 12; i6++) {
             S_mat->data[(i6 + S_mat->size[0] * i5) + S_mat->size[0] *
-              S_mat->size[1] * (k - 1)] = (((Q_mat[i6 + 12 * i5] + b_y[i6 + 12 *
+              S_mat->size[1] * (ii - 1)] = (((Q_mat[i6 + 12 * i5] + y[i6 + 12 *
               i5]) + b[i6 + 12 * i5]) + d_a[i6 + 12 * i5]) + e_a[i6 + 12 * i5];
           }
         }
 
         i5 = s_vec->size[1];
-        i6 = k + 1;
+        i6 = ii + 1;
         if (!((i6 >= 1) && (i6 <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(i6, 1, i5, &jb_emlrtBCI, sp);
+          emlrtDynamicBoundsCheckR2012b(i6, 1, i5, &nb_emlrtBCI, sp);
         }
 
         i5 = K->size[2];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &ib_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &mb_emlrtBCI, sp);
         }
 
         i5 = u_ff->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &hb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &lb_emlrtBCI, sp);
         }
 
         i5 = K->size[2];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &gb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &kb_emlrtBCI, sp);
         }
 
         i5 = u_ff->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &fb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &jb_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 12; i5++) {
@@ -1324,7 +1342,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
             B[i5 + 12 * i6] = 0.0;
             for (loop_ub = 0; loop_ub < 4; loop_ub++) {
               B[i5 + 12 * i6] += K->data[(loop_ub + K->size[0] * i5) + K->size[0]
-                * K->size[1] * (k - 1)] * H[loop_ub + (i6 << 2)];
+                * K->size[1] * (ii - 1)] * H[loop_ub + (i6 << 2)];
             }
           }
         }
@@ -1332,7 +1350,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         for (i5 = 0; i5 < 12; i5++) {
           alpha1 = 0.0;
           for (i6 = 0; i6 < 12; i6++) {
-            alpha1 += A[i6 + 12 * i5] * s_vec->data[i6 + s_vec->size[0] * k];
+            alpha1 += A[i6 + 12 * i5] * s_vec->data[i6 + s_vec->size[0] * ii];
           }
 
           c_x_bar[i5] = dq[i5] + alpha1;
@@ -1342,7 +1360,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
           b_K[i5] = 0.0;
           for (i6 = 0; i6 < 4; i6++) {
             alpha1 = b_K[i5] + B[i5 + 12 * i6] * u_ff->data[i6 + u_ff->size[0] *
-              (k - 1)];
+              (ii - 1)];
             b_K[i5] = alpha1;
           }
         }
@@ -1351,7 +1369,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
           alpha1 = 0.0;
           for (i6 = 0; i6 < 4; i6++) {
             alpha1 += K->data[(i6 + K->size[0] * i5) + K->size[0] * K->size[1] *
-              (k - 1)] * g[i6];
+              (ii - 1)] * g[i6];
           }
 
           dq[i5] = (c_x_bar[i5] + b_K[i5]) + alpha1;
@@ -1361,70 +1379,74 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
           b_G[i5] = 0.0;
           for (i6 = 0; i6 < 4; i6++) {
             alpha1 = b_G[i5] + G[i6 + (i5 << 2)] * u_ff->data[i6 + u_ff->size[0]
-              * (k - 1)];
+              * (ii - 1)];
             b_G[i5] = alpha1;
           }
         }
 
         loop_ub = s_vec->size[1];
-        if (!((k >= 1) && (k <= loop_ub))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, loop_ub, &eb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= loop_ub))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &ib_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 12; i5++) {
-          s_vec->data[i5 + s_vec->size[0] * (k - 1)] = dq[i5] + b_G[i5];
+          s_vec->data[i5 + s_vec->size[0] * (ii - 1)] = dq[i5] + b_G[i5];
         }
 
         i5 = u_ff->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &db_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &hb_emlrtBCI, sp);
         }
 
         for (i5 = 0; i5 < 4; i5++) {
-          y[i5] = 0.0;
+          dv2[i5] = 0.0;
           for (i6 = 0; i6 < 4; i6++) {
-            alpha1 = y[i5] + 0.5 * u_ff->data[i6 + u_ff->size[0] * (k - 1)] *
+            alpha1 = dv2[i5] + 0.5 * u_ff->data[i6 + u_ff->size[0] * (ii - 1)] *
               H[i6 + (i5 << 2)];
-            y[i5] = alpha1;
+            dv2[i5] = alpha1;
           }
         }
 
+        for (i5 = 0; i5 < 4; i5++) {
+          z1[i5] = dv2[i5];
+        }
+
         i5 = u_ff->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &cb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &gb_emlrtBCI, sp);
         }
 
         alpha1 = 0.0;
         for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-          alpha1 += y[loop_ub] * u_ff->data[loop_ub + u_ff->size[0] * (k - 1)];
+          alpha1 += z1[loop_ub] * u_ff->data[loop_ub + u_ff->size[0] * (ii - 1)];
         }
 
         i5 = u_ff->size[1];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &bb_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &fb_emlrtBCI, sp);
         }
 
         beta1 = 0.0;
         for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-          beta1 += u_ff->data[loop_ub + u_ff->size[0] * (k - 1)] * g[loop_ub];
+          beta1 += u_ff->data[loop_ub + u_ff->size[0] * (ii - 1)] * g[loop_ub];
         }
 
         i5 = s->size[0];
-        if (!((k + 1 >= 1) && (k + 1 <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k + 1, 1, i5, &kc_emlrtBCI, sp);
+        if (!((ii + 1 >= 1) && (ii + 1 <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i5, &oc_emlrtBCI, sp);
         }
 
         i5 = s->size[0];
-        if (!((k >= 1) && (k <= i5))) {
-          emlrtDynamicBoundsCheckR2012b(k, 1, i5, &lc_emlrtBCI, sp);
+        if (!((ii >= 1) && (ii <= i5))) {
+          emlrtDynamicBoundsCheckR2012b(ii, 1, i5, &pc_emlrtBCI, sp);
         }
 
-        s->data[k - 1] = ((q + s->data[k]) + alpha1) + beta1;
+        s->data[ii - 1] = ((q + s->data[ii]) + alpha1) + beta1;
 
         /*          S_mat(:,:,k) */
         /*          s_vec(:,k) */
         /*          s(k) */
-        ii++;
+        k++;
         if (*emlrtBreakCheckR2012bFlagVar != 0) {
           emlrtBreakCheckR2012b(sp);
         }
@@ -1458,7 +1480,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
       }
 
       if (!(1 <= iv11[1])) {
-        emlrtDynamicBoundsCheckR2012b(1, 1, iv11[1], &w_emlrtBCI, &st);
+        emlrtDynamicBoundsCheckR2012b(1, 1, iv11[1], &bb_emlrtBCI, &st);
       }
 
       for (i4 = 0; i4 < 12; i4++) {
@@ -1470,31 +1492,31 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         i4 = K->size[2];
         i5 = ii + 1;
         if (!((i5 >= 1) && (i5 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &x_emlrtBCI, &st);
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &cb_emlrtBCI, &st);
         }
 
         i4 = b_x_bar->size[1];
         i5 = ii + 1;
         if (!((i5 >= 1) && (i5 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &v_emlrtBCI, &st);
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &ab_emlrtBCI, &st);
         }
 
         i4 = x_bar->size[1];
         i5 = ii + 1;
         if (!((i5 >= 1) && (i5 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &u_emlrtBCI, &st);
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &y_emlrtBCI, &st);
         }
 
         i4 = u_bar->size[1];
         i5 = 1 + ii;
         if (!((i5 >= 1) && (i5 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &ab_emlrtBCI, &st);
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &eb_emlrtBCI, &st);
         }
 
         i4 = u_ff->size[1];
         i6 = 1 + ii;
         if (!((i6 >= 1) && (i6 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i6, 1, i4, &y_emlrtBCI, &st);
+          emlrtDynamicBoundsCheckR2012b(i6, 1, i4, &db_emlrtBCI, &st);
         }
 
         for (i4 = 0; i4 < 12; i4++) {
@@ -1505,7 +1527,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
         loop_ub = b_u_bar->size[1];
         i4 = 1 + ii;
         if (!((i4 >= 1) && (i4 <= loop_ub))) {
-          emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &s_emlrtBCI, &st);
+          emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &x_emlrtBCI, &st);
         }
 
         for (i4 = 0; i4 < 4; i4++) {
@@ -1520,18 +1542,42 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
             + alpha1;
         }
 
-        /*      u(:,ii) = min(umax, max(umin, u(:,ii))); */
+        i4 = b_u_bar->size[1];
+        i5 = ii + 1;
+        if (!((i5 >= 1) && (i5 <= i4))) {
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &w_emlrtBCI, &st);
+        }
+
+        for (k = 0; k < 4; k++) {
+          z1[k] = muDoubleScalarMax(-0.75, b_u_bar->data[k + b_u_bar->size[0] *
+            ii]);
+        }
+
+        for (k = 0; k < 4; k++) {
+          g[k] = muDoubleScalarMin(0.75, z1[k]);
+        }
+
+        loop_ub = b_u_bar->size[1];
+        i4 = 1 + ii;
+        if (!((i4 >= 1) && (i4 <= loop_ub))) {
+          emlrtDynamicBoundsCheckR2012b(i4, 1, loop_ub, &v_emlrtBCI, &st);
+        }
+
+        for (i4 = 0; i4 < 4; i4++) {
+          b_u_bar->data[i4 + b_u_bar->size[0] * ii] = g[i4];
+        }
+
         b_st.site = &rd_emlrtRSI;
         i4 = b_x_bar->size[1];
         i5 = ii + 1;
         if (!((i5 >= 1) && (i5 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &t_emlrtBCI, &b_st);
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &u_emlrtBCI, &b_st);
         }
 
         i4 = b_u_bar->size[1];
         i5 = ii + 1;
         if (!((i5 >= 1) && (i5 <= i4))) {
-          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &r_emlrtBCI, &b_st);
+          emlrtDynamicBoundsCheckR2012b(i5, 1, i4, &t_emlrtBCI, &b_st);
         }
 
         /*  dq = dynamics(q,u); */
@@ -1539,7 +1585,7 @@ void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar, emxArray_real_T
                   *(real_T (*)[4])&b_u_bar->data[b_u_bar->size[0] * ii], dq);
         loop_ub = b_x_bar->size[1];
         if (!((ii + 2 >= 1) && (ii + 2 <= loop_ub))) {
-          emlrtDynamicBoundsCheckR2012b(ii + 2, 1, loop_ub, &q_emlrtBCI, &b_st);
+          emlrtDynamicBoundsCheckR2012b(ii + 2, 1, loop_ub, &s_emlrtBCI, &b_st);
         }
 
         for (i4 = 0; i4 < 12; i4++) {

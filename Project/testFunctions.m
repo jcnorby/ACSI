@@ -22,7 +22,7 @@ tspan = 0:dt:T;
 
 % Define initial conditions
 q0 = [1;0;0;0;0;0];
-dq0 = [0;0;-2;0;0;0];
+dq0 = [0;0;0;0;0;0];
 u = [0;0;0;0];
 x0 = [q0;dq0];
 
@@ -58,7 +58,7 @@ xf = [-0.175;2;2;0;0;0;
 % end
 
 g = 9.81;       % m/s^2
-m = 0.027;      % kg
+m = 0.034;      % kg
 u0 = [m*g;0;0;0];
 
 x0_wp = [-0.175;1;1.5];
@@ -70,9 +70,10 @@ ddx0_wp = [0;0;0];
 flag = true;
 t_current = 0;
 a = tic;
+umax = 0.5;
 % [x,K,u] = computeSLQTraj_mex(N,dt,x0,xf,t_wp,x_wp);
-[x,K,u, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
-% [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,x0_wp, dx0_wp, ddx0_wp, flag);
+[x,K,u, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
+% [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
 animateTraj(x,u,xf,t_wp,x_wp,dt,N,T)

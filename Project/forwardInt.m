@@ -1,12 +1,12 @@
-function [x,u] = forwardInt(x0,u_ff, K, N,dt, x_bar)
+function [x,u] = forwardInt(x0,u_ff, umax,K, N,dt, x_bar)
 x = zeros(12,N);
 u = zeros(4,N-1);
 u_fb = u;
 
 x(:,1) = x0;
 
-umin = -0.5;
-umax = 0.5;
+umin = -umax;
+
 for ii = 1:N-1
     u_fb(:,ii) = -K(:,:,ii)*(x(:,ii) - x_bar);
     u(:,ii) = u_ff(:,ii) + u_fb(:,ii);

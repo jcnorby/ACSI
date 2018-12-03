@@ -24,17 +24,17 @@ static emlrtRSInfo emlrtRSI = { 14,    /* lineNo */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pathName */
 };
 
-static emlrtRSInfo b_emlrtRSI = { 42,  /* lineNo */
+static emlrtRSInfo b_emlrtRSI = { 53,  /* lineNo */
   "computeSLQTrajHoop",                /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pathName */
 };
 
-static emlrtRSInfo c_emlrtRSI = { 47,  /* lineNo */
+static emlrtRSInfo c_emlrtRSI = { 58,  /* lineNo */
   "computeSLQTrajHoop",                /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pathName */
 };
 
-static emlrtRSInfo f_emlrtRSI = { 11,  /* lineNo */
+static emlrtRSInfo f_emlrtRSI = { 14,  /* lineNo */
   "forwardInt",                        /* fcnName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m"/* pathName */
 };
@@ -77,7 +77,7 @@ static emlrtRTEInfo f_emlrtRTEI = { 4, /* lineNo */
 
 static emlrtBCInfo emlrtBCI = { -1,    /* iFirst */
   -1,                                  /* iLast */
-  11,                                  /* lineNo */
+  14,                                  /* lineNo */
   9,                                   /* colNo */
   "x",                                 /* aName */
   "forwardInt",                        /* fName */
@@ -87,7 +87,7 @@ static emlrtBCInfo emlrtBCI = { -1,    /* iFirst */
 
 static emlrtBCInfo b_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  9,                                   /* lineNo */
+  11,                                  /* lineNo */
   12,                                  /* colNo */
   "u_fb",                              /* aName */
   "forwardInt",                        /* fName */
@@ -97,7 +97,7 @@ static emlrtBCInfo b_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo c_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  11,                                  /* lineNo */
+  14,                                  /* lineNo */
   31,                                  /* colNo */
   "u",                                 /* aName */
   "forwardInt",                        /* fName */
@@ -107,7 +107,7 @@ static emlrtBCInfo c_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo d_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  11,                                  /* lineNo */
+  14,                                  /* lineNo */
   23,                                  /* colNo */
   "x",                                 /* aName */
   "forwardInt",                        /* fName */
@@ -117,7 +117,7 @@ static emlrtBCInfo d_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo e_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  10,                                  /* lineNo */
+  13,                                  /* lineNo */
   9,                                   /* colNo */
   "u",                                 /* aName */
   "forwardInt",                        /* fName */
@@ -127,9 +127,9 @@ static emlrtBCInfo e_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo f_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  10,                                  /* lineNo */
-  35,                                  /* colNo */
-  "u_fb",                              /* aName */
+  13,                                  /* lineNo */
+  39,                                  /* colNo */
+  "u",                                 /* aName */
   "forwardInt",                        /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m",/* pName */
   0                                    /* checkKind */
@@ -137,9 +137,9 @@ static emlrtBCInfo f_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo g_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  10,                                  /* lineNo */
-  22,                                  /* colNo */
-  "u_ff",                              /* aName */
+  12,                                  /* lineNo */
+  9,                                   /* colNo */
+  "u",                                 /* aName */
   "forwardInt",                        /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m",/* pName */
   0                                    /* checkKind */
@@ -147,7 +147,27 @@ static emlrtBCInfo g_emlrtBCI = { -1,  /* iFirst */
 
 static emlrtBCInfo h_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  9,                                   /* lineNo */
+  12,                                  /* lineNo */
+  35,                                  /* colNo */
+  "u_fb",                              /* aName */
+  "forwardInt",                        /* fName */
+  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m",/* pName */
+  0                                    /* checkKind */
+};
+
+static emlrtBCInfo i_emlrtBCI = { -1,  /* iFirst */
+  -1,                                  /* iLast */
+  12,                                  /* lineNo */
+  22,                                  /* colNo */
+  "u_ff",                              /* aName */
+  "forwardInt",                        /* fName */
+  "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m",/* pName */
+  0                                    /* checkKind */
+};
+
+static emlrtBCInfo j_emlrtBCI = { -1,  /* iFirst */
+  -1,                                  /* iLast */
+  11,                                  /* lineNo */
   34,                                  /* colNo */
   "x",                                 /* aName */
   "forwardInt",                        /* fName */
@@ -155,7 +175,7 @@ static emlrtBCInfo h_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo i_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo k_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
   6,                                   /* lineNo */
   5,                                   /* colNo */
@@ -165,9 +185,9 @@ static emlrtBCInfo i_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo j_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo l_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  9,                                   /* lineNo */
+  11,                                  /* lineNo */
   25,                                  /* colNo */
   "K",                                 /* aName */
   "forwardInt",                        /* fName */
@@ -175,15 +195,15 @@ static emlrtBCInfo j_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtRTEInfo s_emlrtRTEI = { 8, /* lineNo */
+static emlrtRTEInfo s_emlrtRTEI = { 10,/* lineNo */
   10,                                  /* colNo */
   "forwardInt",                        /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\forwardInt.m"/* pName */
 };
 
-static emlrtBCInfo k_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo m_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  38,                                  /* lineNo */
+  49,                                  /* lineNo */
   11,                                  /* colNo */
   "K",                                 /* aName */
   "computeSLQTrajHoop",                /* fName */
@@ -191,9 +211,9 @@ static emlrtBCInfo k_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo l_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo n_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
-  37,                                  /* lineNo */
+  48,                                  /* lineNo */
   12,                                  /* colNo */
   "u_ff",                              /* aName */
   "computeSLQTrajHoop",                /* fName */
@@ -201,7 +221,7 @@ static emlrtBCInfo l_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtRTEInfo t_emlrtRTEI = { 36,/* lineNo */
+static emlrtRTEInfo t_emlrtRTEI = { 47,/* lineNo */
   10,                                  /* colNo */
   "computeSLQTrajHoop",                /* fName */
   "C:\\Users\\Joe\\Documents\\MATLAB\\5 Fall 2018\\ACSI\\Project\\computeSLQTrajHoop.m"/* pName */
@@ -214,7 +234,7 @@ static emlrtDCInfo emlrtDCI = { 24,    /* lineNo */
   1                                    /* checkKind */
 };
 
-static emlrtBCInfo m_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo o_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
   15,                                  /* lineNo */
   14,                                  /* colNo */
@@ -224,7 +244,7 @@ static emlrtBCInfo m_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo n_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo p_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
   14,                                  /* lineNo */
   14,                                  /* colNo */
@@ -234,7 +254,7 @@ static emlrtBCInfo n_emlrtBCI = { -1,  /* iFirst */
   0                                    /* checkKind */
 };
 
-static emlrtBCInfo o_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo q_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
   6,                                   /* lineNo */
   8,                                   /* colNo */
@@ -362,7 +382,7 @@ static emlrtDCInfo q_emlrtDCI = { 3,   /* lineNo */
   4                                    /* checkKind */
 };
 
-static emlrtBCInfo p_emlrtBCI = { -1,  /* iFirst */
+static emlrtBCInfo r_emlrtBCI = { -1,  /* iFirst */
   -1,                                  /* iLast */
   17,                                  /* lineNo */
   31,                                  /* colNo */
@@ -387,16 +407,18 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
   boolean_T dynamic_hoop_condition;
   boolean_T static_hoop_condition;
   int32_T ii;
-  static const real_T K_lqr[48] = { -0.0, 0.0, 1.6111, 0.0, 0.0, -1.6111, 0.0,
-    -0.0, 2.6672, 0.0, 0.0, 0.0, 0.0, 9.2114, 0.0, 0.0, -0.0, 0.0, 9.2114, 0.0,
-    0.0, 0.0, 0.0, 2.8908, -0.0, 0.0, 2.379, 0.0, 0.0, -2.379, 0.0, -0.0, 2.7075,
-    0.0, 0.0, 0.0, 0.0, 1.7455, 0.0, 0.0, -0.0, 0.0, 1.7455, 0.0, 0.0, 0.0, 0.0,
-    2.9344 };
+  static const real_T K_lqr[48] = { -0.0, 0.0, 0.7856, 0.0, 0.0, -0.7856, 0.0,
+    0.0, 1.3341, 0.0, 0.0, 0.0, 0.0, 4.7218, 0.0, -0.0, 0.0, 0.0, 4.7218, 0.0,
+    0.0, -0.0, 0.0, 1.4473, 0.0, 0.0, 1.1798, 0.0, 0.0, -1.1798, 0.0, 0.0,
+    1.3743, 0.0, 0.0, 0.0, 0.0, 0.9194, 0.0, -0.0, 0.0, 0.0, 0.9194, 0.0, 0.0,
+    -0.0, 0.0, 1.4909 };
 
   emxArray_real_T *u_fb;
   real_T b_x[12];
   real_T b_K[48];
   int32_T b_ii;
+  real_T z1[4];
+  real_T b_z1[4];
   real_T dq[12];
   emlrtStack st;
   emlrtStack b_st;
@@ -435,7 +457,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
   *t_wp = -1.0;
   i0 = (int32_T)N;
   if (!(1 <= i0)) {
-    emlrtDynamicBoundsCheckR2012b(1, 1, i0, &o_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckR2012b(1, 1, i0, &q_emlrtBCI, sp);
   }
 
   for (i0 = 0; i0 < 3; i0++) {
@@ -465,7 +487,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
     loop_ub = x_wp->size[1];
     i0 = (int32_T)(2.0 + (real_T)i);
     if (!((i0 >= 1) && (i0 <= loop_ub))) {
-      emlrtDynamicBoundsCheckR2012b(i0, 1, loop_ub, &n_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckR2012b(i0, 1, loop_ub, &p_emlrtBCI, sp);
     }
 
     for (i0 = 0; i0 < 3; i0++) {
@@ -476,7 +498,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
     loop_ub = x_wp->size[1];
     i0 = (int32_T)(2.0 + (real_T)i);
     if (!((i0 >= 1) && (i0 <= loop_ub))) {
-      emlrtDynamicBoundsCheckR2012b(i0, 1, loop_ub, &m_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckR2012b(i0, 1, loop_ub, &o_emlrtBCI, sp);
     }
 
     x_wp->data[6 + x_wp->size[0] * ((i + 2) - 1)] = 0.0;
@@ -486,7 +508,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
     i0 = x_wp->size[1];
     loop_ub = (int32_T)(2.0 + (real_T)i);
     if (!((loop_ub >= 1) && (loop_ub <= i0))) {
-      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &p_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &r_emlrtBCI, sp);
     }
 
     if ((x_wp->data[2 + x_wp->size[0] * (loop_ub - 1)] >= 1.0) && (ddx0_wp[2] <
@@ -562,6 +584,16 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
     K->data[i0] = 0.0;
   }
 
+  /*  % Initialize controller with LQR solution */
+  /*  g = 9.81;       % m/s^2 */
+  /*  m = 0.027;      % kg */
+  /*  u0 = [m*g;0;0;0]; */
+  /*   */
+  /*  Q = 1e3*eye(length(x0)); */
+  /*  R = 1*eye(4); */
+  /*  A = compute_A(x0,u0); */
+  /*  B = compute_B(x0,u0); */
+  /*  [K_lqr,S] = dlqr(A,B,Q,R); */
   /*  From loadK: */
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, N - 1.0, mxDOUBLE_CLASS, (int32_T)(N -
     1.0), &t_emlrtRTEI, sp);
@@ -569,7 +601,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
   while (ii - 1 <= (int32_T)(N - 1.0) - 1) {
     loop_ub = u_ff->size[1];
     if (!((ii >= 1) && (ii <= loop_ub))) {
-      emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &l_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &n_emlrtBCI, sp);
     }
 
     for (i0 = 0; i0 < 4; i0++) {
@@ -578,7 +610,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
 
     loop_ub = K->size[2];
     if (!((ii >= 1) && (ii <= loop_ub))) {
-      emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &k_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckR2012b(ii, 1, loop_ub, &m_emlrtBCI, sp);
     }
 
     for (i0 = 0; i0 < 12; i0++) {
@@ -652,7 +684,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
 
   i0 = (int32_T)N;
   if (!(1 <= i0)) {
-    emlrtDynamicBoundsCheckR2012b(1, 1, i0, &i_emlrtBCI, &st);
+    emlrtDynamicBoundsCheckR2012b(1, 1, i0, &k_emlrtBCI, &st);
   }
 
   for (i0 = 0; i0 < 12; i0++) {
@@ -666,13 +698,13 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
     i0 = K->size[2];
     loop_ub = ii + 1;
     if (!((loop_ub >= 1) && (loop_ub <= i0))) {
-      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &j_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &l_emlrtBCI, &st);
     }
 
     i0 = x->size[1];
     loop_ub = ii + 1;
     if (!((loop_ub >= 1) && (loop_ub <= i0))) {
-      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &h_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &j_emlrtBCI, &st);
     }
 
     for (i0 = 0; i0 < 12; i0++) {
@@ -701,24 +733,47 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
 
     i0 = u_ff->size[1];
     if (!((ii + 1 >= 1) && (ii + 1 <= i0))) {
-      emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i0, &g_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i0, &i_emlrtBCI, &st);
     }
 
     i = ii + 1;
     i0 = u_fb->size[1];
     if (!((ii + 1 >= 1) && (ii + 1 <= i0))) {
-      emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i0, &f_emlrtBCI, &st);
+      emlrtDynamicBoundsCheckR2012b(ii + 1, 1, i0, &h_emlrtBCI, &st);
     }
 
     b_ii = ii + 1;
+    loop_ub = u->size[1];
+    if (!((ii + 1 >= 1) && (ii + 1 <= loop_ub))) {
+      emlrtDynamicBoundsCheckR2012b(ii + 1, 1, loop_ub, &g_emlrtBCI, &st);
+    }
+
+    for (i0 = 0; i0 < 4; i0++) {
+      u->data[i0 + u->size[0] * ii] = (real_T)u_ff->data[i0 + u_ff->size[0] * (i
+        - 1)] + u_fb->data[i0 + u_fb->size[0] * (b_ii - 1)];
+    }
+
+    i0 = u->size[1];
+    loop_ub = ii + 1;
+    if (!((loop_ub >= 1) && (loop_ub <= i0))) {
+      emlrtDynamicBoundsCheckR2012b(loop_ub, 1, i0, &f_emlrtBCI, &st);
+    }
+
+    for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+      z1[loop_ub] = muDoubleScalarMax(-0.5, u->data[loop_ub + u->size[0] * ii]);
+    }
+
+    for (loop_ub = 0; loop_ub < 4; loop_ub++) {
+      b_z1[loop_ub] = muDoubleScalarMin(0.5, z1[loop_ub]);
+    }
+
     loop_ub = u->size[1];
     if (!((ii + 1 >= 1) && (ii + 1 <= loop_ub))) {
       emlrtDynamicBoundsCheckR2012b(ii + 1, 1, loop_ub, &e_emlrtBCI, &st);
     }
 
     for (i0 = 0; i0 < 4; i0++) {
-      u->data[i0 + u->size[0] * ii] = (real_T)u_ff->data[i0 + u_ff->size[0] * (i
-        - 1)] + u_fb->data[i0 + u_fb->size[0] * (b_ii - 1)];
+      u->data[i0 + u->size[0] * ii] = b_z1[i0];
     }
 
     b_st.site = &f_emlrtRSI;
@@ -762,7 +817,7 @@ void computeSLQTrajHoop(const emlrtStack *sp, real_T t_current, real_T N, real_T
   emxFree_int8_T(&st, &u_ff);
 
   /*  x = x_bar; */
-  /*  u = u_ff; */
+  /*  u = u_bar; */
   /*  Execute SLQ solve to generate optimal trajectory and control */
   st.site = &c_emlrtRSI;
   slqSolve(&st, x, u, N, dt, x0, x_wp, *t_wp, xf, K);

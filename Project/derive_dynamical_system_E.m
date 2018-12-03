@@ -17,14 +17,15 @@ u = [T;taub];
 
 % Parameters
 g = 9.81;       % m/s^2
-m = 0.027;      % kg
+m_nom = 0.027;      % kg
+m = 0.0341;
 l = 0.046;      % m
 k = 2.2e-8;  % N m s^2
 b = 2e-9;       % N s^2
 Im = 3e-6;    % kg*m^2
-Ixx = 1.66e-5;    % kg*m^2
-Iyy = 1.66e-5;    % kg*m^2
-Izz = 2.93e-5;   % kg*m^2
+Ixx = (m/m_nom)*1.66e-5;    % kg*m^2
+Iyy = (m/m_nom)*1.66e-5;    % kg*m^2
+Izz = (m/m_nom)*2.93e-5;   % kg*m^2
 A = [0.92e-6;      % kg/s
 	 0.91e-6;      % kg/s
 	 1.03e-6];     % kg/s

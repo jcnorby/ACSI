@@ -1,9 +1,8 @@
-function [x,u] = forwardIntTraj(x0, x_bar, u_bar,u_ff, K, N,dt)
+function [x,u] = forwardIntTraj(x0, x_bar, u_bar,umax,u_ff, K, N,dt)
 x = zeros(size(x_bar));
 u = zeros(size(u_bar));
 
-umin = -0.5;
-umax = 0.5;
+umin = -umax;
 
 x(:,1) = x0;
 for ii = 1:N-1
