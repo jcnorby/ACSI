@@ -33,7 +33,7 @@ K = zeros(4,12,N-1);
 % u0 = [m*g;0;0;0];
 % 
 % Q = 1e3*eye(length(x0));
-% R = eye(4);
+% R = 1*eye(4);
 % A = compute_A(x0,u0);
 % B = compute_B(x0,u0);
 % [K_lqr,S] = dlqr(A,B,Q,R);
@@ -52,7 +52,7 @@ end
 % Forward simulate to get initial trajectory
 [x_bar,u_bar] = forwardInt(x0, u_ff, K, N,dt, xf);
 % x = x_bar;
-% u = u_ff;
+% u = u_bar;
 
 % Execute SLQ solve to generate optimal trajectory and control
 [x,K,u] = slqSolve(x_bar,u_bar,N,dt,x0, x_wp,t_wp, xf);

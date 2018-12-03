@@ -5,8 +5,11 @@ u_fb = u;
 
 x(:,1) = x0;
 
+umin = -0.5;
+umax = 0.5;
 for ii = 1:N-1
     u_fb(:,ii) = -K(:,:,ii)*(x(:,ii) - x_bar);
     u(:,ii) = u_ff(:,ii) + u_fb(:,ii);
+    u(:,ii) = min(umax, max(umin, u(:,ii)));
     x(:,ii+1) = f(x(:,ii),u(:,ii),dt);
 end
