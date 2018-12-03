@@ -7,11 +7,10 @@ clear
 % try
 % Create publisher for the '/chatter' topic with the 'std_msgs/String' message type.
 traj_pub = rospublisher('/traj','geometry_msgs/PoseStamped');
-u_ff_pub = rospublisher('/feedfwd','geometry_msgs/Vector3');
+u_ff_pub = rospublisher('/FeedFwd','geometry_msgs/PoseStamped');
 
 % Create a message to send. Specify the Data property.
 traj_msg = rosmessage(traj_pub);
-u_ff_msg = rosmessage(u_ff_pub);
 
 % load('angledTraj.mat')
 N = 151;
@@ -113,14 +112,9 @@ while(1)
     end
     
     thrustVec = (eul2rotm(flipud(x(4:6,index))'))*[0;0;u(1,index)];
-%     u_ff = [2*180/pi;2*180/pi;125170].*thrustVec;
+    u_ff = [2*180/pi;2*180/pi;125170].*thrustVec;
     
     index
-    
-    u_ff_msg.X = thrustVec(1);
-    u_ff_msg.Y = thrustVec(2);
-    u_ff_msg.Z = thrustVec(3);
-    
     traj_msg.Pose.Position.X = x(1,index);
     traj_msg.Pose.Position.Y = x(2,index);
     traj_msg.Pose.Position.Z = x(3,index);
@@ -136,7 +130,6 @@ while(1)
     
     % Send message via the publisher.
     send(traj_pub,traj_msg);
-    send(u_ff_pub,u_ff_msg);
     
  
 end

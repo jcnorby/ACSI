@@ -24,7 +24,7 @@ while(1)
         
         thrustVec = (eul2rotm(flipud(x(4:6,ii))'))*[0;0;u(1,ii)];
         
-        u_ff = [2*180/pi;2*180/pi;125170].*thrustVec
+        u_ff = [2*180/pi;2*180/pi;125170].*thrustVec;
         
         addpoints(h,x(1,ii),x(2,ii),x(3,ii));
         delete(quadrotor) % Comment out to save snapshots
