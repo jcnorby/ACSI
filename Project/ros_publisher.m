@@ -24,7 +24,7 @@ quad_vel = [0;0;0];
 quad_orientation = [0;0;0];
 quad_velorientation = [0;0;0];
 
-x_start = [-0.175;0;1;0;0;0
+x_start = [1.0;0;1;0;0;0
     0;0;0;0;0;0];
 % x_start = repmat(x_start, 1,11);
 x_end = [-0.175;2;2;0;0;0
@@ -44,7 +44,7 @@ launch_flag = false;
 compute_traj_flag = true;
 
 u = 9.81*0.034;
-umax = 0.5;
+umax = 0.4;
 t_current=0;
 while(1)
     quad_vel = receive(vel_sub,180);
@@ -70,7 +70,7 @@ while(1)
 %     curTime.Sec + curTime.Nsec / 1e9
     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
     t_current = (curTime.Sec + curTime.Nsec / 1e9);
-    t_current-t_old
+    %t_current-t_old
     %     secs = msg_hoop.Header.Stamp.Sec; % this is when msg_hoop is active
 %     nsecs = msg_hoop.Header.Stamp.Nsec;
 %     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
@@ -112,7 +112,7 @@ while(1)
     end
        
     if launch_flag
-        index = floor(t/dt)+11;
+        index = floor(t/dt)+1;
     else
         index = floor(t/dt)+1;
     end
@@ -124,14 +124,14 @@ while(1)
     end
     
     
-    thrustVec = (eul2rotm(flipud(x(4:6,index))'))*[0;0;u(1,index)];
+%     thrustVec = (eul2rotm(flipud(x(4:6,index))'))*[0;0;u(1,index)];
 %     u_ff = [2*180/pi;2*180/pi;125170].*thrustVec;
     
     index;
     
-    u_ff_msg.X = thrustVec(1);
-    u_ff_msg.Y = thrustVec(2);
-    u_ff_msg.Z = thrustVec(3);
+    u_ff_msg.X = x(4,index);
+    u_ff_msg.Y = x(5,index);
+    u_ff_msg.Z = u(1,index);
     
     traj_msg.Pose.Position.X = x(1,index);
     traj_msg.Pose.Position.Y = x(2,index);
