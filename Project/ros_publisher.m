@@ -32,7 +32,7 @@ x_end = [-0.175;2;2;0;0;0
 xf = x_start;
 x = x_start;
 hoop_sub = rossubscriber('/hoop_traj_calc','geometry_msgs/PoseStamped');
-cf_sub = rossubscriber('/crazyflie/optitrack/rigid_bodies','optitrack/RigidBodyArray');
+cf_sub = rossubscriber('/optitrack/rigid_bodies','optitrack/RigidBodyArray'); % crazyflie/
 launch_sub = rossubscriber('/manual_launch','std_msgs/Bool');
 vel_sub = rossubscriber('/vel','geometry_msgs/Vector3');
 angVel_sub = rossubscriber('/angVel','geometry_msgs/Vector3');
@@ -49,7 +49,7 @@ t_current=0;
 while(1)
     quad_vel = receive(vel_sub,180);
     quad_velorientation = receive(angVel_sub,180);
-    msg_hoop = receive(hoop_sub,180); % TODO: obtain state directly from rigid bodies topic
+    msg_hoop = receive(hoop_sub,180);
     msg_launch = receive(launch_sub,180);    
 
     msg_cf = receive(cf_sub, 180);
