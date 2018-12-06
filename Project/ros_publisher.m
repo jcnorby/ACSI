@@ -15,18 +15,18 @@ traj_msg = rosmessage(traj_pub);
 u_ff_msg = rosmessage(u_ff_pub);
 trajVel_msg = rosmessage(trajVel_pub);
 
-hoop_sub = rossubscriber('/hoop_traj_calc','geometry_msgs/PoseStamped', @hoop_pose_callback);
-cf_sub = rossubscriber('/optitrack/rigid_bodies','optitrack/RigidBodyArray', quad_pose_callback); % crazyflie/
-launch_sub = rossubscriber('/manual_launch','std_msgs/Bool', @launch_flag_callback);
-quad_vel_sub = rossubscriber('/vel','geometry_msgs/Vector3', @quad_vel_callback);
-quad_angVel_sub = rossubscriber('/angVel','geometry_msgs/Vector3', @quad_ang_vel_callback);
+hoop_sub = rossubscriber('/hoop_traj_calc','geometry_msgs/PoseStamped');
+cf_sub = rossubscriber('/optitrack/rigid_bodies','optitrack/RigidBodyArray'); % crazyflie/
+launch_sub = rossubscriber('/manual_launch','std_msgs/Bool');
+quad_vel_sub = rossubscriber('/vel','geometry_msgs/Vector3');
+quad_ang_vel_sub = rossubscriber('/angVel','geometry_msgs/Vector3');
 
-global quad_pos;
-global quad_orient;
-global hoop_pos;
-global msg_launch_data;
-global quad_vel;
-global quad_ang_vel;
+% global quad_pos;
+% global quad_orient;
+% global hoop_pos;
+% global msg_launch_data;
+% global quad_vel;
+% global quad_ang_vel;
 
 pause(2);
 
@@ -59,12 +59,25 @@ compute_traj_flag = true;
 u = 9.81*0.034;
 umax = 0.4;
 t_current=0;
-while(1)
-%     quad_vel = receive(vel_sub,180);
-%     quad_velorientation = receive(angVel_sub,180);
-%     msg_hoop = receive(hoop_sub,180);
-%     msg_launch = receive(launch_sub,180);    
-%     msg_cf = receive(cf_sub, 180);
+while(1)    
+    msg_cf = cf_sub.LatestMessage;    
+    quad_pos = [msg_cf.Bodies(1).Pose.Position.X; msg_cf.Bodies(1).Pose.Position.Y; msg_cf.Bodies(1).Pose.Position.Z];
+    quad_orient_quat = [msg_cf.Bodies(1).Pose.Orientation.W;
+                                msg_cf.Bodies(1).Pose.Orientation.X; 
+                                msg_cf.Bodies(1).Pose.Orientation.Y; 
+                                msg_cf.Bodies(1).Pose.Orientation.Z]';
+    quad_orient = flipud(quat2eul(quad_orient_quat)');
+    
+    quad_vel_msg = quad_vel_sub.LatestMessage;
+    quad_vel = [quad_vel_msg.X; quad_vel_msg.Y;quad_vel_msg.Z];
+    
+    quad_ang_vel_msg = quad_ang_vel_sub.LatestMessage;
+    quad_ang_vel = [quad_ang_vel_msg.X; quad_ang_vel_msg.Y;quad_ang_vel_msg.Z];
+    
+    hoop_pos_msg = hoop_pos_sub.LatestMessage;
+    hoop_pos = [hoop_pos_msg.Pose.Position.X; hoop_pos_msg.Pose.Position.Y; hoop_pos_msg.Pose.Position.Z];
+    
+    msg_launch_data = launch_sub.LatestMessage.Data;
     
 %     cf_actual_hist = [cf_actual_hist; msg_cf.Header.Stamp.Sec + msg_cf.Header.Stamp.Nsec / 1e9, ... 
 %         quad_pos]; 
