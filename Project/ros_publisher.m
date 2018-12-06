@@ -16,7 +16,7 @@ u_ff_msg = rosmessage(u_ff_pub);
 trajVel_msg = rosmessage(trajVel_pub);
 
 hoop_sub = rossubscriber('/hoop_traj_calc','geometry_msgs/PoseStamped');
-cf_sub = rossubscriber('/optitrack/rigid_bodies','optitrack/RigidBodyArray'); % crazyflie/
+cf_sub = rossubscriber('/crazyflie/optitrack/rigid_bodies','optitrack/RigidBodyArray'); % crazyflie/
 launch_sub = rossubscriber('/manual_launch','std_msgs/Bool');
 quad_vel_sub = rossubscriber('/vel','geometry_msgs/Vector3');
 quad_ang_vel_sub = rossubscriber('/angVel','geometry_msgs/Vector3');
@@ -34,11 +34,12 @@ pause(2);
 N = 151;
 dt = 0.02;
 
-% hoop_pos = [0;0;1];
-% quad_pos = [0;0;0];
-% quad_vel = [0;0;0];
-% quad_orient = [0;0;0];
-% quad_ang_vel = [0;0;0];
+hoop_pos = [0;0;1];
+quad_pos = [0;0;0];
+quad_vel = [0;0;0];
+quad_orient = [0;0;0];
+quad_ang_vel = [0;0;0];
+msg_launch_data = false;
 
 x_start = [1.0;0;1;0;0;0
     0;0;0;0;0;0];
@@ -60,25 +61,34 @@ u = 9.81*0.034;
 umax = 0.4;
 t_current=0;
 while(1)    
-    msg_cf = cf_sub.LatestMessage;    
-    quad_pos = [msg_cf.Bodies(1).Pose.Position.X; msg_cf.Bodies(1).Pose.Position.Y; msg_cf.Bodies(1).Pose.Position.Z];
-    quad_orient_quat = [msg_cf.Bodies(1).Pose.Orientation.W;
-                                msg_cf.Bodies(1).Pose.Orientation.X; 
-                                msg_cf.Bodies(1).Pose.Orientation.Y; 
-                                msg_cf.Bodies(1).Pose.Orientation.Z]';
-    quad_orient = flipud(quat2eul(quad_orient_quat)');
+    if ~isempty(cf_sub.LatestMessage)
+        msg_cf = cf_sub.LatestMessage;    
+        quad_pos = [msg_cf.Bodies(1).Pose.Position.X; msg_cf.Bodies(1).Pose.Position.Y; msg_cf.Bodies(1).Pose.Position.Z];
+        quad_orient_quat = [msg_cf.Bodies(1).Pose.Orientation.W;
+                                    msg_cf.Bodies(1).Pose.Orientation.X; 
+                                    msg_cf.Bodies(1).Pose.Orientation.Y; 
+                                    msg_cf.Bodies(1).Pose.Orientation.Z]';
+        quad_orient = flipud(quat2eul(quad_orient_quat)');
+    end
     
-    quad_vel_msg = quad_vel_sub.LatestMessage;
-    quad_vel = [quad_vel_msg.X; quad_vel_msg.Y;quad_vel_msg.Z];
+    if ~isempty(quad_vel_sub.LatestMessage)    
+        quad_vel_msg = quad_vel_sub.LatestMessage;
+        quad_vel = [quad_vel_msg.X; quad_vel_msg.Y;quad_vel_msg.Z];
+    end
     
-    quad_ang_vel_msg = quad_ang_vel_sub.LatestMessage;
-    quad_ang_vel = [quad_ang_vel_msg.X; quad_ang_vel_msg.Y;quad_ang_vel_msg.Z];
+    if ~isempty(quad_ang_vel_sub.LatestMessage)    
+        quad_ang_vel_msg = quad_ang_vel_sub.LatestMessage;
+        quad_ang_vel = [quad_ang_vel_msg.X; quad_ang_vel_msg.Y;quad_ang_vel_msg.Z];
+    end
     
-    hoop_pos_msg = hoop_pos_sub.LatestMessage;
-    hoop_pos = [hoop_pos_msg.Pose.Position.X; hoop_pos_msg.Pose.Position.Y; hoop_pos_msg.Pose.Position.Z];
+    if ~isempty(hoop_sub.LatestMessage)    
+        hoop_pos_msg = hoop_sub.LatestMessage;
+        hoop_pos = [hoop_pos_msg.Pose.Position.X; hoop_pos_msg.Pose.Position.Y; hoop_pos_msg.Pose.Position.Z];
+    end
     
-    msg_launch_data = launch_sub.LatestMessage.Data;
-    
+    if ~isempty(launch_sub.LatestMessage)    
+        msg_launch_data = launch_sub.LatestMessage.Data;
+    end
 %     cf_actual_hist = [cf_actual_hist; msg_cf.Header.Stamp.Sec + msg_cf.Header.Stamp.Nsec / 1e9, ... 
 %         quad_pos]; 
     
@@ -127,11 +137,11 @@ while(1)
     traj_msg.Pose.Position.Y = x(2,index);
     traj_msg.Pose.Position.Z = x(3,index);
     
-    trajVel_msg.Pose.Position.X = x(7,index);
-    trajVel_msg.Pose.Position.Y = x(8,index);
-    trajVel_msg.Pose.Position.Z = x(9,index);
+    trajVel_msg.X = x(7,index);
+    trajVel_msg.Y = x(8,index);
+    trajVel_msg.Z = x(9,index);
     
-    cf_cmd_hist = [cf_cmd_hist; t, x(1,index), x(2,index), x(3,index)];
+%     cf_cmd_hist = [cf_cmd_hist; t, x(1,index), x(2,index), x(3,index)];
     
     quat = eul2quat([x(6,index) x(5,index) x(4,index)]);
     
