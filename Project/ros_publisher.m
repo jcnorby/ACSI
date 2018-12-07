@@ -43,9 +43,9 @@ quad_orient = [0;0;0];
 quad_ang_vel = [0;0;0];
 msg_launch_data = false;
 
-x_start = [1.0;0;1;0;0;0
+x_start = [0.6;2.0;1;0;0;0
     0;0;0;0;0;0];
-x_end = [0.5;3;1.5;0;0;0
+x_end = [1.2;-1.3;1.5;0;0;0
     0;0;0;0;0;0];
 xf = x_start;
 x = x_start;
@@ -113,7 +113,7 @@ while(1)
     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
 
     x0 = [quad_pos;quad_orient;quad_vel;quad_ang_vel];
-    if launch_flag && ((t-t_compute) >=0.5) && t < 1.45
+    if launch_flag && ((t-t_compute) >=10.0) && t < 1.45
         [xtraj,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
         if ~isnan(x(end, end))
             x = xtraj;
