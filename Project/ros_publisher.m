@@ -15,7 +15,8 @@ traj_msg = rosmessage(traj_pub);
 u_ff_msg = rosmessage(u_ff_pub);
 trajVel_msg = rosmessage(trajVel_pub);
 
-hoop_sub = rossubscriber('/hoop_traj_calc','geometry_msgs/PoseStamped');
+hoop_pos_sub = rossubscriber('/hoop_pos','geometry_msgs/Vector3');
+hoop_vel_sub = rossubscriber('/hoop_vel','geometry_msgs/Vector3');
 cf_sub = rossubscriber('/crazyflie/optitrack/rigid_bodies','optitrack/RigidBodyArray'); % crazyflie/
 launch_sub = rossubscriber('/manual_launch','std_msgs/Bool');
 quad_vel_sub = rossubscriber('/vel','geometry_msgs/Vector3');
@@ -35,6 +36,7 @@ N = 151;
 dt = 0.02;
 
 hoop_pos = [0;0;1];
+hoop_vel = [0;0;0];
 quad_pos = [0;0;0];
 quad_vel = [0;0;0];
 quad_orient = [0;0;0];
@@ -43,7 +45,7 @@ msg_launch_data = false;
 
 x_start = [1.0;0;1;0;0;0
     0;0;0;0;0;0];
-x_end = [-0.175;2;2;0;0;0
+x_end = [0.5;3;1.5;0;0;0
     0;0;0;0;0;0];
 xf = x_start;
 x = x_start;
@@ -51,7 +53,7 @@ x = x_start;
 hoop_vel = [0;0;0];
 hoop_accel = [0;0;0];
 % hoop_accel = [0;0;-9.81];
-
+t_compute = -10000.;
 cf_cmd_hist = [];
 cf_actual_hist = []; 
 launch_flag = false;
@@ -81,9 +83,14 @@ while(1)
         quad_ang_vel = [quad_ang_vel_msg.X; quad_ang_vel_msg.Y;quad_ang_vel_msg.Z];
     end
     
-    if ~isempty(hoop_sub.LatestMessage)    
-        hoop_pos_msg = hoop_sub.LatestMessage;
-        hoop_pos = [hoop_pos_msg.Pose.Position.X; hoop_pos_msg.Pose.Position.Y; hoop_pos_msg.Pose.Position.Z];
+    if ~isempty(hoop_pos_sub.LatestMessage)    
+        hoop_pos_msg = hoop_pos_sub.LatestMessage;
+        hoop_pos = [hoop_pos_msg.X; hoop_pos_msg.Y; hoop_pos_msg.Z];
+    end
+
+    if ~isempty(hoop_vel_sub.LatestMessage)    
+        hoop_vel_msg = hoop_vel_sub.LatestMessage;
+        hoop_vel = [hoop_vel_msg.X; hoop_vel_msg.Y; hoop_vel_msg.Z];
     end
     
     if ~isempty(launch_sub.LatestMessage)    
@@ -106,13 +113,16 @@ while(1)
     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
 
     x0 = [quad_pos;quad_orient;quad_vel;quad_ang_vel];
-    if compute_traj_flag && launch_flag
-        [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
-        compute_traj_flag = false;
+    if launch_flag && ((t-t_compute) >=0.5) && t < 1.45
+        [xtraj,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
+        if ~isnan(x(end, end))
+            x = xtraj;
+            t_compute = t;
+        end
     end
        
     if launch_flag
-        index = floor(t/dt)+1;
+        index = floor((t-t_compute)/dt)+1;
     else
         index = floor(t/dt)+1;
     end
