@@ -113,18 +113,25 @@ while(1)
     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
 
     x0 = [quad_pos;quad_orient;quad_vel;quad_ang_vel];
-    if launch_flag && ((t-t_compute) >=10.0) && t < 1.45
+    if launch_flag && ((t-t_compute) >=0.20) && t < 1.45
         [xtraj,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
         if ~isnan(x(end, end))
             x = xtraj;
             t_compute = t;
         end
+%         if t > .1
+%             disp('hi')
+%         end
     end
        
     if launch_flag
-        index = floor((t-t_compute)/dt)+1;
+        index_u = floor((t-t_compute)/dt)+1;
+%         index = floor((t)/dt)+1;
+        index_x = floor((t-t_compute)/dt)+11;
     else
         index = floor(t/dt)+1;
+        index_u = index;
+        index_x = index;
     end
     
     if index >= N
@@ -139,21 +146,21 @@ while(1)
     
     index;
     
-    u_ff_msg.X = x(4,index);
-    u_ff_msg.Y = x(5,index);
-    u_ff_msg.Z = u(1,index);
+    u_ff_msg.X = x(4,index_u);
+    u_ff_msg.Y = x(5,index_u);
+    u_ff_msg.Z = u(1,index_u);
     
-    traj_msg.Pose.Position.X = x(1,index);
-    traj_msg.Pose.Position.Y = x(2,index);
-    traj_msg.Pose.Position.Z = x(3,index);
+    traj_msg.Pose.Position.X = x(1,index_x);
+    traj_msg.Pose.Position.Y = x(2,index_x);
+    traj_msg.Pose.Position.Z = x(3,index_x);
     
-    trajVel_msg.X = x(7,index);
-    trajVel_msg.Y = x(8,index);
-    trajVel_msg.Z = x(9,index);
+    trajVel_msg.X = x(7,index_x);
+    trajVel_msg.Y = x(8,index_x);
+    trajVel_msg.Z = x(9,index_x);
     
 %     cf_cmd_hist = [cf_cmd_hist; t, x(1,index), x(2,index), x(3,index)];
     
-    quat = eul2quat([x(6,index) x(5,index) x(4,index)]);
+    quat = eul2quat([x(6,index_x) x(5,index_x) x(4,index_x)]);
     
     traj_msg.Pose.Orientation.W = quat(1);
     traj_msg.Pose.Orientation.X = quat(2);
