@@ -47,6 +47,9 @@ x_start = [0.6;2.0;1;0;0;0
     0;0;0;0;0;0];
 x_end = [1.2;-1.3;1.5;0;0;0
     0;0;0;0;0;0];
+
+x_end = [0.6;0;1;0;0;0
+    0;0;0;0;0;0];
 xf = x_start;
 x = x_start;
 
@@ -62,6 +65,7 @@ compute_traj_flag = true;
 u = 9.81*0.034;
 umax = 0.4;
 t_current=0;
+trajNum = 0;
 while(1)    
     if ~isempty(cf_sub.LatestMessage)
         msg_cf = cf_sub.LatestMessage;    
@@ -112,13 +116,20 @@ while(1)
 
     t = (curTime.Sec + curTime.Nsec / 1e9) - (secs + nsecs/1e9);
 
+    quad_vel
+    quad_ang_vel
+%     quad_vel = [0;0;0];
+%     quad_ang_vel = [0;0;0];
     x0 = [quad_pos;quad_orient;quad_vel;quad_ang_vel];
-    if launch_flag && ((t-t_compute) >=0.20) && t < 1.45
+    if launch_flag && ((t-t_compute) >=0.2) % && t < 1.45
+        x0
         [xtraj,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
+        save(['trajData_', num2str(trajNum)], 't','x0','xtraj', 't_wp', 'x_wp');
         if ~isnan(x(end, end))
             x = xtraj;
-            t_compute = t;
         end
+        t_compute = t;
+        trajNum = trajNum+1;
 %         if t > .1
 %             disp('hi')
 %         end
@@ -127,7 +138,7 @@ while(1)
     if launch_flag
         index_u = floor((t-t_compute)/dt)+1;
 %         index = floor((t)/dt)+1;
-        index_x = floor((t-t_compute)/dt)+11;
+        index_x = floor((t-t_compute)/dt)+9;
     else
         index = floor(t/dt)+1;
         index_u = index;
