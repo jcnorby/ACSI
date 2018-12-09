@@ -43,7 +43,7 @@ quad_orient = [0;0;0];
 quad_ang_vel = [0;0;0];
 msg_launch_data = false;
 
-x_start = [0.6;2.0;1;0;0;0
+x_start = [0.6;2.0;2.3;0;0;0
     0;0;0;0;0;0];
 x_end = [1.2;-1.3;1.5;0;0;0
     0;0;0;0;0;0];
@@ -54,8 +54,8 @@ xf = x_start;
 x = x_start;
 
 hoop_vel = [0;0;0];
-hoop_accel = [0;0;0];
-% hoop_accel = [0;0;-9.81];
+% hoop_accel = [0;0;0];
+hoop_accel = [0;0;-9.81];
 t_compute = -10000.;
 cf_cmd_hist = [];
 cf_actual_hist = []; 
@@ -121,7 +121,7 @@ while(1)
 %     quad_vel = [0;0;0];
 %     quad_ang_vel = [0;0;0];
     x0 = [quad_pos;quad_orient;quad_vel;quad_ang_vel];
-    if launch_flag && ((t-t_compute) >=0.4) && t < 1.45
+    if launch_flag && ((t-t_compute) >=0.2) && t < 1.45
         x0
         [xtraj,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
         save(['trajData_', num2str(trajNum)], 't','x0','xtraj', 't_wp', 'x_wp');
@@ -138,7 +138,7 @@ while(1)
     if launch_flag
         index_u = floor((t-t_compute)/dt)+1;
 %         index = floor((t)/dt)+1;
-        index_x = floor((t-t_compute)/dt)+9;
+        index_x = floor((t-t_compute)/dt)+20;
     else
         index = floor(t/dt)+1;
         index_u = index;
