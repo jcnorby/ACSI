@@ -27,135 +27,105 @@
 /* Variable Definitions */
 static emlrtRSInfo fb_emlrtRSI = { 38, /* lineNo */
   "norm",                              /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\lib\\matlab\\matfun\\norm.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/lib/matlab/matfun/norm.m"/* pathName */
 };
 
 static emlrtRSInfo gb_emlrtRSI = { 47, /* lineNo */
   "norm",                              /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\lib\\matlab\\matfun\\norm.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/lib/matlab/matfun/norm.m"/* pathName */
 };
 
 static emlrtRSInfo hb_emlrtRSI = { 194,/* lineNo */
   "norm",                              /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\lib\\matlab\\matfun\\norm.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/lib/matlab/matfun/norm.m"/* pathName */
 };
 
 static emlrtRSInfo ib_emlrtRSI = { 35, /* lineNo */
   "xnrm2",                             /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+blas\\xnrm2.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+blas/xnrm2.m"/* pathName */
 };
 
 static emlrtRSInfo kb_emlrtRSI = { 60, /* lineNo */
   "norm",                              /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\lib\\matlab\\matfun\\norm.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/lib/matlab/matfun/norm.m"/* pathName */
 };
 
 static emlrtRSInfo lb_emlrtRSI = { 69, /* lineNo */
   "norm",                              /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\lib\\matlab\\matfun\\norm.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/lib/matlab/matfun/norm.m"/* pathName */
 };
 
 static emlrtRSInfo mb_emlrtRSI = { 29, /* lineNo */
   "svd",                               /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\svd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/svd.m"/* pathName */
 };
 
 static emlrtRSInfo nb_emlrtRSI = { 101,/* lineNo */
   "svd",                               /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\svd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/svd.m"/* pathName */
 };
 
 static emlrtRSInfo ob_emlrtRSI = { 105,/* lineNo */
   "svd",                               /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\svd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/svd.m"/* pathName */
 };
 
 static emlrtRSInfo pb_emlrtRSI = { 28, /* lineNo */
   "xgesvd",                            /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pathName */
 };
 
 static emlrtRSInfo qb_emlrtRSI = { 193,/* lineNo */
   "xgesvd",                            /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pathName */
 };
 
 static emlrtRSInfo rb_emlrtRSI = { 125,/* lineNo */
   "xgesvd",                            /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pathName */
 };
 
 static emlrtRSInfo sb_emlrtRSI = { 114,/* lineNo */
   "xgesvd",                            /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pathName */
 };
 
 static emlrtRSInfo tb_emlrtRSI = { 107,/* lineNo */
   "xgesvd",                            /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pathName */
 };
 
 static emlrtRSInfo ub_emlrtRSI = { 56, /* lineNo */
   "xgesvd",                            /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pathName */
 };
 
 static emlrtRSInfo yb_emlrtRSI = { 45, /* lineNo */
   "infocheck",                         /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\infocheck.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/infocheck.m"/* pathName */
 };
 
 static emlrtRSInfo ac_emlrtRSI = { 48, /* lineNo */
   "infocheck",                         /* fcnName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\infocheck.m"/* pathName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/infocheck.m"/* pathName */
 };
 
 static emlrtRTEInfo h_emlrtRTEI = { 28,/* lineNo */
   33,                                  /* colNo */
   "xgesvd",                            /* fName */
-  "C:\\Program Files\\MATLAB\\R2018a\\toolbox\\eml\\eml\\+coder\\+internal\\+lapack\\xgesvd.m"/* pName */
+  "/usr/local/MATLAB/R2018b/toolbox/eml/eml/+coder/+internal/+lapack/xgesvd.m"/* pName */
 };
 
 /* Function Definitions */
-real_T b_norm(const real_T x[16])
+real_T b_norm(const emlrtStack *sp, const emxArray_real_T *x)
 {
   real_T y;
-  int32_T j;
-  boolean_T exitg1;
-  real_T s;
-  int32_T i;
-  y = 0.0;
-  j = 0;
-  exitg1 = false;
-  while ((!exitg1) && (j < 4)) {
-    s = 0.0;
-    for (i = 0; i < 4; i++) {
-      s += muDoubleScalarAbs(x[i + (j << 2)]);
-    }
-
-    if (muDoubleScalarIsNaN(s)) {
-      y = rtNaN;
-      exitg1 = true;
-    } else {
-      if (s > y) {
-        y = s;
-      }
-
-      j++;
-    }
-  }
-
-  return y;
-}
-
-real_T norm(const emlrtStack *sp, const emxArray_real_T *x)
-{
-  real_T y;
+  int32_T n;
   boolean_T overflow;
   ptrdiff_t n_t;
   ptrdiff_t incx_t;
   int32_T j;
-  int32_T loop_ub;
+  int32_T absx_tmp;
   emxArray_real_T *A;
   real_T absx;
   ptrdiff_t info_t;
@@ -194,6 +164,7 @@ real_T norm(const emlrtStack *sp, const emxArray_real_T *x)
     y = dnrm2(&n_t, &x->data[0], &incx_t);
   } else {
     st.site = &gb_emlrtRSI;
+    n = x->size[1];
     y = 0.0;
     b_st.site = &kb_emlrtRSI;
     overflow = (x->size[1] > 2147483646);
@@ -202,12 +173,26 @@ real_T norm(const emlrtStack *sp, const emxArray_real_T *x)
       check_forloop_overflow_error(&c_st);
     }
 
-    for (j = 1; j <= x->size[1]; j++) {
-      for (loop_ub = 0; loop_ub < 4; loop_ub++) {
-        absx = muDoubleScalarAbs(x->data[loop_ub + x->size[0] * (j - 1)]);
-        if (muDoubleScalarIsNaN(absx) || (absx > y)) {
-          y = absx;
-        }
+    for (j = 0; j < n; j++) {
+      absx_tmp = j << 2;
+      absx = muDoubleScalarAbs(x->data[absx_tmp]);
+      if (muDoubleScalarIsNaN(absx) || (absx > y)) {
+        y = absx;
+      }
+
+      absx = muDoubleScalarAbs(x->data[1 + absx_tmp]);
+      if (muDoubleScalarIsNaN(absx) || (absx > y)) {
+        y = absx;
+      }
+
+      absx = muDoubleScalarAbs(x->data[2 + absx_tmp]);
+      if (muDoubleScalarIsNaN(absx) || (absx > y)) {
+        y = absx;
+      }
+
+      absx = muDoubleScalarAbs(x->data[3 + absx_tmp]);
+      if (muDoubleScalarIsNaN(absx) || (absx > y)) {
+        y = absx;
       }
     }
 
@@ -217,13 +202,13 @@ real_T norm(const emlrtStack *sp, const emxArray_real_T *x)
       c_st.site = &mb_emlrtRSI;
       d_st.site = &nb_emlrtRSI;
       e_st.site = &pb_emlrtRSI;
-      j = A->size[0] * A->size[1];
+      n = A->size[0] * A->size[1];
       A->size[0] = 4;
       A->size[1] = x->size[1];
-      emxEnsureCapacity_real_T(&e_st, A, j, &h_emlrtRTEI);
-      loop_ub = x->size[0] * x->size[1];
-      for (j = 0; j < loop_ub; j++) {
-        A->data[j] = x->data[j];
+      emxEnsureCapacity_real_T(&e_st, A, n, &h_emlrtRTEI);
+      j = x->size[0] * x->size[1];
+      for (n = 0; n < j; n++) {
+        A->data[n] = x->data[n];
       }
 
       f_st.site = &ub_emlrtRSI;
@@ -233,20 +218,20 @@ real_T norm(const emlrtStack *sp, const emxArray_real_T *x)
       info_t = LAPACKE_dgesvd(102, 'N', 'N', (ptrdiff_t)4, (ptrdiff_t)x->size[1],
         &A->data[0], (ptrdiff_t)4, &s_data[0], NULL, (ptrdiff_t)1, NULL,
         (ptrdiff_t)1, &superb_data[0]);
-      j = (int32_T)info_t;
+      n = (int32_T)info_t;
       f_st.site = &qb_emlrtRSI;
-      emxFree_real_T(&f_st, &A);
-      if (j < 0) {
-        if (j == -1010) {
+      emxFree_real_T(&A);
+      if (n < 0) {
+        if (n == -1010) {
           g_st.site = &yb_emlrtRSI;
           error(&g_st);
         } else {
           g_st.site = &ac_emlrtRSI;
-          b_error(&g_st, j);
+          b_error(&g_st, n);
         }
       }
 
-      if (j > 0) {
+      if (n > 0) {
         d_st.site = &ob_emlrtRSI;
         c_error(&d_st);
       }
@@ -256,6 +241,35 @@ real_T norm(const emlrtStack *sp, const emxArray_real_T *x)
   }
 
   emlrtHeapReferenceStackLeaveFcnR2012b(sp);
+  return y;
+}
+
+real_T c_norm(const real_T x[16])
+{
+  real_T y;
+  int32_T j;
+  boolean_T exitg1;
+  int32_T s_tmp;
+  real_T s;
+  y = 0.0;
+  j = 0;
+  exitg1 = false;
+  while ((!exitg1) && (j < 4)) {
+    s_tmp = j << 2;
+    s = ((muDoubleScalarAbs(x[s_tmp]) + muDoubleScalarAbs(x[1 + s_tmp])) +
+         muDoubleScalarAbs(x[2 + s_tmp])) + muDoubleScalarAbs(x[3 + s_tmp]);
+    if (muDoubleScalarIsNaN(s)) {
+      y = rtNaN;
+      exitg1 = true;
+    } else {
+      if (s > y) {
+        y = s;
+      }
+
+      j++;
+    }
+  }
+
   return y;
 }
 

@@ -26,8 +26,24 @@ dq0 = [0;0;0;0;0;0];
 u = [0;0;0;0];
 x0 = [q0;dq0];
 
+x0 = [0.0168
+    1.9726
+    1.9480
+    0.0288
+   -0.0109
+   -0.0314
+   -0.0187
+    0.0406
+    0.0403
+    0.0394
+    0.0217
+   -0.0335];
+
 % Define final goal position
-xf = [-0.175;2;2;0;0;0;
+% xf = [-0.175;2;2;0;0;0;
+%     0;0;0;0;0;0];
+
+xf = [0;-1.0;2.0;0;0;0
     0;0;0;0;0;0];
 
 % x0 = xf;
@@ -61,21 +77,30 @@ g = 9.81;       % m/s^2
 m = 0.034;      % kg
 u0 = [m*g;0;0;0];
 
-x0_wp = [-0.175;1;1.5];
-% dx0_wp = [0;0;5];
-% ddx0_wp = [0;0;-g];
-dx0_wp = [0;0;0];
-ddx0_wp = [0;0;0];
+% x0_wp = [-0.175;1;1.5];
+x0_wp = [0
+    0
+    2.0685
+];
+dx0_wp = [0
+    0
+    5.0350];
+ddx0_wp = [0;0;-g];
+% dx0_wp = [0;0;0];
+% ddx0_wp = [0;0;0];
 
 flag = true;
 t_current = 0;
 a = tic;
 umax = 0.5;
+height_wp = 2.5
 % [x,K,u] = computeSLQTraj_mex(N,dt,x0,xf,t_wp,x_wp);
-[x,K,u, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
-% [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
+% [x,K,u,i_wp, t_wp, x_wp] = computeSLQTrajHoop(t_current,N,dt,x0,xf,umax,height_wp,x0_wp, dx0_wp, ddx0_wp, flag);
+[x,K,u, i_wp, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,umax,height_wp,x0_wp, dx0_wp, ddx0_wp, flag);
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
-animateTraj(x,u,xf,t_wp,x_wp,dt,N,T)
+% animateTraj(x,u,xf,t_wp,x_wp,dt,N,T)
+
+% plotTraj(x,u,xf,t_wp,x_wp,dt,N,T)
 
 % csvwrite('angledTraj2.csv', [tspan' x'])

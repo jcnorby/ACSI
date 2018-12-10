@@ -1,8 +1,8 @@
 close
-temp = load('trajData_0.mat');
+temp = load('trajData_1_10-Dec-2018 15:35:36_3.mat');
 
 x = temp.xtraj;
-xf = [1.2;-1.3;1.5;0;0;0
+xf = [0;-1.5;2.0;0;0;0
     0;0;0;0;0;0];
 t_wp = temp.t_wp;
 x_wp = temp.x_wp;

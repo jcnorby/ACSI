@@ -43,7 +43,7 @@ quad_orient = [0;0;0];
 quad_ang_vel = [0;0;0];
 msg_launch_data = false;
 
-x_start = [0.0;1.0;2.0;0;0;0
+x_start = [0.0;1.0;1.5;0;0;0
     0;0;0;0;0;0];
 x_end = [0;-1.5;2.0;0;0;0
     0;0;0;0;0;0];
@@ -54,8 +54,8 @@ xf = x_start;
 x = x_start;
 
 hoop_vel = [0;0;0];
-% hoop_accel = [0;0;0];
-hoop_accel = [0;0;-9.81];
+hoop_accel = [0;0;0];
+% hoop_accel = [0;0;-9.81];
 t_compute = -10000.;
 cf_cmd_hist = [];
 cf_actual_hist = []; 

@@ -18,10 +18,10 @@
 const mxArray *emlrt_marshallOut(const real_T u)
 {
   const mxArray *y;
-  const mxArray *m3;
+  const mxArray *m8;
   y = NULL;
-  m3 = emlrtCreateDoubleScalar(u);
-  emlrtAssign(&y, m3);
+  m8 = emlrtCreateDoubleScalar(u);
+  emlrtAssign(&y, m8);
   return y;
 }
 

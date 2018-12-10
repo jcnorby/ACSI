@@ -32,7 +32,6 @@ static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *t_current,
 static const mxArray *c_emlrt_marshallOut(const emxArray_real_T *u);
 static real_T d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   emlrtMsgIdentifier *parentId);
-static const mxArray *d_emlrt_marshallOut(const emxArray_real_T *u);
 static real_T (*e_emlrt_marshallIn(const emlrtStack *sp, const mxArray *x0,
   const char_T *identifier))[12];
 static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
@@ -58,14 +57,14 @@ static boolean_T o_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u)
 {
   const mxArray *y;
-  const mxArray *m4;
+  const mxArray *m9;
   static const int32_T iv8[2] = { 0, 0 };
 
   y = NULL;
-  m4 = emlrtCreateNumericArray(2, iv8, mxDOUBLE_CLASS, mxREAL);
-  emlrtMxSetData((mxArray *)m4, (void *)&u->data[0]);
-  emlrtSetDimensions((mxArray *)m4, u->size, 2);
-  emlrtAssign(&y, m4);
+  m9 = emlrtCreateNumericArray(2, iv8, mxDOUBLE_CLASS, mxREAL);
+  emlrtMxSetData((mxArray *)m9, &u->data[0]);
+  emlrtSetDimensions((mxArray *)m9, u->size, 2);
+  emlrtAssign(&y, m9);
   return y;
 }
 
@@ -85,14 +84,14 @@ static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *t_current,
 static const mxArray *c_emlrt_marshallOut(const emxArray_real_T *u)
 {
   const mxArray *y;
-  const mxArray *m5;
+  const mxArray *m10;
   static const int32_T iv9[3] = { 0, 0, 0 };
 
   y = NULL;
-  m5 = emlrtCreateNumericArray(3, iv9, mxDOUBLE_CLASS, mxREAL);
-  emlrtMxSetData((mxArray *)m5, (void *)&u->data[0]);
-  emlrtSetDimensions((mxArray *)m5, u->size, 3);
-  emlrtAssign(&y, m5);
+  m10 = emlrtCreateNumericArray(3, iv9, mxDOUBLE_CLASS, mxREAL);
+  emlrtMxSetData((mxArray *)m10, &u->data[0]);
+  emlrtSetDimensions((mxArray *)m10, u->size, 3);
+  emlrtAssign(&y, m10);
   return y;
 }
 
@@ -102,20 +101,6 @@ static real_T d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   real_T y;
   y = l_emlrt_marshallIn(sp, emlrtAlias(u), parentId);
   emlrtDestroyArray(&u);
-  return y;
-}
-
-static const mxArray *d_emlrt_marshallOut(const emxArray_real_T *u)
-{
-  const mxArray *y;
-  const mxArray *m6;
-  static const int32_T iv10[2] = { 0, 0 };
-
-  y = NULL;
-  m6 = emlrtCreateNumericArray(2, iv10, mxDOUBLE_CLASS, mxREAL);
-  emlrtMxSetData((mxArray *)m6, (void *)&u->data[0]);
-  emlrtSetDimensions((mxArray *)m6, u->size, 2);
-  emlrtAssign(&y, m6);
   return y;
 }
 
@@ -232,8 +217,8 @@ static boolean_T o_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   return ret;
 }
 
-void computeSLQTrajHoop_api(const mxArray * const prhs[9], int32_T nlhs, const
-  mxArray *plhs[5])
+void computeSLQTrajHoop_api(const mxArray * const prhs[11], int32_T nlhs, const
+  mxArray *plhs[6])
 {
   emxArray_real_T *x;
   emxArray_real_T *K;
@@ -244,10 +229,13 @@ void computeSLQTrajHoop_api(const mxArray * const prhs[9], int32_T nlhs, const
   real_T dt;
   real_T (*x0)[12];
   real_T (*xf)[12];
+  real_T umax;
+  real_T height_wp;
   real_T (*x0_wp)[3];
   real_T (*dx0_wp)[3];
   real_T (*ddx0_wp)[3];
   boolean_T flag_wp;
+  real_T i_wp;
   real_T t_wp;
   emlrtStack st = { NULL,              /* site */
     NULL,                              /* tls */
@@ -257,7 +245,7 @@ void computeSLQTrajHoop_api(const mxArray * const prhs[9], int32_T nlhs, const
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
   emxInit_real_T(&st, &x, 2, &i_emlrtRTEI, true);
-  emxInit_real_T1(&st, &K, 3, &i_emlrtRTEI, true);
+  emxInit_real_T(&st, &K, 3, &i_emlrtRTEI, true);
   emxInit_real_T(&st, &u, 2, &i_emlrtRTEI, true);
   emxInit_real_T(&st, &x_wp, 2, &i_emlrtRTEI, true);
 
@@ -267,41 +255,47 @@ void computeSLQTrajHoop_api(const mxArray * const prhs[9], int32_T nlhs, const
   dt = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[2]), "dt");
   x0 = e_emlrt_marshallIn(&st, emlrtAlias(prhs[3]), "x0");
   xf = e_emlrt_marshallIn(&st, emlrtAlias(prhs[4]), "xf");
-  x0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[5]), "x0_wp");
-  dx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[6]), "dx0_wp");
-  ddx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[7]), "ddx0_wp");
-  flag_wp = i_emlrt_marshallIn(&st, emlrtAliasP(prhs[8]), "flag_wp");
+  umax = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[5]), "umax");
+  height_wp = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[6]), "height_wp");
+  x0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[7]), "x0_wp");
+  dx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[8]), "dx0_wp");
+  ddx0_wp = g_emlrt_marshallIn(&st, emlrtAlias(prhs[9]), "ddx0_wp");
+  flag_wp = i_emlrt_marshallIn(&st, emlrtAliasP(prhs[10]), "flag_wp");
 
   /* Invoke the target function */
-  computeSLQTrajHoop(&st, t_current, N, dt, *x0, *xf, *x0_wp, *dx0_wp, *ddx0_wp,
-                     flag_wp, x, K, u, &t_wp, x_wp);
+  computeSLQTrajHoop(&st, t_current, N, dt, *x0, *xf, umax, height_wp, *x0_wp,
+                     *dx0_wp, *ddx0_wp, flag_wp, x, K, u, &i_wp, &t_wp, x_wp);
 
   /* Marshall function outputs */
-  plhs[0] = b_emlrt_marshallOut(x);
   x->canFreeData = false;
-  emxFree_real_T(&st, &x);
+  plhs[0] = b_emlrt_marshallOut(x);
+  emxFree_real_T(&x);
   if (nlhs > 1) {
+    K->canFreeData = false;
     plhs[1] = c_emlrt_marshallOut(K);
   }
 
-  K->canFreeData = false;
-  emxFree_real_T(&st, &K);
+  emxFree_real_T(&K);
   if (nlhs > 2) {
-    plhs[2] = d_emlrt_marshallOut(u);
+    u->canFreeData = false;
+    plhs[2] = b_emlrt_marshallOut(u);
   }
 
-  u->canFreeData = false;
-  emxFree_real_T(&st, &u);
+  emxFree_real_T(&u);
   if (nlhs > 3) {
-    plhs[3] = emlrt_marshallOut(t_wp);
+    plhs[3] = emlrt_marshallOut(i_wp);
   }
 
   if (nlhs > 4) {
-    plhs[4] = b_emlrt_marshallOut(x_wp);
+    plhs[4] = emlrt_marshallOut(t_wp);
   }
 
-  x_wp->canFreeData = false;
-  emxFree_real_T(&st, &x_wp);
+  if (nlhs > 5) {
+    x_wp->canFreeData = false;
+    plhs[5] = b_emlrt_marshallOut(x_wp);
+  }
+
+  emxFree_real_T(&x_wp);
   emlrtHeapReferenceStackLeaveFcnR2012b(&st);
 }
 

@@ -1,6 +1,4 @@
-START_DIR = C:\Users\Joe\DOCUME~1\MATLAB\5FALL2~1\ACSI\Project
-
-MATLAB_ROOT = C:\PROGRA~1\MATLAB\R2018a
+MATLAB_ROOT = /usr/local/MATLAB/R2018b
 MAKEFILE = computeSLQTrajHoop_mex.mk
 
 include computeSLQTrajHoop_mex.mki
@@ -34,99 +32,129 @@ SRC_FILES =  \
 	cpp_mexapi_version.cpp
 
 MEX_FILE_NAME_WO_EXT = computeSLQTrajHoop_mex
-MEX_FILE_NAME = $(MEX_FILE_NAME_WO_EXT).mexw64
+MEX_FILE_NAME = $(MEX_FILE_NAME_WO_EXT).mexa64
 TARGET = $(MEX_FILE_NAME)
 
-SYS_LIBS = libmwblas.lib libmwlapack.lib 
+SYS_LIBS = -lmwblas -lmwlapack 
 
 
 #
 #====================================================================
-# gmake makefile fragment for building MEX functions using MSVC
+# gmake makefile fragment for building MEX functions using Unix
 # Copyright 2007-2016 The MathWorks, Inc.
 #====================================================================
 #
-SHELL = cmd
-OBJEXT = obj
-CC = $(COMPILER)
-LD = $(LINKER)
+
+OBJEXT = o
 .SUFFIXES: .$(OBJEXT)
 
 OBJLISTC = $(SRC_FILES:.c=.$(OBJEXT))
-OBJLIST  = $(OBJLISTC:.cpp=.$(OBJEXT))
+OBJLISTCPP  = $(OBJLISTC:.cpp=.$(OBJEXT))
+OBJLIST  = $(OBJLISTCPP:.cu=.$(OBJEXT))
 
-TARGETMT = $(TARGET).manifest
-MEX = $(TARGETMT)
-STRICTFP = /fp:strict
+target: $(TARGET)
 
-target: $(MEX)
-
-MATLAB_INCLUDES = /I "$(MATLAB_ROOT)\simulink\include"
-MATLAB_INCLUDES+= /I "$(MATLAB_ROOT)\toolbox\shared\simtargets"
-SYS_INCLUDE = $(MATLAB_INCLUDES)
+ML_INCLUDES = -I "$(MATLAB_ROOT)/simulink/include"
+ML_INCLUDES+= -I "$(MATLAB_ROOT)/toolbox/shared/simtargets"
+SYS_INCLUDE = $(ML_INCLUDES)
 
 # Additional includes
 
-SYS_INCLUDE += /I "$(START_DIR)\codegen\mex\computeSLQTrajHoop"
-SYS_INCLUDE += /I "$(START_DIR)"
-SYS_INCLUDE += /I ".\interface"
-SYS_INCLUDE += /I "$(MATLAB_ROOT)\extern\include"
-SYS_INCLUDE += /I "."
+SYS_INCLUDE += -I "/home/instructor/group3/ACSI/Project/codegen/mex/computeSLQTrajHoop"
+SYS_INCLUDE += -I "/home/instructor/group3/ACSI/Project"
+SYS_INCLUDE += -I "./interface"
+SYS_INCLUDE += -I "$(MATLAB_ROOT)/extern/include"
+SYS_INCLUDE += -I "."
 
-DIRECTIVES = $(MEX_FILE_NAME_WO_EXT)_mex.arf
-COMP_FLAGS = $(COMPFLAGS) $(OMPFLAGS)
-LINK_FLAGS = $(filter-out /export:mexFunction, $(LINKFLAGS))
-LINK_FLAGS += /NODEFAULTLIB:LIBCMT
-ifeq ($(EMC_CONFIG),optim)
-  COMP_FLAGS += $(OPTIMFLAGS) $(STRICTFP)
-  LINK_FLAGS += $(LINKOPTIMFLAGS)
+EML_LIBS = -lemlrt -lcovrt -lut -lmwmathutil 
+SYS_LIBS += $(CLIBS) $(EML_LIBS)
+
+
+EXPORTFILE = $(MEX_FILE_NAME_WO_EXT)_mex.map
+ifeq ($(Arch),maci)
+  EXPORTOPT = -Wl,-exported_symbols_list,$(EXPORTFILE)
+  COMP_FLAGS = -c $(CFLAGS)
+  CXX_FLAGS = -c $(CXXFLAGS)
+  LINK_FLAGS = $(filter-out %mexFunction.map, $(LDFLAGS))
+else ifeq ($(Arch),maci64)
+  EXPORTOPT = -Wl,-exported_symbols_list,$(EXPORTFILE)
+  COMP_FLAGS = -c $(CFLAGS)
+  CXX_FLAGS = -c $(CXXFLAGS)
+  LINK_FLAGS = $(filter-out %mexFunction.map, $(LDFLAGS)) -Wl,-rpath,@loader_path
 else
-  COMP_FLAGS += $(DEBUGFLAGS)
-  LINK_FLAGS += $(LINKDEBUGFLAGS)
+  EXPORTOPT = -Wl,--version-script,$(EXPORTFILE)
+  COMP_FLAGS = -c $(CFLAGS) $(OMPFLAGS)
+  CXX_FLAGS = -c $(CXXFLAGS) $(OMPFLAGS)
+  LINK_FLAGS = $(filter-out %mexFunction.map, $(LDFLAGS)) 
 endif
 LINK_FLAGS += $(OMPLINKFLAGS)
-LINK_FLAGS += /OUT:$(TARGET)
-LINK_FLAGS +=  /LIBPATH:"$(MATLAB_ROOT)\extern\lib\win64\microsoft"
+ifeq ($(Arch),maci)
+  LINK_FLAGS += -L$(MATLAB_ROOT)/sys/os/maci
+endif
+ifeq ($(EMC_CONFIG),optim)
+  ifeq ($(Arch),mac)
+    COMP_FLAGS += $(CDEBUGFLAGS)
+    CXX_FLAGS += $(CXXDEBUGFLAGS)
+  else
+    COMP_FLAGS += $(COPTIMFLAGS)
+    CXX_FLAGS += $(CXXOPTIMFLAGS)
+  endif
+  LINK_FLAGS += $(LDOPTIMFLAGS)
+else
+  COMP_FLAGS += $(CDEBUGFLAGS)
+  CXX_FLAGS += $(CXXDEBUGFLAGS)
+  LINK_FLAGS += $(LDDEBUGFLAGS)
+endif
+LINK_FLAGS += -o $(TARGET)
+LINK_FLAGS +=  -L"$(MATLAB_ROOT)/bin/glnxa64"
 
-CFLAGS = $(COMP_FLAGS)  -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS  $(USER_INCLUDE) $(SYS_INCLUDE)
-CPPFLAGS = $(COMP_FLAGS)  -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS  $(USER_INCLUDE) $(SYS_INCLUDE)
+CCFLAGS = $(COMP_FLAGS) -std=c99  -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS  $(USER_INCLUDE) $(SYS_INCLUDE)
+CPPFLAGS = $(CXX_FLAGS) -std=c++11  -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS  $(USER_INCLUDE) $(SYS_INCLUDE)
 
 %.$(OBJEXT) : %.c
-	$(CC) $(CFLAGS) "$<"
+	$(CC) $(CCFLAGS) "$<"
 
 %.$(OBJEXT) : %.cpp
-	$(CC) $(CPPFLAGS) "$<"
+	$(CXX) $(CPPFLAGS) "$<"
 
 # Additional sources
 
-%.$(OBJEXT) : $(START_DIR)/%.c
-	$(CC) $(CFLAGS) "$<"
+%.$(OBJEXT) : /home/instructor/group3/ACSI/Project/%.c
+	$(CC) $(CCFLAGS) "$<"
 
-%.$(OBJEXT) : $(START_DIR)\codegen\mex\computeSLQTrajHoop/%.c
-	$(CC) $(CFLAGS) "$<"
+%.$(OBJEXT) : /home/instructor/group3/ACSI/Project/codegen/mex/computeSLQTrajHoop/%.c
+	$(CC) $(CCFLAGS) "$<"
 
 %.$(OBJEXT) : interface/%.c
-	$(CC) $(CFLAGS) "$<"
+	$(CC) $(CCFLAGS) "$<"
 
 
 
-%.$(OBJEXT) : $(START_DIR)/%.cpp
-	$(CC) $(CPPFLAGS) "$<"
+%.$(OBJEXT) : /home/instructor/group3/ACSI/Project/%.cpp
+	$(CXX) $(CPPFLAGS) "$<"
 
-%.$(OBJEXT) : $(START_DIR)\codegen\mex\computeSLQTrajHoop/%.cpp
-	$(CC) $(CPPFLAGS) "$<"
+%.$(OBJEXT) : /home/instructor/group3/ACSI/Project/codegen/mex/computeSLQTrajHoop/%.cpp
+	$(CXX) $(CPPFLAGS) "$<"
 
 %.$(OBJEXT) : interface/%.cpp
-	$(CC) $(CPPFLAGS) "$<"
+	$(CXX) $(CPPFLAGS) "$<"
 
 
 
-$(TARGET): $(OBJLIST) $(MAKEFILE) $(DIRECTIVES)
-	$(LD) $(LINK_FLAGS) $(OBJLIST) $(USER_LIBS) $(SYS_LIBS) @$(DIRECTIVES)
-	@cmd /C "echo Build completed using compiler $(EMC_COMPILER)"
+%.$(OBJEXT) : /home/instructor/group3/ACSI/Project/%.cu
+	$(CC) $(CCFLAGS) "$<"
 
-$(TARGETMT): $(TARGET)
-	mt -outputresource:"$(TARGET);2" -manifest "$(TARGET).manifest"
+%.$(OBJEXT) : /home/instructor/group3/ACSI/Project/codegen/mex/computeSLQTrajHoop/%.cu
+	$(CC) $(CCFLAGS) "$<"
+
+%.$(OBJEXT) : interface/%.cu
+	$(CC) $(CCFLAGS) "$<"
+
+
+
+
+$(TARGET): $(OBJLIST) $(MAKEFILE)
+	$(LD) $(EXPORTOPT) $(OBJLIST) $(LINK_FLAGS) $(SYS_LIBS)
 
 #====================================================================
 

@@ -26,8 +26,8 @@
 /* Type Definitions */
 
 /* Function Declarations */
-extern real_T b_norm(const real_T x[16]);
-extern real_T norm(const emlrtStack *sp, const emxArray_real_T *x);
+extern real_T b_norm(const emlrtStack *sp, const emxArray_real_T *x);
+extern real_T c_norm(const real_T x[16]);
 
 #endif
 

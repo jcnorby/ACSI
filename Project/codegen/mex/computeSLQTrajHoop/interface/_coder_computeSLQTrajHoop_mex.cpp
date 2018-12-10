@@ -18,14 +18,14 @@
 #include "computeSLQTrajHoop_data.h"
 
 /* Function Declarations */
-static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
-  int32_T nrhs, const mxArray *prhs[9]);
+static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[6],
+  int32_T nrhs, const mxArray *prhs[11]);
 
 /* Function Definitions */
-static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
-  int32_T nrhs, const mxArray *prhs[9])
+static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[6],
+  int32_T nrhs, const mxArray *prhs[11])
 {
-  const mxArray *outputs[5];
+  const mxArray *outputs[6];
   int32_T b_nlhs;
   emlrtStack st = { NULL,              /* site */
     NULL,                              /* tls */
@@ -35,12 +35,12 @@ static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
   st.tls = emlrtRootTLSGlobal;
 
   /* Check for proper number of arguments. */
-  if (nrhs != 9) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 9, 4,
+  if (nrhs != 11) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 11, 4,
                         18, "computeSLQTrajHoop");
   }
 
-  if (nlhs > 5) {
+  if (nlhs > 6) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 18,
                         "computeSLQTrajHoop");
   }
@@ -56,9 +56,6 @@ static void computeSLQTrajHoop_mexFunction(int32_T nlhs, mxArray *plhs[5],
   }
 
   emlrtReturnArrays(b_nlhs, plhs, outputs);
-
-  /* Module termination. */
-  computeSLQTrajHoop_terminate();
 }
 
 void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs, const mxArray
@@ -66,12 +63,14 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs, const mxArray
 {
   mexAtExit(computeSLQTrajHoop_atexit);
 
-  /* Initialize the memory manager. */
   /* Module initialization. */
   computeSLQTrajHoop_initialize();
 
   /* Dispatch the entry-point. */
   computeSLQTrajHoop_mexFunction(nlhs, plhs, nrhs, prhs);
+
+  /* Module termination. */
+  computeSLQTrajHoop_terminate();
 }
 
 emlrtCTX mexFunctionCreateRootTLS()

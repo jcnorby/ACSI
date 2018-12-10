@@ -1,5 +1,5 @@
-<deployment-project plugin="plugin.coder" plugin-version="R2016a">
-  <configuration build-checksum="1770217291" file="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.prj" location="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project" name="computeSLQTrajHoop" target="target.unifiedcoder" target-name="MATLAB Coder">
+<deployment-project plugin="plugin.coder" plugin-version="R2018b">
+  <configuration build-checksum="3213364155" file="/home/instructor/group3/ACSI/Project/computeSLQTrajHoop.prj" location="/home/instructor/group3/ACSI/Project" name="computeSLQTrajHoop" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -19,6 +19,7 @@
       <param.RowMajor>option.RowMajor.ColumnMajor</param.RowMajor>
       <param.HighlightPotentialRowMajorIssues>true</param.HighlightPotentialRowMajorIssues>
       <param.PreserveArrayDimensions>false</param.PreserveArrayDimensions>
+      <param.EliminateSingleDimensions>false</param.EliminateSingleDimensions>
       <param.StackUsageMax>200000</param.StackUsageMax>
       <param.FilePartitionMethod>option.FilePartitionMethod.MapMFileToCFile</param.FilePartitionMethod>
       <param.GenerateComments>true</param.GenerateComments>
@@ -47,7 +48,6 @@
       <param.CompileTimeRecursionLimit>50</param.CompileTimeRecursionLimit>
       <param.EnableRuntimeRecursion>true</param.EnableRuntimeRecursion>
       <param.PreserveVariableNames>option.PreserveVariableNames.None</param.PreserveVariableNames>
-      <param.TargetLang>option.TargetLang.CPP</param.TargetLang>
       <param.EchoExpressions>true</param.EchoExpressions>
       <param.InlineThreshold>10</param.InlineThreshold>
       <param.InlineThresholdMax>200</param.InlineThresholdMax>
@@ -80,6 +80,7 @@
         <param.RowMajor />
         <param.HighlightPotentialRowMajorIssues />
         <param.PreserveArrayDimensions />
+        <param.EliminateSingleDimensions />
         <param.StackUsageMax />
         <param.FilePartitionMethod />
         <param.GenerateComments />
@@ -132,12 +133,14 @@
       <param.SaturateOnIntegerOverflow>true</param.SaturateOnIntegerOverflow>
       <param.PurelyIntegerCode />
       <param.SupportNonFinite />
+      <param.LoopUnrollThreshold />
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Threshold</param.DynamicMemoryAllocation>
       <param.DynamicMemoryAllocationThreshold>65536</param.DynamicMemoryAllocationThreshold>
       <param.RowMajor>option.RowMajor.ColumnMajor</param.RowMajor>
       <param.HighlightPotentialRowMajorIssues>true</param.HighlightPotentialRowMajorIssues>
       <param.PreserveArrayDimensions>false</param.PreserveArrayDimensions>
+      <param.EliminateSingleDimensions>false</param.EliminateSingleDimensions>
       <param.StackUsageMax>200000</param.StackUsageMax>
       <param.MultiInstanceCode />
       <param.FilePartitionMethod>option.FilePartitionMethod.MapMFileToCFile</param.FilePartitionMethod>
@@ -204,7 +207,7 @@
       <param.HardwareSizeChar.Production>8</param.HardwareSizeChar.Production>
       <param.HardwareSizeShort.Production>16</param.HardwareSizeShort.Production>
       <param.HardwareSizeInt.Production>32</param.HardwareSizeInt.Production>
-      <param.HardwareSizeLong.Production>32</param.HardwareSizeLong.Production>
+      <param.HardwareSizeLong.Production>64</param.HardwareSizeLong.Production>
       <param.HardwareSizeLongLong.Production>64</param.HardwareSizeLongLong.Production>
       <param.HardwareSizeFloat.Production>32</param.HardwareSizeFloat.Production>
       <param.HardwareSizeDouble.Production>64</param.HardwareSizeDouble.Production>
@@ -225,7 +228,7 @@
       <param.HardwareSizeChar.Target>8</param.HardwareSizeChar.Target>
       <param.HardwareSizeShort.Target>16</param.HardwareSizeShort.Target>
       <param.HardwareSizeInt.Target>32</param.HardwareSizeInt.Target>
-      <param.HardwareSizeLong.Target>32</param.HardwareSizeLong.Target>
+      <param.HardwareSizeLong.Target>64</param.HardwareSizeLong.Target>
       <param.HardwareSizeLongLong.Target>64</param.HardwareSizeLongLong.Target>
       <param.HardwareSizeFloat.Target>32</param.HardwareSizeFloat.Target>
       <param.HardwareSizeDouble.Target>64</param.HardwareSizeDouble.Target>
@@ -242,13 +245,13 @@
       <param.CastingMode />
       <param.IndentStyle />
       <param.IndentSize />
+      <param.ColumnLimit />
       <param.ConstantFoldingTimeout>40000</param.ConstantFoldingTimeout>
       <param.CompileTimeRecursionLimit>50</param.CompileTimeRecursionLimit>
       <param.EnableRuntimeRecursion>true</param.EnableRuntimeRecursion>
       <param.IncludeTerminateFcn />
       <param.GenerateExampleMain>option.GenerateExampleMain.GenerateCodeOnly</param.GenerateExampleMain>
       <param.PreserveVariableNames>option.PreserveVariableNames.None</param.PreserveVariableNames>
-      <param.TargetLang>option.TargetLang.C</param.TargetLang>
       <param.CCompilerOptimization />
       <param.CCompilerCustomOptimizations />
       <param.GenerateMakefile />
@@ -264,20 +267,22 @@
       <param.MemcpyThreshold>64</param.MemcpyThreshold>
       <param.EnableOpenMP>true</param.EnableOpenMP>
       <param.InitFltsAndDblsToZero>true</param.InitFltsAndDblsToZero>
+      <param.GenerateNonFiniteFilesIfUsed />
       <param.PassStructByReference />
       <param.CustomLAPACKCallback />
       <param.CustomFFTCallback />
+      <param.CustomBLASCallback />
       <param.GenerateDefaultInSwitch />
       <param.EnableTraceability />
       <param.UseECoderFeatures />
-      <param.psCustomPrjState>false</param.psCustomPrjState>
+      <param.psCustomPrjState />
       <param.psCustomProjectFile />
-      <param.psCheckConfValue>option.psCheckConfValue.onWarnCheckConfDlg</param.psCheckConfValue>
-      <param.psUniqueOutPutState>true</param.psUniqueOutPutState>
-      <param.psOpenResultsState>true</param.psOpenResultsState>
-      <param.psProductModeValue>option.psProductModeValue.codeProver</param.psProductModeValue>
-      <param.psQuickConfValue>option.psQuickConfValue.proj</param.psQuickConfValue>
-      <param.psOutputFolder>results_$codegenName$</param.psOutputFolder>
+      <param.psCheckConfValue />
+      <param.psUniqueOutPutState />
+      <param.psOpenResultsState />
+      <param.psProductModeValue />
+      <param.psQuickConfValue />
+      <param.psOutputFolder />
       <unset>
         <param.grt.GenCodeOnly />
         <param.WorkingFolder />
@@ -288,12 +293,14 @@
         <param.SaturateOnIntegerOverflow />
         <param.PurelyIntegerCode />
         <param.SupportNonFinite />
+        <param.LoopUnrollThreshold />
         <param.EnableVariableSizing />
         <param.DynamicMemoryAllocation />
         <param.DynamicMemoryAllocationThreshold />
         <param.RowMajor />
         <param.HighlightPotentialRowMajorIssues />
         <param.PreserveArrayDimensions />
+        <param.EliminateSingleDimensions />
         <param.StackUsageMax />
         <param.MultiInstanceCode />
         <param.FilePartitionMethod />
@@ -360,7 +367,6 @@
         <param.HardwareSizeChar.Production />
         <param.HardwareSizeShort.Production />
         <param.HardwareSizeInt.Production />
-        <param.HardwareSizeLong.Production />
         <param.HardwareSizeLongLong.Production />
         <param.HardwareSizeFloat.Production />
         <param.HardwareSizeDouble.Production />
@@ -374,7 +380,6 @@
         <param.HardwareSizeChar.Target />
         <param.HardwareSizeShort.Target />
         <param.HardwareSizeInt.Target />
-        <param.HardwareSizeLong.Target />
         <param.HardwareSizeLongLong.Target />
         <param.HardwareSizeFloat.Target />
         <param.HardwareSizeDouble.Target />
@@ -384,13 +389,13 @@
         <param.CastingMode />
         <param.IndentStyle />
         <param.IndentSize />
+        <param.ColumnLimit />
         <param.ConstantFoldingTimeout />
         <param.CompileTimeRecursionLimit />
         <param.EnableRuntimeRecursion />
         <param.IncludeTerminateFcn />
         <param.GenerateExampleMain />
         <param.PreserveVariableNames />
-        <param.TargetLang />
         <param.CCompilerOptimization />
         <param.CCompilerCustomOptimizations />
         <param.GenerateMakefile />
@@ -406,9 +411,11 @@
         <param.MemcpyThreshold />
         <param.EnableOpenMP />
         <param.InitFltsAndDblsToZero />
+        <param.GenerateNonFiniteFilesIfUsed />
         <param.PassStructByReference />
         <param.CustomLAPACKCallback />
         <param.CustomFFTCallback />
+        <param.CustomBLASCallback />
         <param.GenerateDefaultInSwitch />
         <param.EnableTraceability />
         <param.UseECoderFeatures />
@@ -774,10 +781,11 @@
     <param.DefaultImportExportVariable>config</param.DefaultImportExportVariable>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\computeSLQTrajHoop_mex.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/computeSLQTrajHoop_mex.mexa64</param.outputfile>
     <param.version>R2012a</param.version>
-    <param.HasECoderFeatures>true</param.HasECoderFeatures>
-    <param.HasGpuCoder>true</param.HasGpuCoder>
+    <param.HasECoderFeatures>false</param.HasECoderFeatures>
+    <param.HasGpuCoder>false</param.HasGpuCoder>
+    <var.HasNeuralNetworkToolbox>false</var.HasNeuralNetworkToolbox>
     <param.mex.mainhtml />
     <param.grt.mainhtml />
     <param.CallGeneratedCodeFromTest>true</param.CallGeneratedCodeFromTest>
@@ -788,23 +796,24 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>172753956</param.AnnotationChecksum>
+    <param.AnnotationChecksum>2929059012</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
     <var.redirectedInputTypeData />
     <var.DismissScreener>true</var.DismissScreener>
     <param.unifiedParamStorage />
-    <var.gc.lastOutputRoot>codegen\mex\computeSLQTrajHoop</var.gc.lastOutputRoot>
+    <var.gc.lastOutputRoot>codegen/mex/computeSLQTrajHoop</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>1770217291</var.gc.preBuildChecksum>
-    <var.cfi.lastOutputRoot>codegen\mex\computeSLQTrajHoop</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>2091730360</var.cfi.preBuildChecksum>
+    <var.gc.preBuildChecksum>3213364155</var.gc.preBuildChecksum>
+    <var.cfi.lastOutputRoot>codegen/mex/computeSLQTrajHoop</var.cfi.lastOutputRoot>
+    <var.cfi.preBuildChecksum>2636059488</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>testFunctions</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_A.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_B.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_P.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_Q_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_QN_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_R_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_r_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\f.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardInt.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardIntTraj.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\getDynSys.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\slqSolve.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;2777961905&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_A.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_B.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_P.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_Q_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_q_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_QN_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_qN_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_R_mat.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\compute_r_vec.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\f.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardInt.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\forwardIntTraj.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\getDynSys.m&lt;/file&gt;&lt;file&gt;C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\slqSolve.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_A.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_B.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_P.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_QN_mat.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_Q_mat.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_R_mat.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_q.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_qN.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_qN_vec.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_q_vec.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_r_vec.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/f.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/forwardInt.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/forwardIntTraj.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/getDynSys.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/slqSolve.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3377770597&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/computeSLQTrajHoop.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_A.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_B.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_P.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_QN_mat.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_Q_mat.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_R_mat.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_q.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_qN.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_qN_vec.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_q_vec.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/compute_r_vec.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/f.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/forwardInt.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/forwardIntTraj.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/getDynSys.m&lt;/file&gt;&lt;file&gt;/home/instructor/group3/ACSI/Project/slqSolve.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
+    <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
     <var.isGpuCoder>false</var.isGpuCoder>
     <var.notGpuCoder>true</var.notGpuCoder>
@@ -812,7 +821,33 @@
     <param.mex.outputfile>computeSLQTrajHoop_mex</param.mex.outputfile>
     <param.grt.outputfile>computeSLQTrajHoop</param.grt.outputfile>
     <param.artifact>option.target.artifact.mex</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\computeSLQTrajHoop_mex.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/computeSLQTrajHoop_mex.mexa64</param.outputfile>
+    <param.gpu.Enabled>false</param.gpu.Enabled>
+    <param.gpu.KernelNamePrefix />
+    <param.gpu.SelectCudaDevice>-1</param.gpu.SelectCudaDevice>
+    <param.gpu.MallocMode />
+    <param.gpu.MallocThreshold>200</param.gpu.MallocThreshold>
+    <param.gpu.StackLimitPerThread>1024</param.gpu.StackLimitPerThread>
+    <param.gpu.EnableCUBLAS>false</param.gpu.EnableCUBLAS>
+    <param.gpu.EnableCUSOLVER>false</param.gpu.EnableCUSOLVER>
+    <param.gpu.EnableCUFFT>false</param.gpu.EnableCUFFT>
+    <param.gpu.Benchmarking>false</param.gpu.Benchmarking>
+    <param.gpu.SafeBuild>false</param.gpu.SafeBuild>
+    <param.gpu.ComputeCapability />
+    <param.gpu.CustomComputeCapability />
+    <param.gpu.CompilerFlags />
+    <var.checkIssuesGpu>false</var.checkIssuesGpu>
+    <var.hasGpu>false</var.hasGpu>
+    <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
+    <param.deeplearning.TargetLib>option.deeplearning.targetlibrary.none</param.deeplearning.TargetLib>
+    <var.hideTensorRT>false</var.hideTensorRT>
+    <var.hasMatlabDeepLearningSupportPackage>true</var.hasMatlabDeepLearningSupportPackage>
+    <var.hasGpuDeepLearningSupportPackage>true</var.hasGpuDeepLearningSupportPackage>
+    <param.tensorrt.DataType>option.tensorrt.datatype.fp32</param.tensorrt.DataType>
+    <param.tensorrt.DataPath />
+    <param.tensorrt.NumCalibrationBatches>1</param.tensorrt.NumCalibrationBatches>
+    <param.cudnn.AutoTuning>true</param.cudnn.AutoTuning>
+    <param.TargetLang>option.TargetLang.CPP</param.TargetLang>
     <param.EnableAutoExtrinsicCalls>true</param.EnableAutoExtrinsicCalls>
     <param.UsePreconditions>false</param.UsePreconditions>
     <param.FeatureFlags />
@@ -865,21 +900,6 @@
     <param.fptSignedness>false</param.fptSignedness>
     <var.FixedPointAnalysisMode>option.FixedPointAnalysisMode.Sim</var.FixedPointAnalysisMode>
     <param.FixedPointUseDesignRanges>false</param.FixedPointUseDesignRanges>
-    <param.gpu.Enabled>false</param.gpu.Enabled>
-    <param.gpu.KernelNamePrefix />
-    <param.gpu.MallocMode>discrete</param.gpu.MallocMode>
-    <param.gpu.MallocThreshold>200</param.gpu.MallocThreshold>
-    <param.gpu.StackLimitPerThread>1024</param.gpu.StackLimitPerThread>
-    <param.gpu.EnableCUBLAS>true</param.gpu.EnableCUBLAS>
-    <param.gpu.EnableCUSOLVER>true</param.gpu.EnableCUSOLVER>
-    <param.gpu.EnableCUFFT>true</param.gpu.EnableCUFFT>
-    <param.gpu.Benchmarking>false</param.gpu.Benchmarking>
-    <param.gpu.SafeBuild>false</param.gpu.SafeBuild>
-    <param.gpu.ComputeCapability>3.5</param.gpu.ComputeCapability>
-    <param.gpu.CustomComputeCapability />
-    <param.gpu.CompilerFlags />
-    <var.checkIssuesGpu>false</var.checkIssuesGpu>
-    <var.hasGpu>false</var.hasGpu>
     <unset>
       <param.objective />
       <param.DefaultImportExportVariable />
@@ -889,6 +909,7 @@
       <param.version />
       <param.HasECoderFeatures />
       <param.HasGpuCoder />
+      <var.HasNeuralNetworkToolbox />
       <param.mex.mainhtml />
       <param.grt.mainhtml />
       <param.CallGeneratedCodeFromTest />
@@ -906,12 +927,38 @@
       <param.unifiedParamStorage />
       <var.outdatedOnRestore />
       <param.forceMexBuild />
+      <param.NoDefaultJIT />
       <param.configImportActive />
       <var.isGpuCoder />
       <var.notGpuCoder />
       <param.mex.outputfile />
       <param.grt.outputfile />
       <param.artifact />
+      <param.gpu.Enabled />
+      <param.gpu.KernelNamePrefix />
+      <param.gpu.SelectCudaDevice />
+      <param.gpu.MallocMode />
+      <param.gpu.MallocThreshold />
+      <param.gpu.StackLimitPerThread />
+      <param.gpu.EnableCUBLAS />
+      <param.gpu.EnableCUSOLVER />
+      <param.gpu.EnableCUFFT />
+      <param.gpu.Benchmarking />
+      <param.gpu.SafeBuild />
+      <param.gpu.ComputeCapability />
+      <param.gpu.CustomComputeCapability />
+      <param.gpu.CompilerFlags />
+      <var.checkIssuesGpu />
+      <var.hasGpu />
+      <var.isDeepLearningForMatlabCoderEnabled />
+      <param.deeplearning.TargetLib />
+      <var.hideTensorRT />
+      <var.hasMatlabDeepLearningSupportPackage />
+      <var.hasGpuDeepLearningSupportPackage />
+      <param.tensorrt.DataType />
+      <param.tensorrt.DataPath />
+      <param.tensorrt.NumCalibrationBatches />
+      <param.cudnn.AutoTuning />
       <param.EnableAutoExtrinsicCalls />
       <param.UsePreconditions />
       <param.FeatureFlags />
@@ -954,43 +1001,29 @@
       <param.fptSignedness />
       <var.FixedPointAnalysisMode />
       <param.FixedPointUseDesignRanges />
-      <param.gpu.Enabled />
-      <param.gpu.KernelNamePrefix />
-      <param.gpu.MallocMode />
-      <param.gpu.MallocThreshold />
-      <param.gpu.StackLimitPerThread />
-      <param.gpu.EnableCUBLAS />
-      <param.gpu.EnableCUSOLVER />
-      <param.gpu.EnableCUFFT />
-      <param.gpu.Benchmarking />
-      <param.gpu.SafeBuild />
-      <param.gpu.ComputeCapability />
-      <param.gpu.CustomComputeCapability />
-      <param.gpu.CompilerFlags />
-      <var.checkIssuesGpu />
-      <var.hasGpu />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\computeSLQTrajHoop.m">
-        <Marker>1543876466516</Marker>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/computeSLQTrajHoop.m">
+        <Marker>1544422300545</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench>
-      <file>${PROJECT_ROOT}\testFunctions.m</file>
+      <file>${PROJECT_ROOT}/testFunctions.m</file>
     </fileset.testbench>
     <fileset.inputtypes>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\computeSLQTrajHoop.m">
-        <Inputs fileName="computeSLQTrajHoop.m" functionName="computeSLQTrajHoop" nargout="5">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/computeSLQTrajHoop.m">
+        <Inputs fileName="computeSLQTrajHoop.m" functionName="computeSLQTrajHoop" nargout="6">
           <Input Name="t_current" typeId="0" />
           <Input Name="N" typeId="0" />
           <Input Name="dt" typeId="0" />
           <Input Name="x0" typeId="1" />
           <Input Name="xf" typeId="1" />
-          <Input Name="umax" typeId="2" />
-          <Input Name="x0_wp" typeId="3" />
-          <Input Name="dx0_wp" typeId="3" />
-          <Input Name="ddx0_wp" typeId="3" />
-          <Input Name="flag_wp" typeId="4" />
+          <Input Name="umax" typeId="0" />
+          <Input Name="height_wp" typeId="0" />
+          <Input Name="x0_wp" typeId="2" />
+          <Input Name="dx0_wp" typeId="2" />
+          <Input Name="ddx0_wp" typeId="2" />
+          <Input Name="flag_wp" typeId="3" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
@@ -1011,15 +1044,6 @@
               <Sparse>false</Sparse>
             </type>
             <type typeId="2">
-              <Class>&lt;Undefined&gt;</Class>
-              <Size>1 x 1</Size>
-              <Value />
-              <InitialValue />
-              <UserDefined>false</UserDefined>
-              <Complex>false</Complex>
-              <Sparse>false</Sparse>
-            </type>
-            <type typeId="3">
               <Class>double</Class>
               <Size>3 x 1</Size>
               <Value />
@@ -1028,7 +1052,7 @@
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="4">
+            <type typeId="3">
               <Class>logical</Class>
               <Size>1 x 1</Size>
               <Value />
@@ -1041,63 +1065,33 @@
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project" name="computeSLQTrajHoop_mex.mexw64" optional="false">C:\Users\Joe\Documents\MATLAB\5 Fall 2018\ACSI\Project\computeSLQTrajHoop_mex.mexw64</file>
+      <file location="/home/instructor/group3/ACSI/Project" name="computeSLQTrajHoop_mex.mexa64" optional="false">/home/instructor/group3/ACSI/Project/computeSLQTrajHoop_mex.mexa64</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2018a</root>
+      <root>/usr/local/MATLAB/R2018b</root>
       <toolboxes>
-        <toolbox name="fixedpoint" />
         <toolbox name="matlabcoder" />
-        <toolbox name="matlabhdlcoder" />
-        <toolbox name="embeddedcoder" />
-        <toolbox name="gpucoder" />
-        <toolbox name="polyspacebugfinder" />
       </toolboxes>
-      <toolbox>
-        <fixedpoint>
-          <enabled>true</enabled>
-        </fixedpoint>
-      </toolbox>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
       </toolbox>
-      <toolbox>
-        <matlabhdlcoder>
-          <enabled>true</enabled>
-        </matlabhdlcoder>
-      </toolbox>
-      <toolbox>
-        <embeddedcoder>
-          <enabled>true</enabled>
-        </embeddedcoder>
-      </toolbox>
-      <toolbox>
-        <gpucoder>
-          <enabled>true</enabled>
-        </gpucoder>
-      </toolbox>
-      <toolbox>
-        <polyspacebugfinder>
-          <enabled>true</enabled>
-        </polyspacebugfinder>
-      </toolbox>
     </matlab>
     <platform>
-      <unix>false</unix>
+      <unix>true</unix>
       <mac>false</mac>
-      <windows>true</windows>
+      <windows>false</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
-      <linux>false</linux>
+      <linux>true</linux>
       <solaris>false</solaris>
-      <osver>10.0</osver>
+      <osver>4.15.0-38-generic</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>win64</arch>
+      <arch>glnxa64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>

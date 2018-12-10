@@ -28,19 +28,11 @@ extern void emxEnsureCapacity_int8_T(const emlrtStack *sp, emxArray_int8_T
   *emxArray, int32_T oldNumel, const emlrtRTEInfo *srcLocation);
 extern void emxEnsureCapacity_real_T(const emlrtStack *sp, emxArray_real_T
   *emxArray, int32_T oldNumel, const emlrtRTEInfo *srcLocation);
-extern void emxEnsureCapacity_real_T1(const emlrtStack *sp, emxArray_real_T
-  *emxArray, int32_T oldNumel, const emlrtRTEInfo *srcLocation);
-extern void emxEnsureCapacity_real_T2(const emlrtStack *sp, emxArray_real_T
-  *emxArray, int32_T oldNumel, const emlrtRTEInfo *srcLocation);
-extern void emxFree_int8_T(const emlrtStack *sp, emxArray_int8_T **pEmxArray);
-extern void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray);
+extern void emxFree_int8_T(emxArray_int8_T **pEmxArray);
+extern void emxFree_real_T(emxArray_real_T **pEmxArray);
 extern void emxInit_int8_T(const emlrtStack *sp, emxArray_int8_T **pEmxArray,
   int32_T numDimensions, const emlrtRTEInfo *srcLocation, boolean_T doPush);
 extern void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,
-  int32_T numDimensions, const emlrtRTEInfo *srcLocation, boolean_T doPush);
-extern void emxInit_real_T1(const emlrtStack *sp, emxArray_real_T **pEmxArray,
-  int32_T numDimensions, const emlrtRTEInfo *srcLocation, boolean_T doPush);
-extern void emxInit_real_T2(const emlrtStack *sp, emxArray_real_T **pEmxArray,
   int32_T numDimensions, const emlrtRTEInfo *srcLocation, boolean_T doPush);
 
 #endif

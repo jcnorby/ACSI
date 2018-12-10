@@ -25,9 +25,9 @@
 
 /* Function Declarations */
 extern void slqSolve(const emlrtStack *sp, emxArray_real_T *x_bar,
-                     emxArray_real_T *u_bar, real_T N, real_T dt, const real_T
-                     x0[12], const emxArray_real_T *x_wp, real_T t_wp, const
-                     real_T xf[12], emxArray_real_T *K);
+                     emxArray_real_T *u_bar, real_T umax, real_T N, real_T dt,
+                     const real_T x0[12], const emxArray_real_T *x_wp, real_T
+                     t_wp, const real_T xf[12], emxArray_real_T *K);
 
 #endif
 
