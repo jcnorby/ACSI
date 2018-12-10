@@ -43,9 +43,9 @@ quad_orient = [0;0;0];
 quad_ang_vel = [0;0;0];
 msg_launch_data = false;
 
-x_start = [0.0;2.0;2.0;0;0;0
+x_start = [0.0;1.0;2.0;0;0;0
     0;0;0;0;0;0];
-x_end = [0;-1.0;2.0;0;0;0
+x_end = [0;-1.5;2.0;0;0;0
     0;0;0;0;0;0];
 
 % x_end = [0.6;0;1;0;0;0
@@ -64,6 +64,7 @@ compute_traj_flag = true;
 
 u = 9.81*0.034;
 umax = 0.4;
+height_wp = 2.0;
 t_current=0;
 trajNum = 0;
 trial = ['1_',datestr(datetime('now'))];
@@ -125,9 +126,10 @@ while(1)
     x0 = [quad_pos;quad_orient;quad_vel;quad_ang_vel];
     if launch_flag && ((t-t_compute) >=0.2) && t < 0.65
         x0
-        hoop_vel(1:2) = [0;0];
-        [xtraj,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,hoop_pos, hoop_vel, hoop_accel, launch_flag);
-        save(['trajData_', trial, '_',num2str(trajNum)], 't','x0','xtraj', 't_wp', 'x_wp');
+%         hoop_vel(1:2) = [0;0];
+        hoop_vel(1) = 0.5*hoop_vel(1);
+        [xtraj,K,u,i_wp, t_wp, x_wp] = computeSLQTrajHoop_mex(t,N,dt,x0,xf,umax,height_wp,hoop_pos, hoop_vel, hoop_accel, launch_flag);
+        save(['trajData_', trial, '_',num2str(trajNum)], 't','x0','xtraj', 'i_wp','t_wp', 'x_wp');
         if ~isnan(x(end, end))
             x = xtraj;
         end
@@ -141,7 +143,7 @@ while(1)
     if launch_flag
         index_u = floor((t-t_compute)/dt)+1;
 %         index = floor((t)/dt)+1;
-        index_x = floor((t-t_compute)/dt)+20;
+        index_x = floor((t-t_compute)/dt)+18;
     else
         index = floor(t/dt)+1;
         index_u = index;
