@@ -105,7 +105,9 @@ ylabel('y')
 zlabel('z')
 quadrotor = [];
 h_wp = [];
-grid on
+% grid on
+
+ax = plotTrajFcn(x,~,xf,t_wp,x_wp,dt,N,T,true)
 
 while(1)
     t = 0;
@@ -131,3 +133,5 @@ while(1)
     end
     clearpoints(h);
 end
+
+
