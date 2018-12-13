@@ -2,7 +2,7 @@ clear;clc;close all;
 set(0,'DefaultFigureColor', [1,1,1])
 set(0,'defaulttextinterpreter', 'latex')
 set(0,'defaultaxesticklabelinterpreter', 'latex')
-set(0,'defaultaxesfontsize', 14)
+set(0,'defaultaxesfontsize', 20)
 
 % Initialize horizon
 N = 151;
@@ -21,7 +21,7 @@ dt = T/(N-1);
 tspan = 0:dt:T;
 
 % Define initial conditions
-q0 = [1;0;1;0;0;0];
+q0 = [1;0;0;0;0;0];
 dq0 = [0;0;0;0;0;0];
 u = [0;0;0;0];
 x0 = [q0;dq0];
@@ -76,35 +76,6 @@ umax = 0.5;
 % [x,K,u, t_wp, x_wp] = computeSLQTrajHoop_mex(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
 disp(['Trajectory computed in ', num2str(toc(a)), 's.'])
 
-% animateTraj(x,u,xf,t_wp,x_wp,dt,N,T)
+animateTraj(x,u,xf,t_wp,x_wp,dt,N,T)
 
-
-% pan = panel();
-% pan.pack({0.05 0.425 0.1 0.425});
-% 
-% pan(4).select();
-% 
-% traj2 = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,true);
-% title('SLQ Trajectory')
-% 
-% pan(2).select();
-% 
-% [x,K,u, t_wp, x_wp] = computeTrajHoop(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
-% 
-% traj1 = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,false);
-% title('LQR Trajectory')
-
-pan = panel();
-pan.pack('h',{0.5 0.5});
-
-pan(2).select();
-
-traj2 = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,true);
-title('\nSLQ Trajectory')
-
-pan(1).select();
-
-[x,K,u, t_wp, x_wp] = computeTrajHoop(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
-
-traj1 = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,false);
-title('\nLQR Trajectory')
+% csvwrite('angledTraj2.csv', [tspan' x'])

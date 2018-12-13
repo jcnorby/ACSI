@@ -1,40 +1,32 @@
-close
-temp = load('trajData_0.mat');
+function ax = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,success)
 
-x = temp.xtraj;
-xf = [1.2;-1.3;1.5;0;0;0
-    0;0;0;0;0;0];
-t_wp = temp.t_wp;
-x_wp = temp.x_wp;
-x0 = temp.x0;
-dt = 0.02;
+set(0,'DefaultFigureColor', [1,1,1])
+set(0,'defaulttextinterpreter', 'latex')
+set(0,'defaultaxesticklabelinterpreter', 'latex')
+set(0,'defaultaxesfontsize', 20)
+
+
 
 % Initialize plotting
 quad_w = 0.092;
 quad_l = 0.092;
 quad_h = 0.029;
-plot3(xf(1), xf(2), xf(3), 'ob', 'MarkerSize', 20, 'LineWidth', 3); hold on;
 h = animatedline;
 epsilon = 0.3;
-axis equal
-axis([min(x(1,:))-epsilon max(x(1,:))+epsilon min(x(2,:))-epsilon max(x(2,:))+epsilon min(x(3,:))-epsilon max(max(x_wp(3,:)), max(x(3,:)))+epsilon]);
-xlabel('x')
-ylabel('y')
-zlabel('z')
+
 quadrotor = [];
 h_wp = [];
 thrust = [];
-grid on
 
 % while(1)
 %     t = 0;
 %     for ii = 1:N-1
 %         a = tic;
-%         
+%
 %         thrustVec = (eul2rotm(flipud(x(4:6,ii))'))*[0;0;u(1,ii)];
-%         
+%
 %         u_ff = [2*180/pi;2*180/pi;125170].*thrustVec;
-%         
+%
 %         addpoints(h,x(1,ii),x(2,ii),x(3,ii));
 %         delete(quadrotor) % Comment out to save snapshots
 %         delete(h_wp) %
@@ -55,10 +47,33 @@ grid on
 %     clearpoints(h);
 % end
 
-plot3(x(1,:),x(2,:),x(3,:)); hold on
+trajectory = plot3(x(1,:),x(2,:),x(3,:), 'k-'); hold on
 index_wp = floor(t_wp/dt) + 1;
-h_wp = plot3(x_wp(1,index_wp), x_wp(2,index_wp), x_wp(3,index_wp), 'og', 'MarkerSize', 20, 'LineWidth', 3);
 
-plot3(xf(1), xf(2), xf(3), 'ob', 'MarkerSize', 20, 'LineWidth', 3);
+if success
+    h_wp = plot3(x_wp(1,index_wp), x_wp(2,index_wp), x_wp(3,index_wp), 'og', 'MarkerSize', 20, 'LineWidth', 3);
+else
+    h_wp = plot3(x_wp(1,index_wp), x_wp(2,index_wp), x_wp(3,index_wp), 'or', 'MarkerSize', 20, 'LineWidth', 3);
+end
 
+quadSnapshots = floor(linspace(1,N,10));
 
+for i = 1:length(quadSnapshots)
+    
+    quadrotor = plotrotcube([quad_w quad_l quad_h],[x(1,quadSnapshots(i)) - quad_w/2,...
+        x(2,quadSnapshots(i))- quad_l/2,x(3,quadSnapshots(i))- quad_h/2],...
+        .8,[1 0 0], x(4,quadSnapshots(i)),x(5,quadSnapshots(i)),x(6,quadSnapshots(i))); hold on
+    
+end
+goal = plot3(xf(1), xf(2), xf(3), 'ob', 'MarkerSize', 20, 'LineWidth', 3);
+
+axis equal
+axis([min(x(1,:))-epsilon max(x(1,:))+epsilon min(x(2,:))-epsilon max(x(2,:))+epsilon min(x(3,:))-epsilon max(max(x_wp(3,:)), max(x(3,:)))+epsilon]);
+xlabel('x (m)')
+ylabel('y (m)')
+zlabel('z (m)')
+
+if ~success
+    legend([quadrotor(1), trajectory, h_wp, goal],'Quadrotor','Trajectory', 'Hoop position', 'Goal state', 'location', 'northeast')
+end
+ax = gca;
