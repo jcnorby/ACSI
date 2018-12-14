@@ -12,7 +12,7 @@ quad_w = 0.092;
 quad_l = 0.092;
 quad_h = 0.029;
 
-quadSnapshots = linspace(1:N:10);
+
 
 for ii = 1:numTrajectories
     
@@ -25,7 +25,7 @@ for ii = 1:numTrajectories
         0;0;0;0;0;0];
     x_wp = temp.x_wp;
     
-    quadrotor = plotrotcube([quad_w quad_l quad_h],[x(1,quadSnapshots) - quad_w/2,x(2,quadSnapshots)- quad_l/2,x(3,quadSnapshots)- quad_h/2],.8,[1 0 0], x(4,quadSnapshots),x(5,quadSnapshots),x(6,quadSnapshots)); hold on
+    quadrotor = plotrotcube([quad_w quad_l quad_h],[x(1,1) - quad_w/2,x(2,1)- quad_l/2,x(3,1)- quad_h/2],.8,[1 0 0], x(4,1),x(5,1),x(6,1)); hold on
     
     trajectory = plot3(x(1,:),x(2,:),x(3,:), 'k-'); hold on;
     i_wp = floor(t_wp/dt) + 1;

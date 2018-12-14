@@ -100,11 +100,11 @@ pan.pack('h',{0.5 0.5});
 pan(2).select();
 
 traj2 = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,true);
-title('\nSLQ Trajectory')
+title('SLQ Trajectory')
 
 pan(1).select();
 
 [x,K,u, t_wp, x_wp] = computeTrajHoop(t_current,N,dt,x0,xf,umax,x0_wp, dx0_wp, ddx0_wp, flag);
 
 traj1 = plotTrajFcn(x,u,xf,t_wp,x_wp,dt,N,T,false);
-title('\nLQR Trajectory')
+title({'','LQR Trajectory'})
