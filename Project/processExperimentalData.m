@@ -9,6 +9,7 @@ numTrials = floor(numel(a)/2);
 
 errorXVec = [];
 errorZVec = [];
+errorDistVec = [];
 
 for ii = 1:numTrials
     
@@ -35,12 +36,16 @@ for ii = 1:numTrials
         errorZ = errorZ - 0.1;
     end
     
+    errorDist = norm([errorX; errorZ]);
+    
     errorXVec = [errorXVec; errorX];
     errorZVec = [errorZVec; errorZ];
+    errorDistVec = [errorDistVec; errorDist];
     
-    if norm([errorX; errorZ]) >= 0.43
+    
+    if errorDist >= 0.43
         colorData = [1 0 0]; %red
-    elseif norm([errorX; errorZ]) <= 0.26
+    elseif errorDist <= 0.26
         colorData = [0 1 0]; %green
     else
         colorData = [1 0.75 0]; %yellow
